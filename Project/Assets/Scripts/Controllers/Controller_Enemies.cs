@@ -11,17 +11,22 @@ public class Controller_Enemies : MonoBehaviour
     public List<Wave> waves;
     private float waveTimer = 1000;
     public int waveIndex;
-    private MotorcycleEnemy values;
     public float waveInterval = 10f;
+    // Enemy Values part 1 vvv   
+    private MotorcycleEnemy values;
     private HogEnemy values2;
-
+    private Boss1Enemy boss1Value;  //Made a script under the Enemies folder named after this
+    //                      ^^^
 
     void Start()
     {
         Debug.Assert(gameModel != null, "Controller_Enemies is looking for a reference to Model_Game, but none has been added in the Inspector!");
         waves = new List<Wave>();
+        //Enemy Values part 2 vvv
         values = GameObject.Find("Model").GetComponent<MotorcycleEnemy>();
         values2 = GameObject.Find("Model").GetComponent<HogEnemy>();
+        boss1Value = GameObject.Find("Model").GetComponent<Boss1Enemy>(); //Inserted it as Application.Model component 
+        //              ^^^
     }
 
     void Update()
@@ -65,6 +70,8 @@ public class Controller_Enemies : MonoBehaviour
             {
                 GameObject EOP;
                 GameObject H0G;
+                GameObject BOSS1;
+
                 Wave newWave = new Wave();
 
                 for (int i = 0; i < numberToSpawn; i++)
@@ -109,6 +116,26 @@ public class Controller_Enemies : MonoBehaviour
                                 m.nextWaypoint = new Vector3(values2.startPos + displace, 0, -20f);
                                 m.Waypoints.Add(m.nextWaypoint);
                                 m.isLeft = false;
+                            }
+                            break;
+
+                        case "Boss1":
+                            BOSS1 = Instantiate(gameModel.Boss1Prefab);                              //Clone(aka drop) the prefab into the scene
+                            Boss1_Behavior Boss1_B = BOSS1.GetComponent<Boss1_Behavior>();                          //Find the behavior inside of it
+                            displace = Random.Range(-boss1Value.startDisplace, boss1Value.startDisplace); //RNG decision on where to put it?
+                            if (Random.Range(0, 2) == 0)                                            //Read the RNG result
+                            {
+                                startPoint = new Vector3(-boss1Value.startPos + displace, 0, 20);
+                                Boss1_B.nextWaypoint = new Vector3(-boss1Value.startPos + displace, 0, -20f);
+                                Boss1_B.Waypoints.Add(Boss1_B.nextWaypoint);
+                                Boss1_B.isLeft = true;
+                            }
+                            else
+                            {
+                                startPoint = new Vector3(boss1Value.startPos + displace, 0, 20);
+                                Boss1_B.nextWaypoint = new Vector3(boss1Value.startPos + displace, 0, -20f);
+                                Boss1_B.Waypoints.Add(Boss1_B.nextWaypoint);
+                                Boss1_B.isLeft = false;
                             }
                             break;
 

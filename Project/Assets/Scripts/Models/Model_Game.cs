@@ -17,6 +17,7 @@ public class Model_Game : MonoBehaviour
     public GameObject enemyBulletPrefab1;
     public GameObject motorCycleEnemyPrefab;
     public GameObject HogEnemyPrefab;
+    public GameObject Boss1Prefab;
     public List<int> level1Waves;
     public List<int> Level2Waves;
     public float enemySpeed1;
