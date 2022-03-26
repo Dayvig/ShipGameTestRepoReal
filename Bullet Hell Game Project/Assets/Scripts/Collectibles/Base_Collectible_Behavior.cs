@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Collectibles
@@ -49,6 +50,25 @@ namespace Collectibles
         public abstract bool CollectionCondition();
         public abstract void UpdateVisuals();
         public abstract void Collect();
+
+        public bool CollectWhenMovedInto(float range)
+        {
+            if (collectOnMoveInto)
+            {
+                var colliders = Physics.OverlapSphere(transform.position, range);
+
+                foreach (var c in colliders)
+                {
+                    Debug.Log(c.gameObject.name);
+                    if (c.gameObject.tag == "Player")
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
     }
     
 }

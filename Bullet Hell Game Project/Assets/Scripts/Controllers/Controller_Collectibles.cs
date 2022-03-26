@@ -8,9 +8,10 @@ using Random = UnityEngine.Random;
 public class Controller_Collectibles : MonoBehaviour
 {
     public Model_Game gameModel;
-    public List<GameObject> collectibles;
+    public List<string> collectibles;
     public float spawnTimer = 0f;
     public float spawnInterval = 10f;
+    public int colIndex = 0;
     
     void Start()
     {
@@ -20,11 +21,11 @@ public class Controller_Collectibles : MonoBehaviour
     void Update()
     {
         CollectibleUpdate();
-        
     }
 
     public void CollectibleUpdate()
     {
+        spawnTimer += Time.deltaTime;
         if (spawnTimer > spawnInterval)
         {
             int numberToSpawn = 1;
@@ -32,11 +33,22 @@ public class Controller_Collectibles : MonoBehaviour
             {
                 spawnTimer -= spawnInterval;
                 GameObject COL;
-                Vector3 startPoint;
-                
-            }
+                Vector3 startPoint = new Vector3(0, 0, 8);
+                switch (collectibles[colIndex])
+                {
+                    case "Portal":
+                        COL = Instantiate(gameModel.PortalPrefab, startPoint, Quaternion.identity);
+                        PortalBehavior behavior = COL.GetComponent<PortalBehavior>();
+                        behavior.nextWaypoint = startPoint;
+                        behavior.Waypoints.Add(behavior.nextWaypoint);
+                        break;
+                }
 
+                colIndex++;
+                spawnTimer = 0f;
+            }
         }
+    }
         /*
         waveTimer += Time.deltaTime;
 
@@ -156,13 +168,3 @@ public class Controller_Collectibles : MonoBehaviour
         }*/
 
     }
-
-    private void CleanUpCollectibles()
-    {
-        foreach (GameObject g in collectibles)
-        {
-            Destroy(g);
-        }
-        collectibles.Clear();
-    }
-}
