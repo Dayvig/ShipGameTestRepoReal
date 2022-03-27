@@ -11,18 +11,22 @@ public class Controller_Enemies : MonoBehaviour
     public List<Wave> waves;
     public float waveTimer = 6f;
     public int waveIndex;
-    private MotorcycleEnemy values;
     public int enemycount;
-    private HogEnemy values2;
     public int doubleWave;
-
-
+    // Enemy Requirements part 1
+    private MotorcycleEnemy values;
+    private HogEnemy values2;
+    private Boss1Enemy boss1Value; //These need to be named the same as the enemy script placed in Application.Model
+    //
     void Start()
     {
         Debug.Assert(gameModel != null, "Controller_Enemies is looking for a reference to Model_Game, but none has been added in the Inspector!");
         waves = new List<Wave>();
+        // Enemy values part 2, getting the prefab from Model
         values = GameObject.Find("Model").GetComponent<MotorcycleEnemy>();
         values2 = GameObject.Find("Model").GetComponent<HogEnemy>();
+        boss1Value = GameObject.Find("Model").GetComponent<Boss1Enemy>(); //Gets the prefab
+        //
     }
 
     void Update()
@@ -65,8 +69,11 @@ public class Controller_Enemies : MonoBehaviour
             float turnOverTime = 10;
             if (waveTimer >= turnOverTime && gameModel.waveSpawn < gameModel.level1Waves.Count)
             {
+                //Enemy requirements part 3
                 GameObject EOP;
                 GameObject H0G;
+                GameObject BOSS1;
+                //
                 Wave newWave = new Wave();
 
                 for (int i = 0; i < numberToSpawn; i++)
@@ -116,6 +123,26 @@ public class Controller_Enemies : MonoBehaviour
                             }
                             break;
 
+                        case "Boss1":
+                            BOSS1 = Instantiate(gameModel.Boss1Prefab);     //Spawn the prefab in
+                            Boss1_Behavior Boss1mind = BOSS1.GetComponent<Boss1_Behavior>();       //Get its behavior inside its prefab
+                            enemycount++;                                   //Add 1? to enemy counter
+                            displace = Random.Range(-boss1Value.startDisplace, boss1Value.startDisplace);
+                            if (Random.Range(0, 2) == 0)
+                            {
+                                startPoint = new Vector3(-boss1Value.startPos + displace, 0, 20);
+                                Boss1mind.nextWaypoint = new Vector3(-boss1Value.startPos + displace, 0, -20f);
+                                Boss1mind.Waypoints.Add(Boss1mind.nextWaypoint);
+                                Boss1mind.isLeft = true;
+                            }
+                            else
+                            {
+                                startPoint = new Vector3(boss1Value.startPos + displace, 0, 20);
+                                Boss1mind.nextWaypoint = new Vector3(boss1Value.startPos + displace, 0, -20f);
+                                Boss1mind.Waypoints.Add(Boss1mind.nextWaypoint);
+                                Boss1mind.isLeft = false;
+                            }
+                            break;
                         default:
                             EOP = Instantiate(gameModel.motorCycleEnemyPrefab);
                             m = EOP.GetComponent<Motorcycle_behavior>();
