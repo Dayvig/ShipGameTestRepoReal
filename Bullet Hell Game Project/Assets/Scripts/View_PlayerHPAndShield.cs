@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +32,9 @@ public class View_PlayerHPAndShield : MonoBehaviour
 
     public float livesOffset;
     public float livesSpace;
+
+    public TextMeshProUGUI scoreDisplay;
+
 
     void Start()
     {
@@ -82,6 +86,7 @@ public class View_PlayerHPAndShield : MonoBehaviour
         }
 
         _ShowAliveAndDead(playerModel.hitpointsCurrent > 0);
+        scoreDisplay.text = "" + playerModel.score;
     }
 
     private void _IconFlash()

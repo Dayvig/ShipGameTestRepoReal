@@ -28,27 +28,31 @@ public class Controller_Collectibles : MonoBehaviour
 
     public void CollectibleUpdate()
     {
-        spawnTimer -= Time.deltaTime;
-        if (spawnTimer < 0)
+        if (colIndex < level1Collectibles.Count)
         {
-            int numberToSpawn = 1;
-            for (int i = 0; i < numberToSpawn; i++)
+            spawnTimer -= Time.deltaTime;
+            if (spawnTimer < 0)
             {
-                GameObject COL;
-                Vector3 startPoint = new Vector3(0, 0, 8);
-                switch (level1Collectibles[colIndex])
+                int numberToSpawn = 1;
+                for (int i = 0; i < numberToSpawn; i++)
                 {
-                    case "Portal":
-                        COL = Instantiate(gameModel.PortalPrefab, startPoint, Quaternion.identity);
-                        PortalBehavior behavior = COL.GetComponent<PortalBehavior>();
-                        behavior.nextWaypoint = startPoint;
-                        behavior.Waypoints.Add(behavior.nextWaypoint);
-                        break;
+                    GameObject COL;
+                    Vector3 startPoint = new Vector3(0, 0, 8);
+                    switch (level1Collectibles[colIndex])
+                    {
+                        case "Portal":
+                            COL = Instantiate(gameModel.PortalPrefab, startPoint, Quaternion.identity);
+                            PortalBehavior behavior = COL.GetComponent<PortalBehavior>();
+                            behavior.nextWaypoint = startPoint;
+                            behavior.Waypoints.Add(behavior.nextWaypoint);
+                            break;
+                    }
+
+                    colIndex++;
                 }
 
-                colIndex++;
+                spawnTimer = level1Timings[colIndex];
             }
-            spawnTimer = level1Timings[colIndex];
         }
     }
         /*

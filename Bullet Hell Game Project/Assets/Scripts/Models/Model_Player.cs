@@ -22,6 +22,7 @@ public class Model_Player : MonoBehaviour
     public float unshieldedRadius;
     public bool invincible;
     public bool lostLife;
+    public int score;
 
     [Header("Tuning Values")]
     [Range(0.01f, 30.0f)] public float smoothingFactor;

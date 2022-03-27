@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using TMPro;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
 public abstract class Base_Enemy_Behavior : MonoBehaviour
 {
     public Model_Player playerModel;
+    public Model_Game gameModel;
     public Controller_Effects effects;
     public Controller_EnemyBullets bullets;
     public ParticleSystem ps;
@@ -25,6 +27,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     private void Start()
     {
         playerModel = GameObject.Find("Model").GetComponent<Model_Player>();
+        gameModel =  GameObject.Find("Model").GetComponent<Model_Game>();
         effects = GameObject.Find("Controller").GetComponent<Controller_Effects>();
         bullets = GameObject.Find("Controller").GetComponent<Controller_EnemyBullets>();
         shootTimer = 0;
@@ -114,6 +117,8 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     public void KillThisEnemy()
     {
         effects.MakeExplosion(transform.position);
+        gameModel.enemiesKilled++;
+        playerModel.score += 1000;
         gameObject.SetActive(false);
     }
     
