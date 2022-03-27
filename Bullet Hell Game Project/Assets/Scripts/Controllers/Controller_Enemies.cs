@@ -9,7 +9,7 @@ public class Controller_Enemies : MonoBehaviour
 {
     public Model_Game gameModel;
     public List<Wave> waves;
-    private float waveTimer = 6f;
+    public float waveTimer = 6f;
     public int waveIndex;
     private MotorcycleEnemy values;
     public int enemycount;
@@ -56,14 +56,13 @@ public class Controller_Enemies : MonoBehaviour
         // Making waves for the level according to model specifications
         
         waveTimer += Time.deltaTime;
-        Debug.Log(waveTimer);
 
         if (waveTimer >= gameModel.waveSpawn && waveIndex < gameModel.level1Waves.Count)
         {
             int numberToSpawn = gameModel.level1Waves[waveIndex];
             doubleWave++;
         
-        float turnOverTime = 10;
+            float turnOverTime = 10;
             if (waveTimer >= turnOverTime && gameModel.waveSpawn < gameModel.level1Waves.Count)
             {
                 GameObject EOP;
@@ -162,18 +161,15 @@ public class Controller_Enemies : MonoBehaviour
                     Vector3 stagger = new Vector3(0, 0, 2);
                 }
                     waves.Add(newWave);
-                    waveTimer = 0;
+                    waveTimer = gameModel.waveCooldown[waveIndex];
                     waveIndex++;
             }
-
-            waveTimer = gameModel.waveCooldown[waveIndex];
-            waveIndex++;
-        }
+        }/*
         if(doubleWave >= gameModel.waveCooldown[waveIndex])
         {
             waveTimer = 8f;
             doubleWave = 0;
-        }
+        }*/
 
     }
     

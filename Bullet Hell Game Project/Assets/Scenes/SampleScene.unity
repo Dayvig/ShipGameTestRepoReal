@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 144164434}
   - component: {fileID: 144164429}
   - component: {fileID: 144164435}
+  - component: {fileID: 144164436}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -289,6 +290,36 @@ MonoBehaviour:
   timeInSeconds: 60
   interval: 0
   elapsed: 0
+--- !u!114 &144164436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144164426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548eb1b2cb7e4af4886da808c84cd4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameModel: {fileID: 1212158454}
+  level1Collectibles:
+  - Portal
+  - Portal
+  - Portal
+  - Portal
+  - Portal
+  - Portal
+  level1Timings:
+  - 5
+  - 10
+  - 2
+  - 1
+  - 0.4
+  - 29
+  spawnTimer: 0
+  spawnInterval: 10
+  colIndex: 0
 --- !u!1 &146051036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,6 +1930,7 @@ GameObject:
   - component: {fileID: 1212158456}
   - component: {fileID: 1212158457}
   - component: {fileID: 1212158458}
+  - component: {fileID: 1212158459}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -1989,13 +2021,28 @@ MonoBehaviour:
   dialogueDuration: 0
   spawnDuration: 1
   spawnInvincibility: 3
-  waveSpawn: 10
+  waveSpawn: 0
+  waveCooldown:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   enemyPrefab1: {fileID: 1796847636323191739, guid: 0d5c13421117800468820a5ee16ea6eb, type: 3}
   enemyPrefab2: {fileID: 6027086379095151095, guid: 0aca2c18010931943b1a7af63ba51579, type: 3}
   enemyBulletPrefab1: {fileID: 2100608845967562317, guid: 2e1d29638173fdc478b4fc33d78b471f, type: 3}
   motorCycleEnemyPrefab: {fileID: 3403441203005645215, guid: 62424227f08b2c64faafcfb4d14f3ebf, type: 3}
   HogEnemyPrefab: {fileID: 5844769796473751404, guid: e10b6505d5a42bb4584cc6788f8ae359, type: 3}
-  waveCooldown: 0600000000000000080000000000000008000000000000000000000008000000000000000000000000000000
+  GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
+  PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
   level1Waves: 0c0000000e00000014000000230000000500000007000000090000000d000000030000000400000005000000030000000700000003000000090000000600000006000000030000000200000005000000070000000c0000001100000013000000150000001f000000160000000c0000000800000007000000
   Level2Waves: 
   enemySpeed1: 8
@@ -2143,6 +2190,22 @@ MonoBehaviour:
   collectionRange: 1
   movementSpeed: 0.01
   hitPoints: 1
+--- !u!114 &1212158459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212158451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443f56c01d5487b4f86ae7c51ce46cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleName: Portal
+  collectionRange: 2
+  movementSpeed: 0
+  hitPoints: 0
 --- !u!1 &1276577678
 GameObject:
   m_ObjectHideFlags: 0
