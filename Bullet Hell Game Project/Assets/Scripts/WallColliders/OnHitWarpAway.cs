@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OnHitWarpAway : MonoBehaviour
 {
-    bool m_Started;
+    //bool m_Started;   //This is for the red outline during testing
 
 
     private GameObject HostBody; 
@@ -18,7 +18,7 @@ public class OnHitWarpAway : MonoBehaviour
     {
         bullets = GameObject.Find("Controller").GetComponent<Controller_EnemyBullets>();
         // spawnlocation = new Vector3(0, 0, 0);
-        m_Started = true; //This activates OnDrawGizmos() which shows the hitbox with a red outline
+        //m_Started = true; //This activates OnDrawGizmos() which shows the hitbox with a red outline
         HostBody = transform.parent.gameObject;
 
         hitboxSize = Vector3.Scale(gameObject.transform.localScale, HostBody.transform.localScale);
