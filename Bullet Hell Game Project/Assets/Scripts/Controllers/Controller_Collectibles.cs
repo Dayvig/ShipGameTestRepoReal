@@ -8,14 +8,17 @@ using Random = UnityEngine.Random;
 public class Controller_Collectibles : MonoBehaviour
 {
     public Model_Game gameModel;
-    public List<string> collectibles;
+    public List<string> level1Collectibles;
+    public List<float> level1Timings;
     public float spawnTimer = 0f;
-    public float spawnInterval = 10f;
+    public float spawnInterval;
     public int colIndex = 0;
     
     void Start()
     {
         Debug.Assert(gameModel != null, "Controller_Collectibles is looking for a reference to Model_Game, but none has been added in the Inspector!");
+        colIndex = 0;
+        spawnTimer = level1Timings[colIndex];
     }
 
     void Update()
@@ -25,16 +28,15 @@ public class Controller_Collectibles : MonoBehaviour
 
     public void CollectibleUpdate()
     {
-        spawnTimer += Time.deltaTime;
-        if (spawnTimer > spawnInterval)
+        spawnTimer -= Time.deltaTime;
+        if (spawnTimer < 0)
         {
             int numberToSpawn = 1;
             for (int i = 0; i < numberToSpawn; i++)
             {
-                spawnTimer -= spawnInterval;
                 GameObject COL;
                 Vector3 startPoint = new Vector3(0, 0, 8);
-                switch (collectibles[colIndex])
+                switch (level1Collectibles[colIndex])
                 {
                     case "Portal":
                         COL = Instantiate(gameModel.PortalPrefab, startPoint, Quaternion.identity);
@@ -45,8 +47,8 @@ public class Controller_Collectibles : MonoBehaviour
                 }
 
                 colIndex++;
-                spawnTimer = 0f;
             }
+            spawnTimer = level1Timings[colIndex];
         }
     }
         /*
