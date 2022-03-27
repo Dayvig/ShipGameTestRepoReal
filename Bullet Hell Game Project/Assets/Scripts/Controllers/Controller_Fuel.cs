@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -15,6 +16,8 @@ namespace Controllers
         public float interval;
         
         public float elapsed = 0f;
+        
+        public List<GameObject> meterList = new List<GameObject>();
         void Start()
         {
             Debug.Assert(playerModel != null, "Controller_PlayerGuns is looking for a reference to Model_Player, but none has been added in the Inspector!");
@@ -37,6 +40,18 @@ namespace Controllers
                 {
                     playerModel.livesCurrent--;
                     playerModel.hitpointsCurrent = 0;
+                }
+            }
+
+            for (int i = meterList.Count - 1; i > 0; i--)
+            {
+                if ((int) Mathf.Round(slider.value / 10) > i)
+                {
+                    meterList[i].SetActive(true);
+                }
+                else
+                {
+                    meterList[i].SetActive(false);
                 }
             }
         }
