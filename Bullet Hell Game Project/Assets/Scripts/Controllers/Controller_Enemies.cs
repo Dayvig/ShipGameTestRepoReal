@@ -1,51 +1,69 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Enemies;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Controller_Collectibles : MonoBehaviour
+public class Controller_Enemies : MonoBehaviour
 {
     public Model_Game gameModel;
-    public List<GameObject> collectibles;
-    public float spawnTimer = 0f;
-    public float spawnInterval = 10f;
-    
+    public List<Wave> waves;
+    public float waveTimer = 6f;
+    public int waveIndex;
+    private MotorcycleEnemy values;
+    public int enemycount;
+    private HogEnemy values2;
+    public int doubleWave;
+
+
     void Start()
     {
-        Debug.Assert(gameModel != null, "Controller_Collectibles is looking for a reference to Model_Game, but none has been added in the Inspector!");
+        Debug.Assert(gameModel != null, "Controller_Enemies is looking for a reference to Model_Game, but none has been added in the Inspector!");
+        waves = new List<Wave>();
+        values = GameObject.Find("Model").GetComponent<MotorcycleEnemy>();
+        values2 = GameObject.Find("Model").GetComponent<HogEnemy>();
     }
 
     void Update()
     {
-        CollectibleUpdate();
-        
-    }
-
-    public void CollectibleUpdate()
-    {
-        if (spawnTimer > spawnInterval)
+        // Enemies Movement
+        for (int i = waves.Count -1; i >= 0; i--)
         {
-            int numberToSpawn = 1;
-            for (int i = 0; i < numberToSpawn; i++)
+            Wave wave = waves[i];
+            bool anyLeft = false;
+            foreach (var enemy in wave.enemies)
             {
-                spawnTimer -= spawnInterval;
-                GameObject COL;
-                Vector3 startPoint;
-                
+                //checking wave to see if any are left
+                //this allows us to simply set an enemy's gameObject to not be active to effectively kill it
+                //to allow for effects, we handle this with the enemey's behavior
+                //  this does two things: 
+                //      - this allows us to manage resources in the controller more cleanly
+                //      - this allows us stop the enemey's behavior for continuing to run after it is dead
+                if (enemy.transform.gameObject.activeSelf && enemy.transform.position.z > -16)
+                    anyLeft = true;
             }
 
+            if (!anyLeft)
+            {
+                CleanUpWave(wave);
+            }
         }
-        /*
+    }
+
+    public void EnemyUpdate()
+    {
+        // Making waves for the level according to model specifications
+        
         waveTimer += Time.deltaTime;
 
-        if (waveTimer >= waveInterval && waveIndex < gameModel.level1Waves.Count)
+        if (waveTimer >= gameModel.waveSpawn && waveIndex < gameModel.level1Waves.Count)
         {
             int numberToSpawn = gameModel.level1Waves[waveIndex];
-
-        float turnOverTime = 10;
-            if (waveTimer >= turnOverTime && waveIndex < gameModel.level1Waves.Count)
+            doubleWave++;
+        
+            float turnOverTime = 10;
+            if (waveTimer >= turnOverTime && gameModel.waveSpawn < gameModel.level1Waves.Count)
             {
                 GameObject EOP;
                 GameObject H0G;
@@ -59,6 +77,7 @@ public class Controller_Collectibles : MonoBehaviour
                         case "Motorcycle":
                             EOP = Instantiate(gameModel.motorCycleEnemyPrefab);
                             Motorcycle_behavior m = EOP.GetComponent<Motorcycle_behavior>();
+                            enemycount++;
                             float displace = Random.Range(-values.startDisplace, values.startDisplace);
                             if (Random.Range(0, 2) == 0)
                             {
@@ -79,6 +98,7 @@ public class Controller_Collectibles : MonoBehaviour
                         case "Hog":
                             H0G = Instantiate(gameModel.HogEnemyPrefab);
                             m = H0G.GetComponent<Motorcycle_behavior>();
+                            enemycount++;
                             displace = Random.Range(-values2.startDisplace, values2.startDisplace);
                             if (Random.Range(0, 2) == 0)
                             {
@@ -99,6 +119,7 @@ public class Controller_Collectibles : MonoBehaviour
                         default:
                             EOP = Instantiate(gameModel.motorCycleEnemyPrefab);
                             m = EOP.GetComponent<Motorcycle_behavior>();
+                            enemycount++;
                             if ((int)Random.Range(0, 1) == 0)
                             {
 
@@ -117,6 +138,7 @@ public class Controller_Collectibles : MonoBehaviour
 
                             H0G = Instantiate(gameModel.HogEnemyPrefab);
                             m = H0G.GetComponent<Motorcycle_behavior>();
+                            enemycount++;
                             if ((int)Random.Range(0, 1) == 0)
                             {
 
@@ -137,32 +159,58 @@ public class Controller_Collectibles : MonoBehaviour
 
                     }
                     Vector3 stagger = new Vector3(0, 0, 2);
-                    EOP = new GameObject();
-                    EOP.transform.position = startPoint + (stagger * i);
-                    newWave.enemies.Add(EOP);
-                    H0G = new GameObject();
-                    H0G.transform.position = startPoint + (stagger * i);
-                    newWave.enemies.Add(H0G);
                 }
-
-                waves.Add(newWave);
-
-                waveTimer = 0;
-                waveIndex++;
+                    waves.Add(newWave);
+                    waveTimer = gameModel.waveCooldown[waveIndex];
+                    waveIndex++;
             }
-
-            waveTimer = 0;
-            waveIndex++;
+        }/*
+        if(doubleWave >= gameModel.waveCooldown[waveIndex])
+        {
+            waveTimer = 8f;
+            doubleWave = 0;
         }*/
 
     }
+    
+    
 
-    private void CleanUpCollectibles()
+    private void CleanUpWave(Wave wave)
     {
-        foreach (GameObject g in collectibles)
+        for (int j = wave.enemies.Count - 1; j >= 0; j--)
         {
-            Destroy(g);
+            var EOP = wave.enemies[j];
+            wave.enemies.Remove(EOP);
+            Destroy(EOP.transform.gameObject);
+
+            var H0G = wave.enemies[j];
+            wave.enemies.Remove(H0G);
+            Destroy(H0G.transform.gameObject);
+            enemycount--;
         }
-        collectibles.Clear();
+        waves.Remove(wave);
+    }
+
+    [System.Serializable]
+    public class Wave
+    {
+        public List<GameObject> enemies;
+        public List<Vector3> waypoints;
+        public List<AbstractEnemy> enemyType;
+
+        public Wave()
+        {
+            enemies = new List<GameObject>();
+            waypoints = new List<Vector3>();
+            enemyType = new List<AbstractEnemy>();
+        }
+    }
+
+    [System.Serializable]
+    public class EnemyOnPath
+    {
+        public Transform transform;
+        public int waypointIndex;
+        public AbstractEnemy enemyT;
     }
 }
