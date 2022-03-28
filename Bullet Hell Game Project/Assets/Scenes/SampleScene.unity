@@ -232,7 +232,6 @@ MonoBehaviour:
   waveTimer: 6
   waveIndex: 0
   enemycount: 0
-  doubleWave: 0
 --- !u!114 &144164432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2038,6 +2037,8 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  waveSpawn: 10
+  waveTimer: 0
   enemyPrefab1: {fileID: 1796847636323191739, guid: 0d5c13421117800468820a5ee16ea6eb, type: 3}
   enemyPrefab2: {fileID: 6027086379095151095, guid: 0aca2c18010931943b1a7af63ba51579, type: 3}
   enemyBulletPrefab1: {fileID: 2100608845967562317, guid: 2e1d29638173fdc478b4fc33d78b471f, type: 3}
@@ -2047,12 +2048,44 @@ MonoBehaviour:
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
   level1Waves: 01000000
+  waveCooldown: 080000000000000008000000000000000800000000000000000000000800000001000000010000000800000001000000010000000100000001000000080000000200000002000000080000000200000002000000020000000800000002000000020000000800000002000000020000000800000002000000
+  level1Waves: 0c0000000e00000014000000230000000500000007000000090000000d000000030000000400000005000000030000000700000003000000090000000600000006000000030000000200000005000000070000000c0000001100000013000000150000001f000000160000000c0000000800000007000000
   Level2Waves: 
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
   - Boss1
+  - Motorcycle
+  - Motorcycle
+  - Hog
+  - Hog
+  - Motorcycle
+  - Hog
+  - Hog
+  - Motorcycle
+  - Motorcycle
+  - Motorcycle
+  - Motorcycle
+  - Hog
+  - Motorcycle
+  - Hog
+  - Motorcycle
+  - Motorcycle
+  - Hog
+  - Motorcycle
+  - Motorcycle
+  - Hog
+  - Motorcycle
+  - Motorcycle
+  - Hog
+  - Motorcycle
+  - Motorcycle
+  - Motorcycle
+  - Motorcycle
+  - Motorcycle
+  - Hog
+  - Motorcycle
   level2EnemyTypes: []
 --- !u!114 &1212158455
 MonoBehaviour:
