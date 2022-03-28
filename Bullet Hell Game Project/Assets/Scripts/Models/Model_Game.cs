@@ -26,6 +26,8 @@ public class Model_Game : MonoBehaviour
     public List<int> Level2Waves;
     public float enemySpeed1;
     public float enemyBulletSpeed1;
+    public int enemiesKilled;
+    
     [Header("Effects")]
     public GameObject explosionPrefab1;
     public List<string> level1EnemyTypes;
