@@ -8,35 +8,53 @@ using Random = UnityEngine.Random;
 public class Controller_Collectibles : MonoBehaviour
 {
     public Model_Game gameModel;
-    public List<GameObject> collectibles;
+    public List<string> level1Collectibles;
+    public List<float> level1Timings;
     public float spawnTimer = 0f;
-    public float spawnInterval = 10f;
+    public float spawnInterval;
+    public int colIndex = 0;
     
     void Start()
     {
         Debug.Assert(gameModel != null, "Controller_Collectibles is looking for a reference to Model_Game, but none has been added in the Inspector!");
+        colIndex = 0;
+        spawnTimer = level1Timings[colIndex];
     }
 
     void Update()
     {
         CollectibleUpdate();
-        
     }
 
     public void CollectibleUpdate()
     {
-        if (spawnTimer > spawnInterval)
+        if (colIndex < level1Collectibles.Count)
         {
-            int numberToSpawn = 1;
-            for (int i = 0; i < numberToSpawn; i++)
+            spawnTimer -= Time.deltaTime;
+            if (spawnTimer < 0)
             {
-                spawnTimer -= spawnInterval;
-                GameObject COL;
-                Vector3 startPoint;
-                
-            }
+                int numberToSpawn = 1;
+                for (int i = 0; i < numberToSpawn; i++)
+                {
+                    GameObject COL;
+                    Vector3 startPoint = new Vector3(0, 0, 8);
+                    switch (level1Collectibles[colIndex])
+                    {
+                        case "Portal":
+                            COL = Instantiate(gameModel.PortalPrefab, startPoint, Quaternion.identity);
+                            PortalBehavior behavior = COL.GetComponent<PortalBehavior>();
+                            behavior.nextWaypoint = startPoint;
+                            behavior.Waypoints.Add(behavior.nextWaypoint);
+                            break;
+                    }
 
+                    colIndex++;
+                }
+
+                spawnTimer = level1Timings[colIndex];
+            }
         }
+    }
         /*
         waveTimer += Time.deltaTime;
 
@@ -156,13 +174,3 @@ public class Controller_Collectibles : MonoBehaviour
         }*/
 
     }
-
-    private void CleanUpCollectibles()
-    {
-        foreach (GameObject g in collectibles)
-        {
-            Destroy(g);
-        }
-        collectibles.Clear();
-    }
-}

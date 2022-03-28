@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1364988668232476346}
   - component: {fileID: 7115030391489040344}
   m_Layer: 0
-  m_Name: MotorcycleEnemy
+  m_Name: MotorCycleEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3403441203005645215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.907573, y: 5.2734175, z: 3.2410784}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3403441202204267916}
@@ -202,6 +202,7 @@ MonoBehaviour:
   rate: 360
   Waypoints: []
   nextWaypoint: {x: 0, y: 0, z: 0}
+  currentWaypointIndex: 0
   shootInterval: 0
   shootTimer: 0
   behaviorState: 0
