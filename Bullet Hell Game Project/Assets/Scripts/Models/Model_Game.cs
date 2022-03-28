@@ -11,6 +11,7 @@ public class Model_Game : MonoBehaviour
     public float spawnDuration;
     public float spawnInvincibility;
     public float waveSpawn;
+    public float waveTimer;
 
     [Header("Enemies")]
     public GameObject enemyPrefab1;
