@@ -92,6 +92,7 @@ public class Controller_Enemies : MonoBehaviour
                                 m.nextWaypoint = new Vector3(-values.startPos + displace, 0, -20f);
                                 m.Waypoints.Add(m.nextWaypoint);
                                 m.isLeft = true;
+                                EOP.transform.position += Vector3.back * i * values.startStagger;
                             }
                             else
                             {
@@ -99,6 +100,7 @@ public class Controller_Enemies : MonoBehaviour
                                 m.nextWaypoint = new Vector3(values.startPos + displace, 0, -20f);
                                 m.Waypoints.Add(m.nextWaypoint);
                                 m.isLeft = false;
+                                EOP.transform.position += Vector3.back * i * values.startStagger;
                             }
                             break;
 
