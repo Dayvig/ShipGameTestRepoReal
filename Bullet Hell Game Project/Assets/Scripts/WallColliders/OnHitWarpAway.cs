@@ -39,7 +39,7 @@ public class OnHitWarpAway : MonoBehaviour
                 //bullets.KillBullet(c.gameObject);  //Safely GTFO's a bullet without breaking the game
                 c.gameObject.transform.position = new Vector3(1000, 0, 0);  //Could just warp it behind bounds!!
                                                                             // c.gameObject.transform.position = new Vector3(0, 0, 0);
-                Debug.Log("Blocked a player bullet");
+                //Debug.Log("Blocked a player bullet");
             }
             // bullets.FireBullet(Vector 3 location, Vector3 direction)
 

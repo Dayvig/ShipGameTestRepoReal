@@ -53,6 +53,7 @@ public class Controller_EnemyBullets : MonoBehaviour
 
     public void FireBullet(Vector3 where, Vector3 direction, string type)
     {
+        GameObject target = GameObject.FindWithTag("Player");
         GameObject bullet;
         if (_bulletsInactive.Count > 0)
         {
@@ -64,13 +65,27 @@ public class Controller_EnemyBullets : MonoBehaviour
         {
             bullet = Instantiate(gameModel.enemyBulletPrefab1);
         }
-
         bullet.transform.position = where;
         var tracker = new BulletTracker();
         tracker.bullet = bullet;
         tracker.direction = direction;
         tracker.name = type;
         _bulletsActive.Add(tracker);
+        switch (type)
+        {
+            case "defaultBullet":
+                bullet.transform.position = where;
+                tracker.direction = direction;
+                tracker.name = "defaultBullet";
+                _bulletsActive.Add(tracker);
+                break;
+            case "MotorcycleBullet":
+                
+                tracker.direction = target.gameObject.transform.position;
+                bullet.transform.LookAt(target.transform.position);
+                break;
+        }
+        
     }
     
     public void FireBullet(Vector3 where, Vector3 direction)
