@@ -262,6 +262,6 @@ public class Controller_Game : MonoBehaviour
         
     }
     #endregion
-}
+} 
 
 public enum GameStates { Standby, Intro, Dialogue, Spawn, Respawn, Play, Die, Win, GameOver }

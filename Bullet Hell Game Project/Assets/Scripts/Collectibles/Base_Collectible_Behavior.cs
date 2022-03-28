@@ -59,7 +59,7 @@ namespace Collectibles
 
                 foreach (var c in colliders)
                 {
-                    Debug.Log(c.gameObject.name);
+                   // Debug.Log(c.gameObject.name);
                     if (c.gameObject.tag == "Player")
                     {
                         return true;

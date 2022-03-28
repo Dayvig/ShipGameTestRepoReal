@@ -10,7 +10,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     public Controller_Effects effects;
     public Controller_EnemyBullets bullets;
     public ParticleSystem ps;
-    public float hitPoints = 20;
+    public float hitPoints;
     public float limitHorz = 15;
     public float limitVert = 12;
     public int rate = 360;
@@ -43,8 +43,11 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
         ShootingUpdate();
         UpdateVisuals();
         MovementUpdate();
+        var sizeCalc = (((gameObject.transform.localScale.x + gameObject.transform.localScale.z)/2)/2); //Calculates how big the hitbox should be
+            //^ Right now it gets the X and Z size of the object, averages them. then makes a radius.
+        var around = Physics.OverlapSphere(transform.position, sizeCalc); //Creates the hitbox (Sphere) of a enemy
 
-        var around = Physics.OverlapSphere(transform.position, 1);
+        //Debug.Log(sizeCalc);
         foreach (Collider c in around)
         {
             if (c.gameObject.tag == "PlayerBullet" && !Immune())
@@ -56,7 +59,20 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
         }
         if (hitPoints <= 0)
         {
-            KillThisEnemy();
+            if (gameObject.name == "Boss1(Clone)") //If something specific died then do something
+            {
+                KillThisEnemy();
+
+                Debug.Log("Level 1 Complete, Changing Scene");
+
+                UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+            }
+            else
+            {
+                //Debug.Log(gameObject.name+" died");
+                KillThisEnemy();
+            }
+            
         }
     }
 

@@ -163,24 +163,7 @@ public class Controller_Enemies : MonoBehaviour
                                 m.isLeft = false;
                             }
 
-                            H0G = Instantiate(gameModel.HogEnemyPrefab);
-                            m = H0G.GetComponent<Motorcycle_behavior>();
-                            enemycount++;
-                            if ((int)Random.Range(0, 1) == 0)
-                            {
-
-                                startPoint = new Vector3(-17f, 0, 20);
-                                m.nextWaypoint = new Vector3(17f, 0, -20f);
-                                m.Waypoints.Add(m.nextWaypoint);
-                                m.isLeft = true;
-                            }
-                            else
-                            {
-                                startPoint = new Vector3(17f, 0, 20);
-                                m.nextWaypoint = new Vector3(17f, 0, -20f);
-                                m.Waypoints.Add(m.nextWaypoint);
-                                m.isLeft = false;
-                            }
+                          
                             break;
 
 

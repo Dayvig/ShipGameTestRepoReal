@@ -123,8 +123,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6027086379095151095}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2506837, y: 0.5148015, z: 0.06596351}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 3, z: 5}
   m_Children:
   - {fileID: 3360239792007866415}
   - {fileID: 7843459798252919366}
@@ -209,17 +209,30 @@ MonoBehaviour:
   effects: {fileID: 0}
   bullets: {fileID: 0}
   ps: {fileID: 3460088518073488387, guid: c56264f2b350c1e4ea04829534e5a069, type: 3}
-  hitPoints: 35
+  hitPoints: 900
   limitHorz: 15
   limitVert: 12
   rate: 40
-  Waypoints: []
+  Waypoints:
+  - {x: -5, y: 0, z: 6}
+  - {x: 0, y: 0, z: 6}
+  - {x: 5, y: 0, z: 6}
+  - {x: 6, y: 0, z: 0}
+  - {x: 1, y: -40, z: -7}
+  - {x: 1, y: -40, z: -7}
+  - {x: -4, y: -40, z: -7}
+  - {x: -6, y: -40, z: -7}
+  - {x: -6, y: 0, z: -7}
+  - {x: 6, y: 0, z: -7}
+  - {x: 0, y: 0, z: 0}
   nextWaypoint: {x: 0, y: 0, z: 0}
   currentWaypointIndex: 0
   shootInterval: 0
   shootTimer: 0
   behaviorState: 0
   isLeft: 0
+  MidHealthShader: {fileID: 2100000, guid: 73fd3f7d8e73f64498fd22f35fcc244c, type: 2}
+  LowHealthShader: {fileID: 2100000, guid: 2fddcda78a698c64eaee3c7c61ddbb68, type: 2}
 --- !u!1 &7380633166412741236
 GameObject:
   m_ObjectHideFlags: 0
