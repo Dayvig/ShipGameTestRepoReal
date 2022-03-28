@@ -9,15 +9,18 @@ public class Controller_Enemies : MonoBehaviour
 {
     public Model_Game gameModel;
     public List<Wave> waves;
-    public float waveTimer = 6f;
+
+    private float waveTimer = 8f;
     public int waveIndex;
     public int enemycount;
-    public int doubleWave;
     // Enemy Requirements part 1
     private MotorcycleEnemy values;
     private HogEnemy values2;
     private Boss1Enemy boss1Value; //These need to be named the same as the enemy script placed in Application.Model
     //
+    private string level = "1";
+
+
     void Start()
     {
         Debug.Assert(gameModel != null, "Controller_Enemies is looking for a reference to Model_Game, but none has been added in the Inspector!");
@@ -64,7 +67,7 @@ public class Controller_Enemies : MonoBehaviour
         if (waveTimer >= gameModel.waveSpawn && waveIndex < gameModel.level1Waves.Count)
         {
             int numberToSpawn = gameModel.level1Waves[waveIndex];
-            doubleWave++;
+
         
             float turnOverTime = 10;
             if (waveTimer >= turnOverTime && gameModel.waveSpawn < gameModel.level1Waves.Count)
@@ -174,12 +177,12 @@ public class Controller_Enemies : MonoBehaviour
                     waveTimer = gameModel.waveCooldown[waveIndex];
                     waveIndex++;
             }
-        }/*
-        if(doubleWave >= gameModel.waveCooldown[waveIndex])
-        {
-            waveTimer = 8f;
-            doubleWave = 0;
-        }*/
+
+        }
+
+            waveTimer = gameModel.waveCooldown[waveIndex];
+            waveIndex++;
+        }
 
     }
     
