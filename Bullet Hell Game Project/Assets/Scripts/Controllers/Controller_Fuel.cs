@@ -49,6 +49,7 @@ namespace Controllers
             if (currentFuel <= 0)
             {
                 // Change to losing screen
+                UnityEngine.SceneManagement.SceneManager.LoadScene(2);
             }
         }
 
