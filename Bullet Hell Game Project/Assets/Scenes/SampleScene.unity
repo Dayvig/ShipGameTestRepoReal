@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -229,7 +229,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameModel: {fileID: 1212158454}
   waves: []
-  waveTimer: 6
   waveIndex: 0
   enemycount: 0
 --- !u!114 &144164432
@@ -290,6 +289,7 @@ MonoBehaviour:
   timeInSeconds: 60
   interval: 0
   elapsed: 0
+  meterList: []
 --- !u!114 &144164436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1028,7 +1028,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820655343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 29.7}
+  m_LocalPosition: {x: 0, y: 0, z: 30.16}
   m_LocalScale: {x: 0.65, y: 1.15, z: 0.75}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1069,9 +1069,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 36
   m_CollisionDetection: 0
 --- !u!1 &887815851
 GameObject:
@@ -1677,6 +1677,7 @@ MonoBehaviour:
   shieldMaxSize: {x: 0, y: 0}
   livesOffset: 20
   livesSpace: 100
+  scoreDisplay: {fileID: 0}
 --- !u!114 &1002588126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1980,6 +1981,7 @@ MonoBehaviour:
   unshieldedRadius: 0.125
   invincible: 1
   lostLife: 0
+  score: 0
   smoothingFactor: 6
   shipSpeed: 15
   bulletSpeed: 24
@@ -2022,22 +2024,39 @@ MonoBehaviour:
   dialogueDuration: 0
   spawnDuration: 1
   spawnInvincibility: 3
-  waveSpawn: 0
-  waveCooldown:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
   waveSpawn: 10
+  waveCooldown:
+  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   waveTimer: 0
   enemyPrefab1: {fileID: 1796847636323191739, guid: 0d5c13421117800468820a5ee16ea6eb, type: 3}
   enemyPrefab2: {fileID: 6027086379095151095, guid: 0aca2c18010931943b1a7af63ba51579, type: 3}
@@ -2047,45 +2066,44 @@ MonoBehaviour:
   Boss1Prefab: {fileID: 6027086379095151095, guid: 4ffb0fea5732e7047ad45f97393b8bcc, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
-  level1Waves: 01000000
-  waveCooldown: 080000000000000008000000000000000800000000000000000000000800000001000000010000000800000001000000010000000100000001000000080000000200000002000000080000000200000002000000020000000800000002000000020000000800000002000000020000000800000002000000
-  level1Waves: 0c0000000e00000014000000230000000500000007000000090000000d000000030000000400000005000000030000000700000003000000090000000600000006000000030000000200000005000000070000000c0000001100000013000000150000001f000000160000000c0000000800000007000000
+  level1Waves: 0c000000040000000600000002000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   Level2Waves: 
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
+  enemiesKilled: 0
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
+  - Hog
+  - Motorcycle
+  - Motorcycle
+  - Hog
+  - Hog
+  - Motorcycle
+  - Hog
+  - Hog
+  - Motorcycle
+  - Motorcycle
+  - Motorcycle
+  - Motorcycle
+  - Hog
+  - Motorcycle
+  - Hog
+  - Motorcycle
+  - Motorcycle
+  - Hog
+  - Motorcycle
+  - Motorcycle
+  - Hog
+  - Motorcycle
+  - Motorcycle
+  - Hog
+  - Motorcycle
+  - Motorcycle
+  - Motorcycle
+  - Motorcycle
+  - Motorcycle
+  - Hog
   - Boss1
-  - Motorcycle
-  - Motorcycle
-  - Hog
-  - Hog
-  - Motorcycle
-  - Hog
-  - Hog
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Hog
-  - Motorcycle
-  - Hog
-  - Motorcycle
-  - Motorcycle
-  - Hog
-  - Motorcycle
-  - Motorcycle
-  - Hog
-  - Motorcycle
-  - Motorcycle
-  - Hog
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Hog
-  - Motorcycle
   level2EnemyTypes: []
 --- !u!114 &1212158455
 MonoBehaviour:
@@ -2198,9 +2216,9 @@ MonoBehaviour:
   isLeft: 1
   bulletSpeed: 0
   bulletAngles: 
-  startPos: 0
-  startDisplace: 0
-  startStagger: 0
+  startPos: 2
+  startDisplace: 2
+  startStagger: 2
 --- !u!114 &1212158458
 MonoBehaviour:
   m_ObjectHideFlags: 0

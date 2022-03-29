@@ -9,7 +9,6 @@ public class Controller_Enemies : MonoBehaviour
 {
     public Model_Game gameModel;
     public List<Wave> waves;
-
     private float waveTimer = 8f;
     public int waveIndex;
     public int enemycount;
@@ -63,6 +62,7 @@ public class Controller_Enemies : MonoBehaviour
         // Making waves for the level according to model specifications
         
         waveTimer += Time.deltaTime;
+        Debug.Log(waveTimer);
 
         if (waveTimer >= gameModel.waveSpawn && waveIndex < gameModel.level1Waves.Count)
         {
@@ -179,12 +179,9 @@ public class Controller_Enemies : MonoBehaviour
             }
 
         }
-
-            waveTimer = gameModel.waveCooldown[waveIndex];
-            waveIndex++;
         }
 
-    }
+    
     
     
 
