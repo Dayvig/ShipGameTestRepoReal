@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Controller_EnemyBullets : MonoBehaviour
 {
+    public Model_Player playerModel;
     public Model_Game gameModel;
     private List<GameObject> _bulletsInactive;
     private List<BulletTracker> _bulletsActive;
@@ -43,7 +44,10 @@ public class Controller_EnemyBullets : MonoBehaviour
         switch (bulletName)
         {
             case "MotorcycleBullet":
-                thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * motorcycleEnemyValues.bulletSpeed;
+                thisBullet.direction = (playerModel.ship.transform.position - transform.position);
+                Vector3 target = Vector3.MoveTowards(thisBullet.bullet.transform.position, playerModel.ship.transform.position, motorcycleEnemyValues.bulletSpeed);
+                thisBullet.bullet.transform.position = target;
+                //thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * motorcycleEnemyValues.bulletSpeed;
                 break; 
             default:
                 thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * gameModel.enemyBulletSpeed1;
@@ -64,13 +68,27 @@ public class Controller_EnemyBullets : MonoBehaviour
         {
             bullet = Instantiate(gameModel.enemyBulletPrefab1);
         }
-
         bullet.transform.position = where;
         var tracker = new BulletTracker();
         tracker.bullet = bullet;
         tracker.direction = direction;
         tracker.name = type;
         _bulletsActive.Add(tracker);
+        switch (type)
+        {
+            case "defaultBullet":
+                bullet.transform.position = where;
+                tracker.direction = direction;
+                tracker.name = "defaultBullet";
+                _bulletsActive.Add(tracker);
+                break;
+            case "MotorcycleBullet":
+                tracker.direction = (playerModel.ship.transform.position - transform.position).normalized;
+                tracker.name = "MotorcycleBullet";
+                _bulletsActive.Add(tracker);
+                break;
+        }
+        
     }
     
     public void FireBullet(Vector3 where, Vector3 direction)

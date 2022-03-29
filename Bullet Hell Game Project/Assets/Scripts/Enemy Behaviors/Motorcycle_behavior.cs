@@ -15,7 +15,7 @@ public class Motorcycle_behavior : Base_Enemy_Behavior
     
     public override void MovementUpdate()
     {
-        //transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, values.moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, values.moveSpeed * Time.deltaTime);
         if (Vector3.Distance(transform.position, nextWaypoint) < 1 && currentWaypointIndex != Waypoints.Count-1)
         {
             SetToNextWaypoint();
