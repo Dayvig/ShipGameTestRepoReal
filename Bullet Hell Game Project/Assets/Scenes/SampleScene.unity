@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -229,7 +229,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameModel: {fileID: 1212158454}
   waves: []
-  waveTimer: 6
   waveIndex: 0
   enemycount: 0
 --- !u!114 &144164432
@@ -257,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a70d414ed6a1304ba810552a372b78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerModel: {fileID: 1212158453}
   gameModel: {fileID: 1212158454}
 --- !u!114 &144164434
 MonoBehaviour:
@@ -2041,7 +2041,6 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  waveSpawn: 10
   waveTimer: 0
   enemyPrefab1: {fileID: 1796847636323191739, guid: 0d5c13421117800468820a5ee16ea6eb, type: 3}
   enemyPrefab2: {fileID: 6027086379095151095, guid: 0aca2c18010931943b1a7af63ba51579, type: 3}
@@ -2051,16 +2050,14 @@ MonoBehaviour:
   Boss1Prefab: {fileID: 6027086379095151095, guid: 4ffb0fea5732e7047ad45f97393b8bcc, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
-  level1Waves: 01000000
-  waveCooldown: 080000000000000008000000000000000800000000000000000000000800000001000000010000000800000001000000010000000100000001000000080000000200000002000000080000000200000002000000020000000800000002000000020000000800000002000000020000000800000002000000
-  level1Waves: 0c0000000e00000014000000230000000500000007000000090000000d000000030000000400000005000000030000000700000003000000090000000600000006000000030000000200000005000000070000000c0000001100000013000000150000001f000000160000000c0000000800000007000000
+  level1Waves: 14000000
   Level2Waves: 
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
   enemiesKilled: 0
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
-  - Boss1
+  - Motorcycle
   - Motorcycle
   - Motorcycle
   - Hog
@@ -2178,7 +2175,7 @@ MonoBehaviour:
   fireRate: 0.8
   enemyName: Motorcycle
   isLeft: 1
-  bulletSpeed: 7
+  bulletSpeed: 0.01
   bulletAngles: 5a0000002d0000003c000000
   startPos: 14
   startDisplace: 2
