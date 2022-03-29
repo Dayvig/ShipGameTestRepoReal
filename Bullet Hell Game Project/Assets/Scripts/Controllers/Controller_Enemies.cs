@@ -67,8 +67,7 @@ public class Controller_Enemies : MonoBehaviour
         if (waveTimer >= gameModel.waveSpawn && waveIndex < gameModel.level1Waves.Count)
         {
             int numberToSpawn = gameModel.level1Waves[waveIndex];
-
-        
+            
             float turnOverTime = 10;
             if (waveTimer >= turnOverTime && gameModel.waveSpawn < gameModel.level1Waves.Count)
             {
@@ -91,19 +90,21 @@ public class Controller_Enemies : MonoBehaviour
                             float displace = Random.Range(-values.startDisplace, values.startDisplace);
                             if (Random.Range(0, 2) == 0)
                             {
+                                Vector3 stag = new Vector3(0, 0, 1);
                                 startPoint = new Vector3(-values.startPos + displace, 0, 20);
-                                m.nextWaypoint = new Vector3(-values.startPos + displace, 0, -20f);
+                                m.nextWaypoint = new Vector3(-values.startPos + displace, 0, 5f - (i * values.startStagger)/16);
                                 m.Waypoints.Add(m.nextWaypoint);
                                 m.isLeft = true;
-                                EOP.transform.position += Vector3.back * i * values.startStagger;
+                                EOP.transform.position = startPoint + (stag * i * values.startStagger);
                             }
                             else
                             {
                                 startPoint = new Vector3(values.startPos + displace, 0, 20);
-                                m.nextWaypoint = new Vector3(values.startPos + displace, 0, -20f);
+                                m.nextWaypoint = new Vector3(values.startPos + displace, 0, 5f - (i * values.startStagger)/16);
                                 m.Waypoints.Add(m.nextWaypoint);
                                 m.isLeft = false;
-                                EOP.transform.position += Vector3.back * i * values.startStagger;
+                                Vector3 stag = new Vector3(0, 0, 1);
+                                EOP.transform.position = startPoint + (stag * i * values.startStagger);
                             }
                             break;
 
@@ -173,23 +174,14 @@ public class Controller_Enemies : MonoBehaviour
 
 
                     }
-                    Vector3 stagger = new Vector3(0, 0, 2);
                 }
                     waves.Add(newWave);
                     waveTimer = gameModel.waveCooldown[waveIndex];
                     waveIndex++;
             }
-
         }
-
-            waveTimer = gameModel.waveCooldown[waveIndex];
-            waveIndex++;
-        }
-
     }
     
-    
-
     private void CleanUpWave(Wave wave)
     {
         for (int j = wave.enemies.Count - 1; j >= 0; j--)
@@ -229,3 +221,4 @@ public class Controller_Enemies : MonoBehaviour
         public AbstractEnemy enemyT;
     }
 }
+
