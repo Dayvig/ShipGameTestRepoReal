@@ -19,6 +19,7 @@ public class Controller_Enemies : MonoBehaviour
     private Boss1Enemy boss1Value; //These need to be named the same as the enemy script placed in Application.Model
     //
     private string level = "1";
+    private float prevDifficulty;
 
 
     void Start()
@@ -30,6 +31,7 @@ public class Controller_Enemies : MonoBehaviour
         values2 = GameObject.Find("Model").GetComponent<HogEnemy>();
         boss1Value = GameObject.Find("Model").GetComponent<Boss1Enemy>(); //Gets the prefab
         //
+        prevDifficulty = gameModel.difficultyMultiplier;
     }
 
     void Update()
@@ -61,7 +63,7 @@ public class Controller_Enemies : MonoBehaviour
     public void EnemyUpdate()
     {
         // Making waves for the level according to model specifications
-        
+        DifficultyUpdate();
         waveTimer += Time.deltaTime;
 
         if (waveTimer >= gameModel.waveSpawn && waveIndex < gameModel.level1Waves.Count)
@@ -179,6 +181,18 @@ public class Controller_Enemies : MonoBehaviour
                     waveTimer = gameModel.waveCooldown[waveIndex];
                     waveIndex++;
             }
+        }
+    }
+
+    private void DifficultyUpdate()
+    {
+        if (gameModel.difficultyMultiplier != prevDifficulty)
+        {
+            gameModel.speedMultiplier += (gameModel.difficultyMultiplier - prevDifficulty);
+            gameModel.bulletSpeedMultiplier += (gameModel.difficultyMultiplier - prevDifficulty);
+            gameModel.healthMultiplier += (gameModel.difficultyMultiplier - prevDifficulty);
+            gameModel.fireRateMultiplier += (gameModel.difficultyMultiplier - prevDifficulty);
+            prevDifficulty = gameModel.difficultyMultiplier;
         }
     }
     

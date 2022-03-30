@@ -28,6 +28,11 @@ public class Model_Game : MonoBehaviour
     public float enemySpeed1;
     public float enemyBulletSpeed1;
     public int enemiesKilled;
+    public float difficultyMultiplier;
+    public float speedMultiplier;
+    public float bulletSpeedMultiplier;
+    public float healthMultiplier;
+    public float fireRateMultiplier;
     
     [Header("Effects")]
     public GameObject explosionPrefab1;

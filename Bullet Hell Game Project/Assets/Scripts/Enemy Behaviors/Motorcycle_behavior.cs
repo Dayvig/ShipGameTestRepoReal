@@ -27,10 +27,11 @@ public class Motorcycle_behavior : Base_Enemy_Behavior
     {
         values = GameObject.Find("Model").GetComponent<MotorcycleEnemy>();
         values2 = GameObject.Find("Model").GetComponent<HogEnemy>();
-        shootInterval = values.fireRate;
-        shootTimer = Random.Range(0, shootInterval);
-        hitPoints = values.hp;
-        hitPoints = values2.hp;
+        shootInterval = values.fireRate / gameModel.fireRateMultiplier;
+        shootTimer = 0f;
+        hitPoints = values.hp * gameModel.healthMultiplier;
+        moveSpeed = values.moveSpeed * gameModel.speedMultiplier;
+        bulletSpeed = values.bulletSpeed * gameModel.bulletSpeedMultiplier;
     }
 
     public override bool Immune()
@@ -55,6 +56,6 @@ public class Motorcycle_behavior : Base_Enemy_Behavior
 
     public override void FiringPattern()
     {
-        bullets.FireBullet(transform.position, (playerModel.ship.transform.position - transform.position).normalized, BULLET_NAME);
+        bullets.FireBullet(transform.position, (playerModel.ship.transform.position - transform.position).normalized, "Default");
     }
 }

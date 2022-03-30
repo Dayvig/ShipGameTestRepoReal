@@ -23,6 +23,8 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     public float shootInterval;
     public float shootTimer;
     public int behaviorState = 0;
+    public float moveSpeed;
+    public float bulletSpeed;
 
     private void Start()
     {
