@@ -23,6 +23,9 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     public float shootInterval;
     public float shootTimer;
     public int behaviorState = 0;
+    public float moveSpeed;
+    public float bulletSpeed;
+    public bool switchedWaypoint = false;
 
     private void Start()
     {
@@ -55,9 +58,9 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
         {
             if (c.gameObject.tag == "PlayerBullet" && !Immune())
             {
+                effects.MakeSmallExplosion(transform.position);
                 c.gameObject.transform.position += Vector3.forward * 1000;
                 hitPoints -= playerModel.damageCurrent;
-                ps.Emit(40);
             }
         }
         if (hitPoints <= 0)

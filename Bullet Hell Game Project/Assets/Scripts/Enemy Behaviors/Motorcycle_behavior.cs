@@ -15,22 +15,29 @@ public class Motorcycle_behavior : Base_Enemy_Behavior
     
     public override void MovementUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, values.moveSpeed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, nextWaypoint) < 1 && currentWaypointIndex != Waypoints.Count-1)
+        transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, moveSpeed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, nextWaypoint) < 1)
         {
-            SetToNextWaypoint();
+            if (currentWaypointIndex == 0)
+                {
+                    SetToWaypoint(1);
+                }
+                else if (currentWaypointIndex == 1)
+                {
+                    SetToWaypoint(0);
+                }
         }
-        shootInterval = values.fireRate;
     }
 
     public override void SetupEnemy()
     {
         values = GameObject.Find("Model").GetComponent<MotorcycleEnemy>();
         values2 = GameObject.Find("Model").GetComponent<HogEnemy>();
-        shootInterval = values.fireRate;
-        shootTimer = Random.Range(0, shootInterval);
-        hitPoints = values.hp;
-        hitPoints = values2.hp;
+        shootInterval = values.fireRate / gameModel.fireRateMultiplier;
+        shootTimer = 0f;
+        hitPoints = (int)(values.hp * gameModel.healthMultiplier);
+        moveSpeed = values.moveSpeed * gameModel.speedMultiplier;
+        bulletSpeed = values.bulletSpeed * gameModel.bulletSpeedMultiplier;
     }
 
     public override bool Immune()
@@ -55,6 +62,6 @@ public class Motorcycle_behavior : Base_Enemy_Behavior
 
     public override void FiringPattern()
     {
-        bullets.FireBullet(transform.position, (playerModel.ship.transform.position - transform.position).normalized, BULLET_NAME);
+        bullets.FireBullet(transform.position, (playerModel.ship.transform.position - transform.position).normalized, BULLET_NAME, this);
     }
 }

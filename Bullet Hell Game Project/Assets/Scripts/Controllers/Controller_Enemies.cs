@@ -18,6 +18,7 @@ public class Controller_Enemies : MonoBehaviour
     private Boss1Enemy boss1Value; //These need to be named the same as the enemy script placed in Application.Model
     //
     private string level = "1";
+    private float prevDifficulty;
 
 
     void Start()
@@ -29,6 +30,7 @@ public class Controller_Enemies : MonoBehaviour
         values2 = GameObject.Find("Model").GetComponent<HogEnemy>();
         boss1Value = GameObject.Find("Model").GetComponent<Boss1Enemy>(); //Gets the prefab
         //
+        prevDifficulty = gameModel.difficultyMultiplier;
     }
 
     void Update()
@@ -60,7 +62,7 @@ public class Controller_Enemies : MonoBehaviour
     public void EnemyUpdate()
     {
         // Making waves for the level according to model specifications
-        
+        DifficultyUpdate();
         waveTimer += Time.deltaTime;
         Debug.Log(waveTimer);
 
@@ -94,6 +96,7 @@ public class Controller_Enemies : MonoBehaviour
                                 startPoint = new Vector3(-values.startPos + displace, 0, 20);
                                 m.nextWaypoint = new Vector3(-values.startPos + displace, 0, 5f - (i * values.startStagger)/16);
                                 m.Waypoints.Add(m.nextWaypoint);
+                                m.Waypoints.Add(new Vector3(values.startPos + displace, 0, 5f - (i * values.startStagger)/16));
                                 m.isLeft = true;
                                 EOP.transform.position = startPoint + (stag * i * values.startStagger);
                             }
@@ -102,6 +105,7 @@ public class Controller_Enemies : MonoBehaviour
                                 startPoint = new Vector3(values.startPos + displace, 0, 20);
                                 m.nextWaypoint = new Vector3(values.startPos + displace, 0, 5f - (i * values.startStagger)/16);
                                 m.Waypoints.Add(m.nextWaypoint);
+                                m.Waypoints.Add(new Vector3(-values.startPos + displace, 0, 5f - (i * values.startStagger)/16));
                                 m.isLeft = false;
                                 Vector3 stag = new Vector3(0, 0, 1);
                                 EOP.transform.position = startPoint + (stag * i * values.startStagger);
@@ -182,6 +186,20 @@ public class Controller_Enemies : MonoBehaviour
 
 
         }
+
+    }
+
+    private void DifficultyUpdate()
+    {
+        if (gameModel.difficultyMultiplier != prevDifficulty)
+        {
+            gameModel.speedMultiplier += (gameModel.difficultyMultiplier - prevDifficulty);
+            gameModel.bulletSpeedMultiplier += (gameModel.difficultyMultiplier - prevDifficulty);
+            gameModel.healthMultiplier += (gameModel.difficultyMultiplier - prevDifficulty);
+            gameModel.fireRateMultiplier += (gameModel.difficultyMultiplier - prevDifficulty);
+            prevDifficulty = gameModel.difficultyMultiplier;
+        }
+    }
 
     
     private void CleanUpWave(Wave wave)

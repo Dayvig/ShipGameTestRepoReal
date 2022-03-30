@@ -49,6 +49,25 @@ public class Controller_Effects : MonoBehaviour
         explosion.transform.position = where;
         explosion.Emit(35);
     }
+
+    public void MakeSmallExplosion(Vector3 where)
+    {
+        ParticleSystem explosion;
+        if (_explosionsInactive.Count > 0)
+        {
+            explosion = _explosionsInactive[0];
+            _explosionsInactive.Remove(explosion);
+            explosion.gameObject.SetActive(true);
+        }
+        else
+        {
+            explosion = Instantiate(gameModel.explosionPrefab1).GetComponent<ParticleSystem>();
+        }
+        
+        _explosionsActive.Add(new EffectTimer(explosion, 0.25f));
+        explosion.transform.position = where;
+        explosion.Emit(4);
+    }
 }
 
 public class EffectTimer

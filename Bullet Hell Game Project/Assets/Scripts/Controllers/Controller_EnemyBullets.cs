@@ -9,12 +9,11 @@ public class Controller_EnemyBullets : MonoBehaviour
     public Model_Game gameModel;
     private List<GameObject> _bulletsInactive;
     private List<BulletTracker> _bulletsActive;
-    private MotorcycleEnemy motorcycleEnemyValues;
+    private Motorcycle_behavior _behavior;
 
     void Start()
     {
         Debug.Assert(gameModel != null, "Controller_EnemyBullets is looking for a reference to Model_Game, but none has been added in the Inspector!");
-        motorcycleEnemyValues = GameObject.Find("Model").GetComponent<MotorcycleEnemy>();
         _bulletsInactive = new List<GameObject>();
         _bulletsActive = new List<BulletTracker>();
     }
@@ -44,18 +43,18 @@ public class Controller_EnemyBullets : MonoBehaviour
         switch (bulletName)
         {
             case "MotorcycleBullet":
-                thisBullet.direction = (playerModel.ship.transform.position - transform.position);
+                /*thisBullet.direction = (playerModel.ship.transform.position - transform.position);
                 Vector3 target = Vector3.MoveTowards(thisBullet.bullet.transform.position, playerModel.ship.transform.position, motorcycleEnemyValues.bulletSpeed);
-                thisBullet.bullet.transform.position = target;
-                //thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * motorcycleEnemyValues.bulletSpeed;
-                break; 
+                thisBullet.bullet.transform.position = target;*/
+                thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * thisBullet.behavior.bulletSpeed;
+                break;
             default:
                 thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * gameModel.enemyBulletSpeed1;
                 break;
         }
     }
 
-    public void FireBullet(Vector3 where, Vector3 direction, string type)
+    public void FireBullet(Vector3 where, Vector3 direction, string type, Base_Enemy_Behavior behavior)
     {
         GameObject bullet;
         if (_bulletsInactive.Count > 0)
@@ -73,8 +72,9 @@ public class Controller_EnemyBullets : MonoBehaviour
         tracker.bullet = bullet;
         tracker.direction = direction;
         tracker.name = type;
+        tracker.behavior = behavior;
         _bulletsActive.Add(tracker);
-        switch (type)
+        /*switch (type)
         {
             case "defaultBullet":
                 bullet.transform.position = where;
@@ -85,9 +85,10 @@ public class Controller_EnemyBullets : MonoBehaviour
             case "MotorcycleBullet":
                 tracker.direction = (playerModel.ship.transform.position - transform.position).normalized;
                 tracker.name = "MotorcycleBullet";
+                tracker.behavior = behavior;
                 _bulletsActive.Add(tracker);
                 break;
-        }
+        }*/
         
     }
     
@@ -141,6 +142,7 @@ public class Controller_EnemyBullets : MonoBehaviour
         public GameObject bullet;
         public Vector3 direction;
         public string name;
+        public Base_Enemy_Behavior behavior;
         //add more properties later maybe
     }
 }
