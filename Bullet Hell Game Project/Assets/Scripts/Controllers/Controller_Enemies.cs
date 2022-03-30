@@ -96,6 +96,7 @@ public class Controller_Enemies : MonoBehaviour
                                 startPoint = new Vector3(-values.startPos + displace, 0, 20);
                                 m.nextWaypoint = new Vector3(-values.startPos + displace, 0, 5f - (i * values.startStagger)/16);
                                 m.Waypoints.Add(m.nextWaypoint);
+                                m.Waypoints.Add(new Vector3(values.startPos + displace, 0, 5f - (i * values.startStagger)/16));
                                 m.isLeft = true;
                                 EOP.transform.position = startPoint + (stag * i * values.startStagger);
                             }
@@ -104,6 +105,7 @@ public class Controller_Enemies : MonoBehaviour
                                 startPoint = new Vector3(values.startPos + displace, 0, 20);
                                 m.nextWaypoint = new Vector3(values.startPos + displace, 0, 5f - (i * values.startStagger)/16);
                                 m.Waypoints.Add(m.nextWaypoint);
+                                m.Waypoints.Add(new Vector3(-values.startPos + displace, 0, 5f - (i * values.startStagger)/16));
                                 m.isLeft = false;
                                 Vector3 stag = new Vector3(0, 0, 1);
                                 EOP.transform.position = startPoint + (stag * i * values.startStagger);
