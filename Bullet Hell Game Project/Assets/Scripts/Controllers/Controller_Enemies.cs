@@ -15,8 +15,9 @@ public class Controller_Enemies : MonoBehaviour
     // Enemy Requirements part 1
     private MotorcycleEnemy values;
     private HogEnemy values2;
+    private T3Enemy values3;
+    private T4Enemy values4;
     private Boss1Enemy boss1Value; //These need to be named the same as the enemy script placed in Application.Model
-    //
     private string level = "1";
     private float prevDifficulty;
 
@@ -28,6 +29,8 @@ public class Controller_Enemies : MonoBehaviour
         // Enemy values part 2, getting the prefab from Model
         values = GameObject.Find("Model").GetComponent<MotorcycleEnemy>();
         values2 = GameObject.Find("Model").GetComponent<HogEnemy>();
+        values3 = GameObject.Find("Model").GetComponent<T3Enemy>();
+        values4 = GameObject.Find("Model").GetComponent<T4Enemy>();
         boss1Value = GameObject.Find("Model").GetComponent<Boss1Enemy>(); //Gets the prefab
         //
         prevDifficulty = gameModel.difficultyMultiplier;
@@ -76,6 +79,8 @@ public class Controller_Enemies : MonoBehaviour
                 //Enemy requirements part 3
                 GameObject EOP;
                 GameObject H0G;
+                GameObject T3;
+                GameObject T4;
                 GameObject BOSS1;
                 GameObject TRAIL;
                 //
@@ -134,6 +139,48 @@ public class Controller_Enemies : MonoBehaviour
                             }
                             break;
 
+                        case "T3Enemy":
+                            T3 = Instantiate(gameModel.T3EnemyPrefab);
+                            m = T3.GetComponent<Motorcycle_behavior>();
+                            enemycount++;
+                            displace = Random.Range(-values2.startDisplace, values2.startDisplace);
+                            if (Random.Range(0, 2) == 0)
+                            {
+                                startPoint = new Vector3(-values2.startPos + displace, 0, 20);
+                                m.nextWaypoint = new Vector3(-values2.startPos + displace, 0, -20f);
+                                m.Waypoints.Add(m.nextWaypoint);
+                                m.isLeft = true;
+                            }
+                            else
+                            {
+                                startPoint = new Vector3(values2.startPos + displace, 0, 20);
+                                m.nextWaypoint = new Vector3(values2.startPos + displace, 0, -20f);
+                                m.Waypoints.Add(m.nextWaypoint);
+                                m.isLeft = false;
+                            }
+                            break;
+
+                        case "T4Enemy":
+                            T4 = Instantiate(gameModel.T4EnemyPrefab);
+                            m = T4.GetComponent<Motorcycle_behavior>();
+                            enemycount++;
+                            displace = Random.Range(-values2.startDisplace, values2.startDisplace);
+                            if (Random.Range(0, 2) == 0)
+                            {
+                                startPoint = new Vector3(-values2.startPos + displace, 0, 20);
+                                m.nextWaypoint = new Vector3(-values2.startPos + displace, 0, -20f);
+                                m.Waypoints.Add(m.nextWaypoint);
+                                m.isLeft = true;
+                            }
+                            else
+                            {
+                                startPoint = new Vector3(values2.startPos + displace, 0, 20);
+                                m.nextWaypoint = new Vector3(values2.startPos + displace, 0, -20f);
+                                m.Waypoints.Add(m.nextWaypoint);
+                                m.isLeft = false;
+                            }
+                            break;
+
                         case "Boss1":
                             BOSS1 = Instantiate(gameModel.Boss1Prefab);     //Spawn the prefab in
                             Boss1_Behavior Boss1mind = BOSS1.GetComponent<Boss1_Behavior>();       //Get its behavior inside its prefab
@@ -154,6 +201,7 @@ public class Controller_Enemies : MonoBehaviour
                                 Boss1mind.isLeft = false;
                             }
                             break;
+
                         
                         case "Trail":
                             Vector3 stag2 = new Vector3(-1, 0, 0);
@@ -167,6 +215,7 @@ public class Controller_Enemies : MonoBehaviour
                             tbehavior.Waypoints.Add(new Vector3(2, 0, 10));
                             TRAIL.transform.position = startPoint + (stag2 * i * values.startStagger);
                             break;
+
                         default:
                             EOP = Instantiate(gameModel.motorCycleEnemyPrefab);
                             m = EOP.GetComponent<Motorcycle_behavior>();
@@ -227,6 +276,15 @@ public class Controller_Enemies : MonoBehaviour
             var H0G = wave.enemies[j];
             wave.enemies.Remove(H0G);
             Destroy(H0G.transform.gameObject);
+
+            var T3 = wave.enemies[j];
+            wave.enemies.Remove(T3);
+            Destroy(H0G.transform.gameObject);
+
+            var T4 = wave.enemies[j];
+            wave.enemies.Remove(T4);
+            Destroy(H0G.transform.gameObject);
+
             enemycount--;
         }
         waves.Remove(wave);
