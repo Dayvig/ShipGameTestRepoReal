@@ -9,7 +9,6 @@ public class Controller_Enemies : MonoBehaviour
 {
     public Model_Game gameModel;
     public List<Wave> waves;
-
     private float waveTimer = 8f;
     public int waveIndex;
     public int enemycount;
@@ -65,6 +64,7 @@ public class Controller_Enemies : MonoBehaviour
         // Making waves for the level according to model specifications
         DifficultyUpdate();
         waveTimer += Time.deltaTime;
+        Debug.Log(waveTimer);
 
         if (waveTimer >= gameModel.waveSpawn && waveIndex < gameModel.level1Waves.Count)
         {
@@ -197,7 +197,10 @@ public class Controller_Enemies : MonoBehaviour
                     waveTimer = gameModel.waveCooldown[waveIndex];
                     waveIndex++;
             }
+
+
         }
+
     }
 
     private void DifficultyUpdate()
@@ -211,6 +214,7 @@ public class Controller_Enemies : MonoBehaviour
             prevDifficulty = gameModel.difficultyMultiplier;
         }
     }
+
     
     private void CleanUpWave(Wave wave)
     {
@@ -250,5 +254,5 @@ public class Controller_Enemies : MonoBehaviour
         public int waypointIndex;
         public AbstractEnemy enemyT;
     }
-}
 
+}
