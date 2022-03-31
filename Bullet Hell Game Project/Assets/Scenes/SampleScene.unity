@@ -1932,6 +1932,8 @@ GameObject:
   - component: {fileID: 1212158455}
   - component: {fileID: 1212158456}
   - component: {fileID: 1212158457}
+  - component: {fileID: 1212158462}
+  - component: {fileID: 1212158461}
   - component: {fileID: 1212158460}
   - component: {fileID: 1212158458}
   - component: {fileID: 1212158459}
@@ -2044,35 +2046,40 @@ MonoBehaviour:
   waveTimer: 0
   enemyPrefab1: {fileID: 1796847636323191739, guid: 0d5c13421117800468820a5ee16ea6eb, type: 3}
   enemyPrefab2: {fileID: 6027086379095151095, guid: 0aca2c18010931943b1a7af63ba51579, type: 3}
+  enemyPrefab3: {fileID: 5236546687726030950, guid: dee1d1c830b1f1c499234c5a56e445a1, type: 3}
+  enemyPrefab4: {fileID: 3415046217774761033, guid: 2c91c0c85cf32064d91862c977c47d1f, type: 3}
   enemyBulletPrefab1: {fileID: 2100608845967562317, guid: 2e1d29638173fdc478b4fc33d78b471f, type: 3}
   motorCycleEnemyPrefab: {fileID: 3403441203005645215, guid: 62424227f08b2c64faafcfb4d14f3ebf, type: 3}
   HogEnemyPrefab: {fileID: 5844769796473751404, guid: e10b6505d5a42bb4584cc6788f8ae359, type: 3}
+  T3EnemyPrefab: {fileID: 6044024354882096127, guid: c312434dd1f9899489410f03b460655a, type: 3}
+  T4EnemyPrefab: {fileID: 4654457091920123683, guid: bfc174bb11e1fb147960ddc84878b134, type: 3}
   Boss1Prefab: {fileID: 6027086379095151095, guid: 4ffb0fea5732e7047ad45f97393b8bcc, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
-  level1Waves: 14000000
-  Level2Waves: 
+  level1Waves: 0f0000000f000000050000000f0000001400000028000000
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
   enemiesKilled: 0
+  difficultyMultiplier: 1
+  speedMultiplier: 1
+  bulletSpeedMultiplier: 1
+  healthMultiplier: 1
+  fireRateMultiplier: 1
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
+  - T3Enemy
+  - T4Enemy
+  - Hog
   - Motorcycle
   - Motorcycle
   - Motorcycle
   - Hog
   - Hog
   - Motorcycle
-  - Hog
-  - Hog
-  - Motorcycle
   - Motorcycle
   - Motorcycle
   - Motorcycle
   - Hog
-  - Motorcycle
-  - Hog
-  - Motorcycle
   - Motorcycle
   - Hog
   - Motorcycle
@@ -2083,12 +2090,14 @@ MonoBehaviour:
   - Hog
   - Motorcycle
   - Motorcycle
+  - Hog
+  - Motorcycle
+  - Motorcycle
   - Motorcycle
   - Motorcycle
   - Motorcycle
   - Hog
   - Motorcycle
-  level2EnemyTypes: []
 --- !u!114 &1212158455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2175,7 +2184,7 @@ MonoBehaviour:
   fireRate: 0.8
   enemyName: Motorcycle
   isLeft: 1
-  bulletSpeed: 0.01
+  bulletSpeed: 5
   bulletAngles: 5a0000002d0000003c000000
   startPos: 14
   startDisplace: 2
@@ -2252,6 +2261,52 @@ MonoBehaviour:
   moveSpeed: 5
   fireRate: 1
   enemyName: Boss1
+  isLeft: 1
+  bulletSpeed: 0
+  bulletAngles: 
+  startPos: 0
+  startDisplace: 0
+  startStagger: 0
+--- !u!114 &1212158461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212158451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b3b64de0129bc41a12e17eac6bee7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  damage: 5
+  moveSpeed: 20
+  fireRate: 1
+  enemyName: T4Enemy
+  isLeft: 1
+  bulletSpeed: 0
+  bulletAngles: 
+  startPos: 0
+  startDisplace: 0
+  startStagger: 0
+--- !u!114 &1212158462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212158451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896a1444833bb5046b51cce6705f7903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 50
+  damage: 3
+  moveSpeed: 20
+  fireRate: 1
+  enemyName: T3Enemy
   isLeft: 1
   bulletSpeed: 0
   bulletAngles: 
