@@ -10,10 +10,25 @@ public class TrailEnemy_Behavior : Base_Enemy_Behavior
 {
     private TrailEnemy values;
     public static string BULLET_NAME = "TrailBullet";
+    private float timer;
+    public float circleWidth = 3;
+    public float circleHeight = 3;
     
     public override void MovementUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, moveSpeed * Time.deltaTime);
+        /*timer += Time.deltaTime;
+
+        float horiRotation = (Mathf.Cos(timer)*circleWidth)+transform.position.x;
+        float vertRotation = (Mathf.Sin(timer)*circleHeight)+transform.position.z;
+        
+        Debug.Log(horiRotation + "x "+vertRotation + "z ");
+
+        toPos.x += horiRotation;
+        toPos.z += vertRotation;*/
+        
+        Vector3 toPos = Vector3.MoveTowards(transform.position, nextWaypoint, moveSpeed * Time.deltaTime);
+        transform.position = toPos;
+        
         if (Vector3.Distance(transform.position, nextWaypoint) < 1)
         {
             if (currentWaypointIndex == Waypoints.Count-1)

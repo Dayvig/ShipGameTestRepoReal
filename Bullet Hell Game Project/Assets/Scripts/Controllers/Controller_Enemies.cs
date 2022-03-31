@@ -64,7 +64,6 @@ public class Controller_Enemies : MonoBehaviour
         // Making waves for the level according to model specifications
         DifficultyUpdate();
         waveTimer += Time.deltaTime;
-        Debug.Log(waveTimer);
 
         if (waveTimer >= gameModel.waveSpawn && waveIndex < gameModel.level1Waves.Count)
         {
@@ -156,15 +155,17 @@ public class Controller_Enemies : MonoBehaviour
                             break;
                         
                         case "Trail":
-                            Vector3 stag2 = new Vector3(-1, 0, 0);
+                            Vector3 stag2 = new Vector3(0, 0, 0.5f);
                             TRAIL = Instantiate(gameModel.TrailEnemyPrefab);     //Spawn the prefab in
-                            Debug.Log("Test" + i);
                             TrailEnemy_Behavior tbehavior = TRAIL.GetComponent<TrailEnemy_Behavior>();       //Get its behavior inside its prefab
                             enemycount++;                                   //Add 1? to enemy counter
-                            startPoint = new Vector3(-20, 0, 0);
+                            startPoint = new Vector3(-12, 0, 20);
                             tbehavior.nextWaypoint = startPoint;
                             tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
-                            tbehavior.Waypoints.Add(new Vector3(2, 0, 10));
+                            tbehavior.Waypoints.Add(new Vector3(-12, 0, 10));
+                            tbehavior.Waypoints.Add(new Vector3(-2, 0, 2));
+                            tbehavior.Waypoints.Add(new Vector3(8, 0, 10));
+                            tbehavior.Waypoints.Add(new Vector3(8, 0, 20));
                             TRAIL.transform.position = startPoint + (stag2 * i * values.startStagger);
                             break;
                         default:

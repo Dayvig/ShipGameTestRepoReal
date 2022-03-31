@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1935,6 +1935,7 @@ GameObject:
   - component: {fileID: 1212158460}
   - component: {fileID: 1212158458}
   - component: {fileID: 1212158459}
+  - component: {fileID: 1212158461}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -2047,18 +2048,24 @@ MonoBehaviour:
   enemyBulletPrefab1: {fileID: 2100608845967562317, guid: 2e1d29638173fdc478b4fc33d78b471f, type: 3}
   motorCycleEnemyPrefab: {fileID: 3403441203005645215, guid: 62424227f08b2c64faafcfb4d14f3ebf, type: 3}
   HogEnemyPrefab: {fileID: 5844769796473751404, guid: e10b6505d5a42bb4584cc6788f8ae359, type: 3}
+  TrailEnemyPrefab: {fileID: 6891031252493286837, guid: 497ea8649357f0b48a6b12e9e8d2f1b7, type: 3}
   Boss1Prefab: {fileID: 6027086379095151095, guid: 4ffb0fea5732e7047ad45f97393b8bcc, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
-  level1Waves: 14000000
+  level1Waves: 28000000280000001400000014000000
   Level2Waves: 
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
   enemiesKilled: 0
+  difficultyMultiplier: 1
+  speedMultiplier: 1
+  bulletSpeedMultiplier: 1
+  healthMultiplier: 1
+  fireRateMultiplier: 1
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
-  - Motorcycle
-  - Motorcycle
+  - Trail
+  - Trail
   - Motorcycle
   - Hog
   - Hog
@@ -2175,7 +2182,7 @@ MonoBehaviour:
   fireRate: 0.8
   enemyName: Motorcycle
   isLeft: 1
-  bulletSpeed: 0.01
+  bulletSpeed: 7
   bulletAngles: 5a0000002d0000003c000000
   startPos: 14
   startDisplace: 2
@@ -2258,6 +2265,29 @@ MonoBehaviour:
   startPos: 0
   startDisplace: 0
   startStagger: 0
+--- !u!114 &1212158461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212158451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7cd79ee79b403da1ef2bb4be2609a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 1
+  damage: 1
+  moveSpeed: 5
+  fireRate: 1
+  enemyName: Trail Enemy
+  isLeft: 0
+  bulletSpeed: 4
+  bulletAngles: 
+  startPos: 0
+  startDisplace: 0
+  startStagger: 2
 --- !u!1 &1276577678
 GameObject:
   m_ObjectHideFlags: 0
