@@ -10,6 +10,8 @@ public class Motorcycle_behavior : Base_Enemy_Behavior
 {
     private MotorcycleEnemy values;
     private HogEnemy values2;
+    private T3Enemy values3;
+    private T4Enemy values4;
     public bool isLeft; 
     public static string BULLET_NAME = "MotorcycleBullet";
     
@@ -32,6 +34,9 @@ public class Motorcycle_behavior : Base_Enemy_Behavior
     public override void SetupEnemy()
     {
         values = GameObject.Find("Model").GetComponent<MotorcycleEnemy>();
+        values2 = GameObject.Find("Model").GetComponent<HogEnemy>();
+        values3 = GameObject.Find("Model").GetComponent<T3Enemy>();
+        values4 = GameObject.Find("Model").GetComponent<T4Enemy>();
         shootInterval = values.fireRate / gameModel.fireRateMultiplier;
         shootTimer = Random.Range(0, shootInterval/2);
         hitPoints = (int)(values.hp * gameModel.healthMultiplier);
