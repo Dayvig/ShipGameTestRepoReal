@@ -6,37 +6,30 @@ using Enemies;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Motorcycle_behavior : Base_Enemy_Behavior
+public class TrailEnemy_Behavior : Base_Enemy_Behavior
 {
-    private MotorcycleEnemy values;
-    private HogEnemy values2;
-    private T3Enemy values3;
-    private T4Enemy values4;
-    public bool isLeft; 
-    public static string BULLET_NAME = "MotorcycleBullet";
+    private TrailEnemy values;
+    public static string BULLET_NAME = "TrailBullet";
     
     public override void MovementUpdate()
     {
         transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, moveSpeed * Time.deltaTime);
         if (Vector3.Distance(transform.position, nextWaypoint) < 1)
         {
-            if (currentWaypointIndex == 0)
-                {
-                    SetToWaypoint(1);
-                }
-                else if (currentWaypointIndex == 1)
-                {
-                    SetToWaypoint(0);
-                }
+            if (currentWaypointIndex == Waypoints.Count-1)
+            {
+                KillThisEnemy();
+            }
+            else
+            {
+                SetToNextWaypoint();
+            }
         }
     }
 
     public override void SetupEnemy()
     {
-        values = GameObject.Find("Model").GetComponent<MotorcycleEnemy>();
-        values2 = GameObject.Find("Model").GetComponent<HogEnemy>();
-        values3 = GameObject.Find("Model").GetComponent<T3Enemy>();
-        values4 = GameObject.Find("Model").GetComponent<T4Enemy>();
+        values = GameObject.Find("Model").GetComponent<TrailEnemy>();
         shootInterval = values.fireRate / gameModel.fireRateMultiplier;
         shootTimer = Random.Range(0, shootInterval/2);
         hitPoints = (int)(values.hp * gameModel.healthMultiplier);

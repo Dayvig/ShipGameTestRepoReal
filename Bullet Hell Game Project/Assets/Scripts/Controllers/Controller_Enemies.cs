@@ -82,6 +82,7 @@ public class Controller_Enemies : MonoBehaviour
                 GameObject T3;
                 GameObject T4;
                 GameObject BOSS1;
+                GameObject TRAIL;
                 //
                 Wave newWave = new Wave();
 
@@ -99,18 +100,18 @@ public class Controller_Enemies : MonoBehaviour
                             {
                                 Vector3 stag = new Vector3(0, 0, 1);
                                 startPoint = new Vector3(-values.startPos + displace, 0, 20);
-                                m.nextWaypoint = new Vector3(-values.startPos + displace, 0, 5f - (i * values.startStagger)/16);
+                                m.nextWaypoint = new Vector3(-values.startPos + displace, 0, 8f - (i * values.startStagger)/16);
                                 m.Waypoints.Add(m.nextWaypoint);
-                                m.Waypoints.Add(new Vector3(values.startPos + displace, 0, 5f - (i * values.startStagger)/16));
+                                m.Waypoints.Add(new Vector3(values.startPos + displace, 0, 8f - (i * values.startStagger)/16));
                                 m.isLeft = true;
                                 EOP.transform.position = startPoint + (stag * i * values.startStagger);
                             }
                             else
                             {
                                 startPoint = new Vector3(values.startPos + displace, 0, 20);
-                                m.nextWaypoint = new Vector3(values.startPos + displace, 0, 5f - (i * values.startStagger)/16);
+                                m.nextWaypoint = new Vector3(values.startPos + displace, 0, 8f - (i * values.startStagger)/16);
                                 m.Waypoints.Add(m.nextWaypoint);
-                                m.Waypoints.Add(new Vector3(-values.startPos + displace, 0, 5f - (i * values.startStagger)/16));
+                                m.Waypoints.Add(new Vector3(-values.startPos + displace, 0, 8f - (i * values.startStagger)/16));
                                 m.isLeft = false;
                                 Vector3 stag = new Vector3(0, 0, 1);
                                 EOP.transform.position = startPoint + (stag * i * values.startStagger);
@@ -199,6 +200,20 @@ public class Controller_Enemies : MonoBehaviour
                                 Boss1mind.Waypoints.Add(Boss1mind.nextWaypoint);
                                 Boss1mind.isLeft = false;
                             }
+                            break;
+
+                        
+                        case "Trail":
+                            Vector3 stag2 = new Vector3(-1, 0, 0);
+                            TRAIL = Instantiate(gameModel.TrailEnemyPrefab);     //Spawn the prefab in
+                            Debug.Log("Test" + i);
+                            TrailEnemy_Behavior tbehavior = TRAIL.GetComponent<TrailEnemy_Behavior>();       //Get its behavior inside its prefab
+                            enemycount++;                                   //Add 1? to enemy counter
+                            startPoint = new Vector3(-20, 0, 0);
+                            tbehavior.nextWaypoint = startPoint;
+                            tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
+                            tbehavior.Waypoints.Add(new Vector3(2, 0, 10));
+                            TRAIL.transform.position = startPoint + (stag2 * i * values.startStagger);
                             break;
 
                         default:
