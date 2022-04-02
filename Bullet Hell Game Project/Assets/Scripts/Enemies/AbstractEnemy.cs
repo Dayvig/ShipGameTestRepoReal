@@ -5,6 +5,8 @@ namespace Enemies
 {
     public abstract class AbstractEnemy : MonoBehaviour
     {
+        [TextArea]
+        public string Notes = "";
         public int hp;
         public int damage;
         public float moveSpeed;
@@ -14,8 +16,10 @@ namespace Enemies
         public float bulletSpeed;
         public int[] bulletAngles;
         public float startPos;
+        public List<Vector3> Waypoints = new List<Vector3>();
         public float startDisplace;
         public float startStagger;
-        
+        public EnterDirections enterFrom;
+        public enum EnterDirections { Left, Right, Top, Bottom }
     }
 }
