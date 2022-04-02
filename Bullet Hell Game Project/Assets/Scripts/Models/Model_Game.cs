@@ -38,6 +38,7 @@ public class Model_Game : MonoBehaviour
     public float bulletSpeedMultiplier;
     public float healthMultiplier;
     public float fireRateMultiplier;
+    public int enemiesToSpawnPortal;
     
     [Header("Effects")]
     public GameObject explosionPrefab1;
