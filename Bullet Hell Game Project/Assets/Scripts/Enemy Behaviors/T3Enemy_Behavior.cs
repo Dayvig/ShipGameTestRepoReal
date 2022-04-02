@@ -35,6 +35,8 @@ public class T3Enemy_Behavior : Base_Enemy_Behavior
 
     public override void ShootingUpdate()
     {
+        if (currentWaypointIndex == Waypoints.Count-1){
+            
         if (!charging)
         {
             shootTimer += Time.deltaTime;
@@ -66,7 +68,7 @@ public class T3Enemy_Behavior : Base_Enemy_Behavior
                     chargingState = 2;
                 }
             }
-            
+
             if (explosionTimer >= explosionInterval)
             {
                 if (chargingState < 2)
@@ -81,6 +83,7 @@ public class T3Enemy_Behavior : Base_Enemy_Behavior
                 //Debug.Log("Boom");
                 explosionTimer -= explosionInterval;
             }
+
             if (chargeTimer >= chargeTime)
             {
                 FiringPattern();
@@ -89,6 +92,7 @@ public class T3Enemy_Behavior : Base_Enemy_Behavior
                 chargingState = 0;
             }
             
+            }
         }
     }
 
@@ -96,7 +100,7 @@ public class T3Enemy_Behavior : Base_Enemy_Behavior
     {
         values = GameObject.Find("Model").GetComponent<T3Enemy>();
         shootInterval = values.fireRate / gameModel.fireRateMultiplier;
-        shootTimer = 0;
+        shootTimer = Random.Range(0, shootInterval / 2);
         hitPoints = (int)(values.hp * gameModel.healthMultiplier);
         moveSpeed = values.moveSpeed * gameModel.speedMultiplier;
         bulletSpeed = values.bulletSpeed * gameModel.bulletSpeedMultiplier;

@@ -168,9 +168,10 @@ public class Controller_Enemies : MonoBehaviour
                             T3 = Instantiate(gameModel.T3EnemyPrefab);
                             T3Enemy_Behavior thisT3EnemyBehavior = T3.GetComponent<T3Enemy_Behavior>();
                             stag = getEntrance(values3);
-                            thisT3EnemyBehavior.nextWaypoint = values3.Waypoints[0];
+                            float xdisplace = Random.Range(-12, 12);
+                            thisT3EnemyBehavior.nextWaypoint = values3.Waypoints[0] + Vector3.left * xdisplace;
                             thisT3EnemyBehavior.Waypoints[0] = thisT3EnemyBehavior.nextWaypoint;
-                            thisT3EnemyBehavior.Waypoints[1] = values3.Waypoints[1];
+                            thisT3EnemyBehavior.Waypoints[1] = values3.Waypoints[1] + Vector3.left * xdisplace;
                             enemycount++;
                             T3.transform.position = thisT3EnemyBehavior.nextWaypoint + (stag * i * values.startStagger);
                             break;
