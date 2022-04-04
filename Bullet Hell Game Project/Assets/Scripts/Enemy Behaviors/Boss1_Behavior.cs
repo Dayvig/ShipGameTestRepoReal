@@ -130,8 +130,8 @@ public class Boss1_Behavior : Base_Enemy_Behavior
     }
 
     public override void FiringPattern()  //temp removed firing
-    { 
-        //bullets.FireBullet(transform.position, (playerModel.ship.transform.position - transform.position).normalized, BULLET_NAME);
+    {
+        bullets.FireBullet(transform.position, (playerModel.ship.transform.position - transform.position).normalized, BULLET_NAME, this);
     }
 
 

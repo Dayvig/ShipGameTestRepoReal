@@ -7,7 +7,7 @@ using UnityEngine;
 public class Controller_PlayerGuns : MonoBehaviour
 {
     public Model_Player playerModel;
-
+    
     List<GameObject> _inactiveBullets;
     List<GameObject> _activeBullets;
     
@@ -15,11 +15,17 @@ public class Controller_PlayerGuns : MonoBehaviour
     Transform rightGun;
 
     bool leftGunFire;
-
+    public bool grazePowerUp;
+    public float grazeTimer;
+    public float grazeInterval;
+    
     void Start()
     {
         Debug.Assert(playerModel != null, "Controller_PlayerGuns is looking for a reference to Model_Player, but none has been added in the Inspector!");
 
+        grazeInterval = playerModel.grazePowerupInterval;
+        grazeTimer = 0;
+        
         _inactiveBullets = new List<GameObject>();
         _activeBullets = new List<GameObject>();
 
@@ -31,12 +37,26 @@ public class Controller_PlayerGuns : MonoBehaviour
             else 
                 rightGun = guns[i].transform;
         }
-        
+
     }
 
     void Update()
     {
         _BulletsUpdate();
+        if (playerModel.bulletGrazes >= playerModel.grazesForPowerup)
+        {
+            grazePowerUp = true;
+            playerModel.bulletGrazes = 0;
+        }
+        if (grazePowerUp)
+        {
+            grazeTimer += Time.deltaTime;
+            if (grazeTimer > grazeInterval)
+            {
+                grazeTimer -= grazeInterval;
+                grazePowerUp = false;
+            }
+        }
     }
 
     float fireTimer;
@@ -52,6 +72,11 @@ public class Controller_PlayerGuns : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             fireTimer += Time.deltaTime / playerModel.fireRate;
+            if (grazePowerUp)
+            {
+                fireTimer += Time.deltaTime / playerModel.fireRate;
+            }
+            
             if (fireTimer >= 1)
             {
                 fireTimer -=1;
