@@ -76,4 +76,16 @@ public class TrailEnemy_Behavior : Base_Enemy_Behavior
     {
         bullets.FireBullet(transform.position, Vector3.back.normalized, BULLET_NAME, this);
     }
+
+    public override void KillThisEnemy()
+    {
+        if (inScreen())
+        {
+            effects.MakeExplosion(transform.position);
+            gameModel.enemiesKilled++;
+            playerModel.score += 1000;
+        }
+        gameObject.SetActive(false);
+    }
+    
 }

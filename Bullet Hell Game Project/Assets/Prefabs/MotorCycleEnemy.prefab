@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerModel: {fileID: 0}
+  gameModel: {fileID: 0}
   effects: {fileID: 0}
   bullets: {fileID: 0}
   ps: {fileID: 3460088518073488387, guid: c56264f2b350c1e4ea04829534e5a069, type: 3}
@@ -206,6 +207,9 @@ MonoBehaviour:
   shootInterval: 0
   shootTimer: 0
   behaviorState: 0
+  moveSpeed: 0
+  bulletSpeed: 0
+  switchedWaypoint: 0
   isLeft: 0
 --- !u!1 &3403441203092829162
 GameObject:

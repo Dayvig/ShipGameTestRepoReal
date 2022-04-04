@@ -178,24 +178,14 @@ public class Controller_Enemies : MonoBehaviour
                         
                         case "T4Enemy":
                             T4 = Instantiate(gameModel.T4EnemyPrefab);
-                            m = T4.GetComponent<Motorcycle_behavior>();
+                            T4Enemy_Behavior thisT4EnemyBehavior = T4.GetComponent<T4Enemy_Behavior>();
+                            stag = getEntrance(values4);
+                            float xdisplace2 = Random.Range(-12, 12);
+                            thisT4EnemyBehavior.nextWaypoint = values4.Waypoints[0] + Vector3.left * xdisplace2;
+                            thisT4EnemyBehavior.Waypoints[0] = thisT4EnemyBehavior.nextWaypoint;
+                            thisT4EnemyBehavior.Waypoints[1] = values4.Waypoints[1] + Vector3.left * xdisplace2;
                             enemycount++;
-                            displace = Random.Range(-values2.startDisplace, values2.startDisplace);
-                            if (Random.Range(0, 2) == 0)
-                            {
-                                startPoint = new Vector3(-values2.startPos + displace, 0, 20);
-                                m.nextWaypoint = new Vector3(-values2.startPos + displace, 0, -20f);
-                                m.Waypoints.Add(m.nextWaypoint);
-                                m.isLeft = true;
-                            }
-                            else
-                            {
-                                startPoint = new Vector3(values2.startPos + displace, 0, 20);
-                                m.nextWaypoint = new Vector3(values2.startPos + displace, 0, -20f);
-                                m.Waypoints.Add(m.nextWaypoint);
-                                m.isLeft = false;
-                            }
-
+                            T4.transform.position = thisT4EnemyBehavior.nextWaypoint + (stag * i * values.startStagger);
                             break;
 
                         case "Boss1":

@@ -134,7 +134,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
         }
     }
 
-    public void KillThisEnemy()
+    public virtual void KillThisEnemy()
     {
         effects.MakeExplosion(transform.position);
         gameModel.enemiesKilled++;
@@ -154,6 +154,27 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    public void SpreadPattern(string name, float startAngle, float endAngle, int numBullets)
+    {
+
+        float angleStep = (endAngle - startAngle) / numBullets;
+        float currentAngle = startAngle;
+
+        for (int i = 0; i < numBullets; i++)
+        {
+            Vector3 position = transform.position;
+            float projectileDirXPosition =
+                Mathf.Sin(currentAngle * (float) (Math.PI / 180));
+            float projectileDirYPosition =
+                Mathf.Cos(currentAngle * (float) (Math.PI / 180));
+
+            bullets.FireBullet(position,
+                (new Vector3(projectileDirXPosition, 0, projectileDirYPosition)).normalized, name, this);
+
+            currentAngle += angleStep;
         }
     }
 }

@@ -1940,6 +1940,7 @@ GameObject:
   - component: {fileID: 1212158459}
   - component: {fileID: 1212158461}
   - component: {fileID: 1212158462}
+  - component: {fileID: 1212158463}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -2059,6 +2060,7 @@ MonoBehaviour:
   HogEnemyPrefab: {fileID: 5844769796473751404, guid: e10b6505d5a42bb4584cc6788f8ae359, type: 3}
   T3EnemyPrefab: {fileID: 6044024354882096127, guid: c312434dd1f9899489410f03b460655a, type: 3}
   T4EnemyPrefab: {fileID: 4654457091920123683, guid: bfc174bb11e1fb147960ddc84878b134, type: 3}
+  T4EnemySpawnPrefab: {fileID: 2058931671444382800, guid: 607be39c315fa9143b6dc7d3d678a20b, type: 3}
   TrailEnemyPrefab: {fileID: 6891031252493286837, guid: 497ea8649357f0b48a6b12e9e8d2f1b7, type: 3}
   Boss1Prefab: {fileID: 6027086379095151095, guid: 4ffb0fea5732e7047ad45f97393b8bcc, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
@@ -2075,7 +2077,7 @@ MonoBehaviour:
   enemiesToSpawnPortal: 100
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
-  - T3Enemy
+  - T4Enemy
   - T3Enemy
   - T3Enemy
   - T3Enemy
@@ -2350,6 +2352,32 @@ MonoBehaviour:
   startStagger: 4
   enterFrom: 2
   chargeTime: 6
+--- !u!114 &1212158463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212158451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b3b64de0129bc41a12e17eac6bee7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Notes: Comes to a stop near the top of the screen
+  hp: 20
+  damage: 5
+  moveSpeed: 20
+  fireRate: 1
+  enemyName: T4Enemy
+  isLeft: 1
+  bulletSpeed: 0
+  bulletAngles: 
+  startPos: 0
+  Waypoints: []
+  startDisplace: 0
+  startStagger: 2
+  enterFrom: 2
 --- !u!1 &1276577678
 GameObject:
   m_ObjectHideFlags: 0

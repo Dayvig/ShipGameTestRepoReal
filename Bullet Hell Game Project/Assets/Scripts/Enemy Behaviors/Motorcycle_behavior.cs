@@ -66,6 +66,6 @@ public class Motorcycle_behavior : Base_Enemy_Behavior
 
     public override void FiringPattern()
     {
-        bullets.FireBullet(transform.position, Vector3.back.normalized, BULLET_NAME, this);
+        SpreadPattern(BULLET_NAME, 0, 360, 28);
     }
 }
