@@ -134,7 +134,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
         }
     }
 
-    public void KillThisEnemy()
+    public virtual void KillThisEnemy()
     {
         effects.MakeExplosion(transform.position);
         gameModel.enemiesKilled++;
