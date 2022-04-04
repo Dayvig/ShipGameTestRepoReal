@@ -9,6 +9,7 @@ public class BulletGrazerHitbox : MonoBehaviour
 
     private GameObject HostBody; 
     private Vector3 hitboxSize;
+    public Model_Player playerModel;
 
     public float elapsed = 0f; // a timer?
     private bool debounce = false;
@@ -18,6 +19,8 @@ public class BulletGrazerHitbox : MonoBehaviour
     void Start()
     {
         bullets = GameObject.Find("Controller").GetComponent<Controller_EnemyBullets>();
+        playerModel = GameObject.Find("Model").GetComponent<Model_Player>();
+
         // spawnlocation = new Vector3(0, 0, 0);
         //m_Started = true; //This activates OnDrawGizmos() which shows the hitbox with a red outline
         HostBody = transform.parent.gameObject;
@@ -40,7 +43,8 @@ public class BulletGrazerHitbox : MonoBehaviour
                 debounce = true;
 
                 Debug.Log("Grazed a enemy bullet");
-
+                playerModel.bulletGrazes++;
+                
                 GetComponent<ParticleSystem>().Play();
                 ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
                 em.enabled = true;

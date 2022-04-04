@@ -243,6 +243,8 @@ public class Controller_Game : MonoBehaviour
                 SpawnInvincibility = false;
             }
         }
+        
+        
     }
     private float deathTimer;
     private void _DieUpdate()
