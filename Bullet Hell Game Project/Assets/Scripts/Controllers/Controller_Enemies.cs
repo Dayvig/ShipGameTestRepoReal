@@ -144,24 +144,14 @@ public class Controller_Enemies : MonoBehaviour
 
                         case "Hog":
                             H0G = Instantiate(gameModel.HogEnemyPrefab);
-                            Motorcycle_behavior m = H0G.GetComponent<Motorcycle_behavior>();
+                            hogEnemy_Behavior HogBehavior = H0G.GetComponent<hogEnemy_Behavior>();
+                            stag = getEntrance(values2);
+                            float xhogdisplace = Random.Range(-12, 12);
+                            HogBehavior.nextWaypoint = values2.Waypoints[0] + Vector3.left * xhogdisplace;
+                            HogBehavior.Waypoints[0] = HogBehavior.nextWaypoint;
+                            HogBehavior.Waypoints[1] = values2.Waypoints[1] + Vector3.left * xhogdisplace;
                             enemycount++;
-                            displace = Random.Range(-values2.startDisplace, values2.startDisplace);
-                            if (Random.Range(0, 2) == 0)
-                            {
-                                startPoint = new Vector3(-values2.startPos + displace, 0, 20);
-                                m.nextWaypoint = new Vector3(-values2.startPos + displace, 0, -20f);
-                                m.Waypoints.Add(m.nextWaypoint);
-                                m.isLeft = true;
-                            }
-                            else
-                            {
-                                startPoint = new Vector3(values2.startPos + displace, 0, 20);
-                                m.nextWaypoint = new Vector3(values2.startPos + displace, 0, -20f);
-                                m.Waypoints.Add(m.nextWaypoint);
-                                m.isLeft = false;
-                            }
-
+                            H0G.transform.position = HogBehavior.nextWaypoint + (stag * i * values2.startStagger);
                             break;
 
                         case "T3Enemy":
@@ -176,7 +166,7 @@ public class Controller_Enemies : MonoBehaviour
                             T3.transform.position = thisT3EnemyBehavior.nextWaypoint + (stag * i * values.startStagger);
                             break;
                         
-                        case "T4Enemy":
+/*                        case "T4Enemy":
                             T4 = Instantiate(gameModel.T4EnemyPrefab);
                             m = T4.GetComponent<Motorcycle_behavior>();
                             enemycount++;
@@ -196,7 +186,7 @@ public class Controller_Enemies : MonoBehaviour
                                 m.isLeft = false;
                             }
 
-                            break;
+                            break;*/
 
                         case "Boss1":
                             BOSS1 = Instantiate(gameModel.Boss1Prefab); //Spawn the prefab in
@@ -236,22 +226,22 @@ public class Controller_Enemies : MonoBehaviour
                             break;
                         default:
                             EOP = Instantiate(gameModel.motorCycleEnemyPrefab);
-                            m = EOP.GetComponent<Motorcycle_behavior>();
+                            thisEnemyBehavior = EOP.GetComponent<Motorcycle_behavior>();
                             enemycount++;
                             if ((int) Random.Range(0, 1) == 0)
                             {
 
                                 startPoint = new Vector3(-17f, 0, 20);
-                                m.nextWaypoint = new Vector3(17f, 0, -20f);
-                                m.Waypoints.Add(m.nextWaypoint);
-                                m.isLeft = true;
+                                thisEnemyBehavior.nextWaypoint = new Vector3(17f, 0, -20f);
+                                thisEnemyBehavior.Waypoints.Add(thisEnemyBehavior.nextWaypoint);
+                                thisEnemyBehavior.isLeft = true;
                             }
                             else
                             {
                                 startPoint = new Vector3(17f, 0, 20);
-                                m.nextWaypoint = new Vector3(17f, 0, -20f);
-                                m.Waypoints.Add(m.nextWaypoint);
-                                m.isLeft = false;
+                                thisEnemyBehavior.nextWaypoint = new Vector3(17f, 0, -20f);
+                                thisEnemyBehavior.Waypoints.Add(thisEnemyBehavior.nextWaypoint);
+                                thisEnemyBehavior.isLeft = false;
                             }
 
 
@@ -312,18 +302,6 @@ public class Controller_Enemies : MonoBehaviour
             var EOP = wave.enemies[j];
             wave.enemies.Remove(EOP);
             Destroy(EOP.transform.gameObject);
-
-            var H0G = wave.enemies[j];
-            wave.enemies.Remove(H0G);
-            Destroy(H0G.transform.gameObject);
-
-            var T3 = wave.enemies[j];
-            wave.enemies.Remove(T3);
-            Destroy(H0G.transform.gameObject);
-
-            var T4 = wave.enemies[j];
-            wave.enemies.Remove(T4);
-            Destroy(H0G.transform.gameObject);
 
             enemycount--;
         }
