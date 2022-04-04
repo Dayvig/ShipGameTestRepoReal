@@ -64,7 +64,7 @@ public class Controller_Enemies : MonoBehaviour
         // Making waves for the level according to model specifications
         DifficultyUpdate();
         waveTimer += Time.deltaTime;
-        Debug.Log(waveTimer);
+       // Debug.Log(waveTimer);
 
         if (waveTimer >= gameModel.waveSpawn && waveIndex < gameModel.level1Waves.Count)
         {

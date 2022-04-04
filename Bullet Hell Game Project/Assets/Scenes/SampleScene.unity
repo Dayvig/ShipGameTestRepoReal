@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2050,11 +2050,16 @@ MonoBehaviour:
   Boss1Prefab: {fileID: 6027086379095151095, guid: 4ffb0fea5732e7047ad45f97393b8bcc, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
-  level1Waves: 14000000
+  level1Waves: 01000000
   Level2Waves: 
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
   enemiesKilled: 0
+  difficultyMultiplier: 1
+  speedMultiplier: 1
+  bulletSpeedMultiplier: 1
+  healthMultiplier: 1
+  fireRateMultiplier: 1
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
   - Motorcycle
@@ -2175,7 +2180,7 @@ MonoBehaviour:
   fireRate: 0.8
   enemyName: Motorcycle
   isLeft: 1
-  bulletSpeed: 0.01
+  bulletSpeed: 7
   bulletAngles: 5a0000002d0000003c000000
   startPos: 14
   startDisplace: 2
@@ -2253,7 +2258,7 @@ MonoBehaviour:
   fireRate: 1
   enemyName: Boss1
   isLeft: 1
-  bulletSpeed: 0
+  bulletSpeed: 30
   bulletAngles: 
   startPos: 0
   startDisplace: 0
