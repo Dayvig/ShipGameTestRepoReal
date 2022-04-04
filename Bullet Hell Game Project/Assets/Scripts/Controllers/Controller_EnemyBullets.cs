@@ -10,6 +10,9 @@ public class Controller_EnemyBullets : MonoBehaviour
     private List<GameObject> _bulletsInactive;
     private List<BulletTracker> _bulletsActive;
     private Motorcycle_behavior _behavior;
+    
+    private float elapsed = 0f;
+    private const float radius = 1F;
 
     void Start()
     {
@@ -43,10 +46,21 @@ public class Controller_EnemyBullets : MonoBehaviour
         switch (bulletName)
         {
             case "MotorcycleBullet":
-                /*thisBullet.direction = (playerModel.ship.transform.position - transform.position);
-                Vector3 target = Vector3.MoveTowards(thisBullet.bullet.transform.position, playerModel.ship.transform.position, motorcycleEnemyValues.bulletSpeed);
-                thisBullet.bullet.transform.position = target;*/
                 thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * thisBullet.behavior.bulletSpeed;
+                break;
+            case "HomingBullet":
+                elapsed += Time.deltaTime;
+                if (elapsed > 10f)
+                {
+                    elapsed = elapsed % 1f;
+                }
+                thisBullet.direction = (playerModel.ship.transform.position - transform.position);
+                Vector3 target = Vector3.MoveTowards(thisBullet.bullet.transform.position, playerModel.ship.transform.position, thisBullet.behavior.bulletSpeed);
+                thisBullet.bullet.transform.position = target;
+                elapsed = elapsed % 1f;
+                break;
+            case "SpreadBullet":
+                thisBullet.bullet.transform.position += Vector3.forward;
                 break;
             default:
                 thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * gameModel.enemyBulletSpeed1;
@@ -74,7 +88,7 @@ public class Controller_EnemyBullets : MonoBehaviour
         tracker.name = type;
         tracker.behavior = behavior;
         _bulletsActive.Add(tracker);
-        /*switch (type)
+        switch (type)
         {
             case "defaultBullet":
                 bullet.transform.position = where;
@@ -88,7 +102,24 @@ public class Controller_EnemyBullets : MonoBehaviour
                 tracker.behavior = behavior;
                 _bulletsActive.Add(tracker);
                 break;
-        }*/
+            case "SpreadBullet":
+                float angleStep = 18f;
+                float angle = 0f;
+
+                for (int i = 0; i <= 4; i++)
+                {
+                    Vector3 position = bullet.transform.position;
+                    float projectileDirXPosition =
+                        position.x + Mathf.Sin((angle * Mathf.PI) / 180) * radius;
+                    float projectileDirYPosition =
+                        position.y + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
+
+                    GameObject tmpObj = Instantiate(gameModel.enemyBulletPrefab1, position,Quaternion.identity);
+
+                    angle += angleStep;
+                }
+                break;
+        }
         
     }
     
