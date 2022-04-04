@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using TMPro;
@@ -94,7 +95,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     public abstract void SetupEnemy();
 
     public abstract bool Immune();
-    public void ShootingUpdate()
+    public virtual void ShootingUpdate()
     {
         shootTimer += Time.deltaTime;
 

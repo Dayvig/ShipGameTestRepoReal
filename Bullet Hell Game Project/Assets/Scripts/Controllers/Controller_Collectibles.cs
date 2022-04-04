@@ -28,7 +28,16 @@ public class Controller_Collectibles : MonoBehaviour
 
     public void CollectibleUpdate()
     {
-        if (colIndex < level1Collectibles.Count)
+        if (gameModel.enemiesKilled >= gameModel.enemiesToSpawnPortal){
+            Vector3 startPoint = new Vector3(0, 0, 8);
+            GameObject COL = Instantiate(gameModel.PortalPrefab, startPoint, Quaternion.identity);
+            PortalBehavior behavior = COL.GetComponent<PortalBehavior>();
+            behavior.nextWaypoint = startPoint;
+            behavior.Waypoints.Add(behavior.nextWaypoint);
+            gameModel.enemiesKilled -= gameModel.enemiesToSpawnPortal;
+        }
+    
+        /*if (colIndex < level1Collectibles.Count)
         {
             spawnTimer -= Time.deltaTime;
             if (spawnTimer < 0)
@@ -36,7 +45,7 @@ public class Controller_Collectibles : MonoBehaviour
                 int numberToSpawn = 1;
                 for (int i = 0; i < numberToSpawn; i++)
                 {
-                    GameObject COL;
+                    GameObject COL;                   
                     Vector3 startPoint = new Vector3(0, 0, 8);
                     switch (level1Collectibles[colIndex])
                     {
@@ -52,7 +61,7 @@ public class Controller_Collectibles : MonoBehaviour
                 }
 
                 spawnTimer = level1Timings[colIndex];
-            }
+            }*/
         }
     }
         /*
@@ -172,5 +181,3 @@ public class Controller_Collectibles : MonoBehaviour
             waveTimer = 0;
             waveIndex++;
         }*/
-
-    }

@@ -17,14 +17,19 @@ public class Model_Game : MonoBehaviour
     [Header("Enemies")]
     public GameObject enemyPrefab1;
     public GameObject enemyPrefab2;
+    public GameObject enemyPrefab3;
+    public GameObject enemyPrefab4;
     public GameObject enemyBulletPrefab1;
     public GameObject motorCycleEnemyPrefab;
     public GameObject HogEnemyPrefab;
+    public GameObject T3EnemyPrefab;
+    public GameObject T4EnemyPrefab;
+    public GameObject TrailEnemyPrefab;
     public GameObject Boss1Prefab;
     public GameObject GasCanisterPrefab;
     public GameObject PortalPrefab;
     public List<int> level1Waves;
-    public List<int> Level2Waves;
+    //public List<int> Level2Waves;
     public float enemySpeed1;
     public float enemyBulletSpeed1;
     public int enemiesKilled;
@@ -33,9 +38,10 @@ public class Model_Game : MonoBehaviour
     public float bulletSpeedMultiplier;
     public float healthMultiplier;
     public float fireRateMultiplier;
+    public int enemiesToSpawnPortal;
     
     [Header("Effects")]
     public GameObject explosionPrefab1;
     public List<string> level1EnemyTypes;
-    public List<string> level2EnemyTypes;
+    //public List<string> level2EnemyTypes;
 }
