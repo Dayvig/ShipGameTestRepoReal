@@ -6,10 +6,10 @@ using Enemies;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class T4Enemy_Behavior : Base_Enemy_Behavior
+public class T4Spawn_Behavior : Base_Enemy_Behavior
 {
-    private T4Enemy values;
-    public static string BULLET_NAME = "T4Bullet";
+    private T4SpawnEnemy values;
+    public static string BULLET_NAME = "T4SpawnBullet";
 
     public override void MovementUpdate()
     {
@@ -28,7 +28,7 @@ public class T4Enemy_Behavior : Base_Enemy_Behavior
 
     public override void SetupEnemy()
     {
-        values = GameObject.Find("Model").GetComponent<T4Enemy>();
+        values = GameObject.Find("Model").GetComponent<T4SpawnEnemy>();
         shootInterval = values.fireRate / gameModel.fireRateMultiplier;
         shootTimer = Random.Range(0, shootInterval / 2);
         hitPoints = (int)(values.hp * gameModel.healthMultiplier);
@@ -67,27 +67,6 @@ public class T4Enemy_Behavior : Base_Enemy_Behavior
         gameModel.enemiesKilled++;
         playerModel.score += 1000;
         gameObject.SetActive(false);
-    
-        SpawnEnemy(values.enemiesToSpawn);
     }
 
-    private void SpawnEnemy(int numToSpawn)
-    {
-        GameObject Spawn;
-        for (int i = 0; i < numToSpawn; i++){
-            
-            Spawn = Instantiate(gameModel.TrailEnemyPrefab); //Spawn the prefab in
-        T4Spawn_Behavior tbehavior = TRAIL.GetComponent<TrailEnemy_Behavior>(); //Get its behavior inside its prefab
-        stag = getEntrance(trailValues);
-        enemycount++;
-        tbehavior.nextWaypoint = trailValues.Waypoints[0];
-        tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
-        tbehavior.Waypoints.Add(trailValues.Waypoints[1]);
-        tbehavior.Waypoints.Add(trailValues.Waypoints[2]);
-        tbehavior.Waypoints.Add(trailValues.Waypoints[3]);
-        tbehavior.Waypoints.Add(trailValues.Waypoints[4]);
-        TRAIL.transform.position = tbehavior.nextWaypoint + (stag * i * trailValues.startStagger);
-        
-    }
-    
 }

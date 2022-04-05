@@ -10,6 +10,7 @@ public class T4Enemy_Behavior : Base_Enemy_Behavior
 {
     private T4Enemy values;
     public static string BULLET_NAME = "T4Bullet";
+    private T4SpawnEnemy spawnValues;
 
     public override void MovementUpdate()
     {
@@ -29,6 +30,7 @@ public class T4Enemy_Behavior : Base_Enemy_Behavior
     public override void SetupEnemy()
     {
         values = GameObject.Find("Model").GetComponent<T4Enemy>();
+        spawnValues = GameObject.Find("Model").GetComponent<T4SpawnEnemy>();
         shootInterval = values.fireRate / gameModel.fireRateMultiplier;
         shootTimer = Random.Range(0, shootInterval / 2);
         hitPoints = (int)(values.hp * gameModel.healthMultiplier);
@@ -74,20 +76,18 @@ public class T4Enemy_Behavior : Base_Enemy_Behavior
     private void SpawnEnemy(int numToSpawn)
     {
         GameObject Spawn;
-        for (int i = 0; i < numToSpawn; i++){
-            
-            Spawn = Instantiate(gameModel.TrailEnemyPrefab); //Spawn the prefab in
-        T4Spawn_Behavior tbehavior = TRAIL.GetComponent<TrailEnemy_Behavior>(); //Get its behavior inside its prefab
-        stag = getEntrance(trailValues);
-        enemycount++;
-        tbehavior.nextWaypoint = trailValues.Waypoints[0];
-        tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
-        tbehavior.Waypoints.Add(trailValues.Waypoints[1]);
-        tbehavior.Waypoints.Add(trailValues.Waypoints[2]);
-        tbehavior.Waypoints.Add(trailValues.Waypoints[3]);
-        tbehavior.Waypoints.Add(trailValues.Waypoints[4]);
-        TRAIL.transform.position = tbehavior.nextWaypoint + (stag * i * trailValues.startStagger);
-        
+        for (int i = 0; i < numToSpawn; i++)
+        {
+            Spawn = Instantiate(gameModel.T4EnemySpawnPrefab); //Spawn the prefab in
+            T4Spawn_Behavior tsbehavior = Spawn.GetComponent<T4Spawn_Behavior>(); //Get its behavior inside its prefab
+            Vector3 spawnPoint = transform.position;
+            float angle = Random.Range(0, 360);
+            float radius = values.radius;
+            Vector3 toGoTo = spawnPoint + new Vector3(Mathf.Sin(angle) * (float)(Math.PI / 180), 0f, Mathf.Cos(angle) * (float)(Math.PI / 180)).normalized * radius;
+            tsbehavior.nextWaypoint = toGoTo;
+            tsbehavior.Waypoints[0] = (tsbehavior.nextWaypoint);
+            Spawn.transform.position = spawnPoint;
+        }
     }
-    
+
 }

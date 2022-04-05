@@ -7,5 +7,6 @@ namespace Enemies
     public class T4Enemy : AbstractEnemy
     {
         public int enemiesToSpawn;
+        public float radius;
     }
 }

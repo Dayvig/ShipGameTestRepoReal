@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6878987196627379558}
   - component: {fileID: 263432641718617227}
   - component: {fileID: 6986519289094046527}
-  - component: {fileID: 5072576717014559849}
+  - component: {fileID: 1572361761836829344}
   m_Layer: 0
   m_Name: T4EnemySpawn
   m_TagString: Untagged
@@ -97,7 +97,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5072576717014559849
+--- !u!114 &1572361761836829344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2058931671444382800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22754a899d994177843f99075c5e77f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 771c4d2b77ea420ca922b70780da68fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerModel: {fileID: 0}
@@ -118,7 +118,8 @@ MonoBehaviour:
   limitHorz: 15
   limitVert: 12
   rate: 360
-  Waypoints: []
+  Waypoints:
+  - {x: 0, y: 0, z: 0}
   nextWaypoint: {x: 0, y: 0, z: 0}
   currentWaypointIndex: 0
   shootInterval: 0
@@ -127,4 +128,3 @@ MonoBehaviour:
   moveSpeed: 0
   bulletSpeed: 0
   switchedWaypoint: 0
-  isLeft: 0
