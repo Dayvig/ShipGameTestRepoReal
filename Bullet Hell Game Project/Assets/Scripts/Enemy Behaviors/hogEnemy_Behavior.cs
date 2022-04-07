@@ -26,6 +26,10 @@ public class hogEnemy_Behavior : Base_Enemy_Behavior
                 Destroy(gameObject);
             }
         }
+        if(transform.position.z >= 12 || transform.position.x <= -22 || transform.position.x >= 22)
+        {
+            Destroy(gameObject);
+        }
     }
     public override void KillThisEnemy()
     {
@@ -65,7 +69,7 @@ public class hogEnemy_Behavior : Base_Enemy_Behavior
 
     public override void UpdateVisuals()
     {
-        transform.Rotate(Vector3.up * Time.deltaTime * rate);
+        //transform.Rotate(Vector3.up * Time.deltaTime * rate);
     }
 
     public override void FiringPattern()
@@ -76,7 +80,7 @@ public class hogEnemy_Behavior : Base_Enemy_Behavior
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }
