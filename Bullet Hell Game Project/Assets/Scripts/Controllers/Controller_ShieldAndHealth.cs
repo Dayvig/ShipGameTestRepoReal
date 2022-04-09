@@ -10,6 +10,9 @@ public class Controller_ShieldAndHealth : MonoBehaviour
 
     private float shieldRegenTimer;
     private bool firstSpawn = true;
+
+    public PlayerInfo savedInfo;
+    
     void Start()
     {
         Debug.Assert(player != null, "Controller_ShieldAndHealth is looking for a reference to Model_Player, but none has been added in the Inspector!");
@@ -30,6 +33,7 @@ public class Controller_ShieldAndHealth : MonoBehaviour
         }
 
         player.lostLife = false;
+        
     }
 
     public void ShieldAndHealthUpdate()
