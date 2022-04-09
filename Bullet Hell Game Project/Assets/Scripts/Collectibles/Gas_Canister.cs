@@ -41,7 +41,7 @@ public class Gas_Canister : Base_Collectible_Behavior
         controllerFuel.SetFuel(controllerFuel.currentFuel+10);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Player")) return;
         collected = true;
