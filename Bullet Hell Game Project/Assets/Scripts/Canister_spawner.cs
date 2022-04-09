@@ -19,7 +19,6 @@ public class Canister_spawner : MonoBehaviour
 
     void MakeGas()
     {
-        Debug.Log("HERE");
          Instantiate(canister, new Vector3(Random.Range(-10,10),gameObject.transform.position.y,transform.position.z+11), Quaternion.identity);
     }
 
