@@ -74,6 +74,26 @@ public class TrailEnemy_Behavior : Base_Enemy_Behavior
 
     public override void FiringPattern()
     {
-        bullets.FireBullet(transform.position, Vector3.back.normalized, BULLET_NAME, this);
+        if (behaviorState == 0)
+        {
+            bullets.FireBullet(transform.position, Vector3.back.normalized, "Default", this);
+        }
+        else
+        {
+            bullets.FireBullet(transform.position, Vector3.left.normalized, "Default", this);
+            bullets.FireBullet(transform.position, Vector3.right.normalized, "Default", this);
+        }
     }
+
+    public override void KillThisEnemy()
+    {
+        if (inScreen())
+        {
+            effects.MakeExplosion(transform.position);
+            gameModel.enemiesKilled++;
+            playerModel.score += 1000;
+        }
+        gameObject.SetActive(false);
+    }
+    
 }

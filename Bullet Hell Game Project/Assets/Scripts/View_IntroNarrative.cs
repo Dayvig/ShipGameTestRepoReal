@@ -22,6 +22,7 @@ public class View_IntroNarrative : MonoBehaviour
 
     public void Start()
     {
+        
         CleanupNarrative();
 
         bool testFail = false;
@@ -60,6 +61,11 @@ public class View_IntroNarrative : MonoBehaviour
     public bool UpdateFromGameController()
     {
         _timer += Time.deltaTime;
+        
+        //Skipping narrative
+        _done = true;
+        //Skipping narrative
+        
         if (!_done && !isOptionIndex(_narrativeIndex) && _timer >= narrative.intervals[_narrativeIndex])
             
         {
@@ -88,6 +94,8 @@ public class View_IntroNarrative : MonoBehaviour
             CleanupNarrative();
             _narrativeIndex = 0;
         }
+        
+        
 
         return _done;
     }

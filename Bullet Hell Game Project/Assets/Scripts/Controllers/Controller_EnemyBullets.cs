@@ -60,16 +60,17 @@ public class Controller_EnemyBullets : MonoBehaviour
                 elapsed = elapsed % 1f;
                 break;
             case "SpreadBullet":
-                thisBullet.bullet.transform.position += Vector3.forward;
+                thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * thisBullet.behavior.bulletSpeed;
                 break;
             default:
-                thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * gameModel.enemyBulletSpeed1;
+                thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * thisBullet.behavior.bulletSpeed;
                 break;
         }
     }
 
     public void FireBullet(Vector3 where, Vector3 direction, string type, Base_Enemy_Behavior behavior)
     {
+        
         GameObject bullet;
         if (_bulletsInactive.Count > 0)
         {
@@ -88,39 +89,7 @@ public class Controller_EnemyBullets : MonoBehaviour
         tracker.name = type;
         tracker.behavior = behavior;
         _bulletsActive.Add(tracker);
-        switch (type)
-        {
-            case "defaultBullet":
-                bullet.transform.position = where;
-                tracker.direction = direction;
-                tracker.name = "defaultBullet";
-                _bulletsActive.Add(tracker);
-                break;
-            case "MotorcycleBullet":
-                tracker.direction = (playerModel.ship.transform.position - transform.position).normalized;
-                tracker.name = "MotorcycleBullet";
-                tracker.behavior = behavior;
-                _bulletsActive.Add(tracker);
-                break;
-            case "SpreadBullet":
-                float angleStep = 18f;
-                float angle = 0f;
 
-                for (int i = 0; i <= 4; i++)
-                {
-                    Vector3 position = bullet.transform.position;
-                    float projectileDirXPosition =
-                        position.x + Mathf.Sin((angle * Mathf.PI) / 180) * radius;
-                    float projectileDirYPosition =
-                        position.y + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
-
-                    GameObject tmpObj = Instantiate(gameModel.enemyBulletPrefab1, position,Quaternion.identity);
-
-                    angle += angleStep;
-                }
-                break;
-        }
-        
     }
     
     public void FireBullet(Vector3 where, Vector3 direction)

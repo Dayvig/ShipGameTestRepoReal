@@ -24,7 +24,10 @@ public class Model_Game : MonoBehaviour
     public GameObject HogEnemyPrefab;
     public GameObject T3EnemyPrefab;
     public GameObject T4EnemyPrefab;
+    public GameObject T4EnemySpawnPrefab;
     public GameObject TrailEnemyPrefab;
+    public GameObject FastEnemyPrefab;
+    public GameObject RapidEnemyPrefab;
     public GameObject Boss1Prefab;
     public GameObject GasCanisterPrefab;
     public GameObject PortalPrefab;
