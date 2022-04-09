@@ -175,25 +175,16 @@ public class Controller_Enemies : MonoBehaviour
 
                         case "Hog":
                             H0G = Instantiate(gameModel.HogEnemyPrefab);
-                            Motorcycle_behavior m = H0G.GetComponent<Motorcycle_behavior>();
+                            hogEnemy_Behavior hogBehavior = H0G.GetComponent<hogEnemy_Behavior>();
+                            stag = getEntrance(values2);
+                            float Hogdisplace = Random.Range(-12, 12);
+                            hogBehavior.nextWaypoint = values2.Waypoints[0] + Vector3.left * Hogdisplace;
+                            hogBehavior.Waypoints[0] = hogBehavior.nextWaypoint;
+                            hogBehavior.Waypoints[1] = values2.Waypoints[1] + Vector3.left * Hogdisplace;
+                            H0G.transform.position = hogBehavior.nextWaypoint + (stag * i * values2.startStagger);
                             enemycount++;
-                            displace = Random.Range(-values2.startDisplace, values2.startDisplace);
-                            if (Random.Range(0, 2) == 0)
-                            {
-                                startPoint = new Vector3(-values2.startPos + displace, 0, 20);
-                                m.nextWaypoint = new Vector3(-values2.startPos + displace, 0, -20f);
-                                m.Waypoints.Add(m.nextWaypoint);
-                                m.isLeft = true;
-                            }
-                            else
-                            {
-                                startPoint = new Vector3(values2.startPos + displace, 0, 20);
-                                m.nextWaypoint = new Vector3(values2.startPos + displace, 0, -20f);
-                                m.Waypoints.Add(m.nextWaypoint);
-                                m.isLeft = false;
-                            }
-
                             break;
+
 
                         case "T3Enemy":
                             T3 = Instantiate(gameModel.T3EnemyPrefab);
@@ -301,22 +292,22 @@ public class Controller_Enemies : MonoBehaviour
                             break;
                         default:
                             EOP = Instantiate(gameModel.motorCycleEnemyPrefab);
-                            m = EOP.GetComponent<Motorcycle_behavior>();
+                            thisEnemyBehavior = EOP.GetComponent<Motorcycle_behavior>();
                             enemycount++;
                             if ((int) Random.Range(0, 1) == 0)
                             {
 
                                 startPoint = new Vector3(-17f, 0, 20);
-                                m.nextWaypoint = new Vector3(17f, 0, -20f);
-                                m.Waypoints.Add(m.nextWaypoint);
-                                m.isLeft = true;
+                                thisEnemyBehavior.nextWaypoint = new Vector3(17f, 0, -20f);
+                                thisEnemyBehavior.Waypoints.Add(thisEnemyBehavior.nextWaypoint);
+                                thisEnemyBehavior.isLeft = true;
                             }
                             else
                             {
                                 startPoint = new Vector3(17f, 0, 20);
-                                m.nextWaypoint = new Vector3(17f, 0, -20f);
-                                m.Waypoints.Add(m.nextWaypoint);
-                                m.isLeft = false;
+                                thisEnemyBehavior.nextWaypoint = new Vector3(17f, 0, -20f);
+                                thisEnemyBehavior.Waypoints.Add(thisEnemyBehavior.nextWaypoint);
+                                thisEnemyBehavior.isLeft = false;
                             }
 
 
