@@ -1975,7 +1975,7 @@ MonoBehaviour:
   Boss1Prefab: {fileID: 6027086379095151095, guid: 4ffb0fea5732e7047ad45f97393b8bcc, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
-  level1Waves: 0500000005000000050000000500000014000000140000001400000014000000
+  level1Waves: 0a00000005000000050000000500000014000000140000001400000014000000
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
   enemiesKilled: 0
@@ -2129,7 +2129,7 @@ MonoBehaviour:
   Notes: 
   hp: 25
   damage: 2
-  moveSpeed: 10
+  moveSpeed: 5
   fireRate: 1
   enemyName: Hog
   isLeft: 1
