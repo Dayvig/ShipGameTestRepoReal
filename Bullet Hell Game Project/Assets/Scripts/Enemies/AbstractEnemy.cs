@@ -12,7 +12,6 @@ namespace Enemies
         public float moveSpeed;
         public float fireRate;
         public string enemyName;
-        public bool isLeft;
         public float bulletSpeed;
         public int[] bulletAngles;
         public float startPos;

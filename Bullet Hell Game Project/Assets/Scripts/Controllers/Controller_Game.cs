@@ -192,6 +192,7 @@ public class Controller_Game : MonoBehaviour
 
         if (done) SetGameState(GameStates.Spawn);
     }
+    
     private float spawnTimer;
     private void _SpawnUpdate()
     {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Collectibles;
 using Enemies;
+using Enemy_Behaviors;
 using UnityEngine;
 using UnityEngine.UIElements.Experimental;
 using Random = UnityEngine.Random;
@@ -21,9 +22,23 @@ public class Controller_Enemies : MonoBehaviour
     private T4Enemy values4;
     private Boss1Enemy boss1Value; //These need to be named the same as the enemy script placed in Application.Model
     private TrailEnemy trailValues;
+    private FastEnemy fastValues;
+    private RapidEnemy rapidValues;
     private string level = "1";
     private float prevDifficulty;
-
+    public int spawnMagicNumber;
+    
+                //Enemy requirements part 3
+    GameObject EOP;
+    GameObject H0G;
+    GameObject T3;
+    GameObject T4;
+    GameObject BOSS1;
+    GameObject TRAIL;
+    GameObject FAST;
+    GameObject RAPID;
+    
+    public Vector3 dis;
 
     void Start()
     {
@@ -36,6 +51,8 @@ public class Controller_Enemies : MonoBehaviour
         values4 = GameObject.Find("Model").GetComponent<T4Enemy>();
         boss1Value = GameObject.Find("Model").GetComponent<Boss1Enemy>(); //Gets the prefab
         trailValues = GameObject.Find("Model").GetComponent<TrailEnemy>();
+        fastValues = GameObject.Find("Model").GetComponent<FastEnemy>();
+        rapidValues = GameObject.Find("Model").GetComponent<RapidEnemy>();
         //
         prevDifficulty = gameModel.difficultyMultiplier;
     }
@@ -79,15 +96,29 @@ public class Controller_Enemies : MonoBehaviour
             float turnOverTime = 10;
             if (waveTimer >= turnOverTime && gameModel.waveSpawn < gameModel.level1Waves.Count)
             {
-                //Enemy requirements part 3
-                GameObject EOP;
-                GameObject H0G;
-                GameObject T3;
-                GameObject T4;
-                GameObject BOSS1;
-                GameObject TRAIL;
+
                 //
                 Wave newWave = new Wave();
+
+                //setup magic number for particular wave
+                //magic number tells it how to spawn in that particular wave.
+                switch (gameModel.level1EnemyTypes[waveIndex])
+                {
+                    case "Trail":
+                        spawnMagicNumber = (int)Random.Range(0, 2);
+                        if (spawnMagicNumber == 0)
+                        {
+                            dis = new Vector3(0, 0, Random.Range(-4, 4));
+                        }
+                        else
+                        {
+                            dis = new Vector3(Random.Range(-4, 4), 0, 0);
+                        }
+                        break;
+                    default:
+                        spawnMagicNumber = 0;
+                        break;
+                }
 
                 for (int i = 0; i < numberToSpawn; i++)
                 {
@@ -214,15 +245,59 @@ public class Controller_Enemies : MonoBehaviour
                             
                             TRAIL = Instantiate(gameModel.TrailEnemyPrefab); //Spawn the prefab in
                             TrailEnemy_Behavior tbehavior = TRAIL.GetComponent<TrailEnemy_Behavior>(); //Get its behavior inside its prefab
-                            stag = getEntrance(trailValues);
                             enemycount++;
-                            tbehavior.nextWaypoint = trailValues.Waypoints[0];
-                            tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
-                            tbehavior.Waypoints.Add(trailValues.Waypoints[1]);
-                            tbehavior.Waypoints.Add(trailValues.Waypoints[2]);
-                            tbehavior.Waypoints.Add(trailValues.Waypoints[3]);
-                            tbehavior.Waypoints.Add(trailValues.Waypoints[4]);
+                            if (spawnMagicNumber == 0)
+                            {
+                                stag = new Vector3(-1, 0, 0);
+                                tbehavior.nextWaypoint = trailValues.Waypoints[0] + dis;
+                                tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
+                                tbehavior.Waypoints.Add(trailValues.Waypoints[1] + dis);
+                                tbehavior.Waypoints.Add(trailValues.Waypoints[2]+ dis);
+                                tbehavior.behaviorState = 0;
+                            }
+                            else
+                            {
+                                stag = new Vector3(0, 0, 1);
+                                tbehavior.nextWaypoint = trailValues.Waypoints[3] + dis;
+                                tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
+                                tbehavior.Waypoints.Add(trailValues.Waypoints[4] + dis);
+                                tbehavior.Waypoints.Add(trailValues.Waypoints[5]+ dis);
+                                tbehavior.behaviorState = 1;
+                            }
                             TRAIL.transform.position = tbehavior.nextWaypoint + (stag * i * trailValues.startStagger);
+                            break;
+                        case "Fast":
+                            FAST = Instantiate(gameModel.FastEnemyPrefab); //Spawn the prefab in
+                            FastEnemy_Behavior fastBehavior = FAST.GetComponent<FastEnemy_Behavior>(); //Get its behavior inside its prefab
+                            enemycount++;
+                            stag = getEntrance(fastValues);
+                            int rand = (int)Random.Range(0, 2);
+                            if (rand == 0)
+                            {
+                                fastBehavior.nextWaypoint = fastValues.Waypoints[2];
+                                fastBehavior.Waypoints.Add(fastBehavior.nextWaypoint);
+                                fastBehavior.Waypoints.Add(fastValues.Waypoints[3]);
+                            }
+                            else
+                            {
+                                fastBehavior.nextWaypoint = fastValues.Waypoints[0];
+                                fastBehavior.Waypoints.Add(fastBehavior.nextWaypoint);
+                                fastBehavior.Waypoints.Add(fastValues.Waypoints[1]);
+                            }
+
+                            FAST.transform.position = fastBehavior.nextWaypoint + (stag * i * fastValues.startStagger);
+                            break;
+                        
+                        case "Rapid":
+                            RAPID = Instantiate(gameModel.RapidEnemyPrefab);
+                            RapidFireEnemy_Behavior thisRapidBehavior = RAPID.GetComponent<RapidFireEnemy_Behavior>();
+                            stag = getEntrance(rapidValues);
+                            float xdisplace3 = Random.Range(-12, 12);
+                            thisRapidBehavior.nextWaypoint = rapidValues.Waypoints[0] + Vector3.left * xdisplace3;
+                            thisRapidBehavior.Waypoints[0] = thisRapidBehavior.nextWaypoint;
+                            thisRapidBehavior.Waypoints[1] = rapidValues.Waypoints[1] + Vector3.left * xdisplace3;
+                            enemycount++;
+                            RAPID.transform.position = thisRapidBehavior.nextWaypoint + (stag * i * rapidValues.startStagger);
                             break;
                         default:
                             EOP = Instantiate(gameModel.motorCycleEnemyPrefab);

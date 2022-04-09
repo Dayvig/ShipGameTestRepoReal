@@ -63,7 +63,7 @@ public class Controller_EnemyBullets : MonoBehaviour
                 thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * thisBullet.behavior.bulletSpeed;
                 break;
             default:
-                thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * gameModel.enemyBulletSpeed1;
+                thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * thisBullet.behavior.bulletSpeed;
                 break;
         }
     }

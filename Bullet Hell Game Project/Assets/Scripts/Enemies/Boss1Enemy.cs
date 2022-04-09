@@ -7,7 +7,7 @@ public class Boss1Enemy : AbstractEnemy
 {
     // Start is called before the first frame update
     //0 - Drives downwards on the sides of the screen, shooting a 2-bullet spread left or right.
-
+    public bool isLeft;
     public Boss1Enemy()
     {
         hp = 30;
