@@ -69,6 +69,7 @@ public class Boss1_Behavior : Base_Enemy_Behavior
     {
         boss1Value = GameObject.Find("Model").GetComponent<Boss1Enemy>(); //Gets the prefab
         shootInterval = boss1Value.fireRate;
+        bulletSpeed = boss1Value.bulletSpeed;
         //
         shootTimer = Random.Range(0, shootInterval);  //THIS SHOULDNT BE RANDOM??
         ///
@@ -129,7 +130,7 @@ public class Boss1_Behavior : Base_Enemy_Behavior
 
     }
 
-    public override void FiringPattern()  //temp removed firing
+    public override void FiringPattern()  
     {
         bullets.FireBullet(transform.position, (playerModel.ship.transform.position - transform.position).normalized, BULLET_NAME, this);
     }

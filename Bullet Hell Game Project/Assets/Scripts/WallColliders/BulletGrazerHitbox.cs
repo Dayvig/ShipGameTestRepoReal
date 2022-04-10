@@ -49,7 +49,7 @@ public class BulletGrazerHitbox : MonoBehaviour
                 ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
                 em.enabled = true;
 
-                StartCoroutine(ExampleCoroutine());
+                StartCoroutine(Cooldown());
           
             }
             // bullets.FireBullet(Vector 3 location, Vector3 direction)
@@ -62,7 +62,7 @@ public class BulletGrazerHitbox : MonoBehaviour
     }
 
 
-    IEnumerator ExampleCoroutine() //Waiter
+    IEnumerator Cooldown() //Waiter
     {
         //Print the time of when the function is first called.
         //Debug.Log("Started Coroutine at timestamp : " + Time.time);
