@@ -13,17 +13,91 @@ public class Controller_Collectibles : MonoBehaviour
     public float spawnTimer = 0f;
     public float spawnInterval;
     public int colIndex = 0;
+    public Portal portalValues;
+    public GuardianEnemy guardValues;
+    GameObject GUARD;
+    public int additionalGuardians = 0;
+    
     
     void Start()
     {
         Debug.Assert(gameModel != null, "Controller_Collectibles is looking for a reference to Model_Game, but none has been added in the Inspector!");
         colIndex = 0;
         spawnTimer = level1Timings[colIndex];
+        portalValues = GameObject.Find("Model").GetComponent<Portal>();
+        guardValues = GameObject.Find("Model").GetComponent<GuardianEnemy>();
     }
 
     void Update()
     {
         CollectibleUpdate();
+    }
+
+    void SpawnGuardians(int toSpawn)
+    {
+        Vector3 stag;
+        Vector3 dis;
+        for (int i = 0; i < portalValues.guardiansToSpawn; i++)
+        {
+            GUARD = Instantiate(gameModel.GuardEnemyPrefab); //Spawn the prefab in
+            Guardian_Behavior guardianBehavior = GUARD.GetComponent<Guardian_Behavior>(); //Get its behavior inside its prefab
+
+            int rand = (int) Random.Range(0, 6);
+            if (rand == 0)
+            {
+                stag = new Vector3(-1, 0, 0);
+                dis = new Vector3(0, 0, Random.Range(-6, 6));
+                guardianBehavior.nextWaypoint = guardValues.Waypoints[0] + dis;
+                guardianBehavior.Waypoints.Add(guardianBehavior.nextWaypoint);
+                guardianBehavior.Waypoints.Add(guardValues.Waypoints[1] + dis);
+                GUARD.transform.position = guardianBehavior.nextWaypoint + (stag * i * guardValues.startStagger);
+            }
+            else if (rand == 1)
+            {
+                stag = new Vector3(1, 0, 0);
+                dis = new Vector3(0, 0, Random.Range(-6, 6));
+                guardianBehavior.nextWaypoint = guardValues.Waypoints[2] + dis;
+                guardianBehavior.Waypoints.Add(guardianBehavior.nextWaypoint);
+                guardianBehavior.Waypoints.Add(guardValues.Waypoints[3] + dis);
+                GUARD.transform.position = guardianBehavior.nextWaypoint + (stag * i * guardValues.startStagger);
+            }
+            else if (rand == 2)
+            {
+                stag = new Vector3(0, 0, 1);
+                dis = new Vector3(Random.Range(-6, 6), 0, 0);
+                guardianBehavior.nextWaypoint = guardValues.Waypoints[4] + dis;
+                guardianBehavior.Waypoints.Add(guardianBehavior.nextWaypoint);
+                guardianBehavior.Waypoints.Add(guardValues.Waypoints[5] + dis);
+                GUARD.transform.position = guardianBehavior.nextWaypoint + (stag * i * guardValues.startStagger);
+            }
+            else if (rand == 3)
+            {
+                stag = new Vector3(0, 0, -1);
+                dis = new Vector3(Random.Range(-6, 6), 0, 0);
+                guardianBehavior.nextWaypoint = guardValues.Waypoints[6] + dis;
+                guardianBehavior.Waypoints.Add(guardianBehavior.nextWaypoint);
+                guardianBehavior.Waypoints.Add(guardValues.Waypoints[7] + dis);
+                GUARD.transform.position = guardianBehavior.nextWaypoint + (stag * i * guardValues.startStagger);
+            }
+            else if (rand == 4)
+            { 
+                stag = new Vector3(0, 0, -1);
+                dis = new Vector3(Random.Range(-6, 6), 0, Random.Range(-6, 6));
+                guardianBehavior.nextWaypoint = guardValues.Waypoints[8] + dis;
+                guardianBehavior.Waypoints.Add(guardianBehavior.nextWaypoint);
+                guardianBehavior.Waypoints.Add(guardValues.Waypoints[9] + dis);
+                GUARD.transform.position = guardianBehavior.nextWaypoint + (stag * i * guardValues.startStagger);
+            }
+            else
+            { 
+                stag = new Vector3(0, 0, -1);
+                dis = new Vector3(Random.Range(-6, 6), 0, Random.Range(-6, 6));
+                guardianBehavior.nextWaypoint = guardValues.Waypoints[10] + dis;
+                guardianBehavior.Waypoints.Add(guardianBehavior.nextWaypoint);
+                guardianBehavior.Waypoints.Add(guardValues.Waypoints[11] + dis);
+                GUARD.transform.position = guardianBehavior.nextWaypoint + (stag * i * guardValues.startStagger);
+            }
+        }
     }
 
     public void CollectibleUpdate()
@@ -35,6 +109,9 @@ public class Controller_Collectibles : MonoBehaviour
             behavior.nextWaypoint = startPoint;
             behavior.Waypoints.Add(behavior.nextWaypoint);
             gameModel.enemiesKilled -= gameModel.enemiesToSpawnPortal;
+
+            SpawnGuardians(portalValues.guardiansToSpawn + additionalGuardians);
+            additionalGuardians += 2;
         }
     
         /*if (colIndex < level1Collectibles.Count)

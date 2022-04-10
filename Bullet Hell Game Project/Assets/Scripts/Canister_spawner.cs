@@ -12,8 +12,8 @@ public class Canister_spawner : MonoBehaviour
     private void Update()
     {
         elapsed += Time.deltaTime;
-        if (!(elapsed >= 5f)) return;
-        elapsed %= 5f;
+        if (!(elapsed >= 8f)) return;
+        elapsed %= 8f;
         MakeGas();
     }
 
