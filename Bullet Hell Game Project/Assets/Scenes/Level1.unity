@@ -1957,6 +1957,22 @@ MonoBehaviour:
   - 6
   - 0
   - -10
+  - 8
+  - 8
+  - -5
+  - -5
+  - 5
+  - -10
+  - 8
+  - 8
+  - -5
+  - 8
+  - -10
+  - 0
+  - 0
+  - -15
+  - 8
+  - 0
   waveTimer: 0
   enemyPrefab1: {fileID: 1796847636323191739, guid: 0d5c13421117800468820a5ee16ea6eb, type: 3}
   enemyPrefab2: {fileID: 6027086379095151095, guid: 0aca2c18010931943b1a7af63ba51579, type: 3}
@@ -1975,7 +1991,7 @@ MonoBehaviour:
   GuardEnemyPrefab: {fileID: 7443488182354335285, guid: b4f5d05469bc2604888f42a465545048, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
-  level1Waves: 030000000a000000030000000a0000000a000000050000000a000000030000000a0000000a0000000300000003000000030000000f00000002000000050000000f0000000a0000000a0000000a0000000a000000080000000a00000003000000050000000f00000008000000030000000800000003000000
+  level1Waves: 030000000a000000030000000a0000000a000000050000000a000000030000000a0000000a0000000300000003000000030000000f00000002000000050000000f0000000a0000000a0000000a0000000a000000070000000a00000003000000050000000f000000070000000300000008000000030000000a0000000a00000014000000140000000f0000000a0000000f0000000f000000140000000a0000000a0000001a00000014000000180000000f0000000f000000
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
   enemiesKilled: 0
@@ -2014,6 +2030,22 @@ MonoBehaviour:
   - Rapid
   - Trail
   - Fast
+  - Rapid
+  - Fast
+  - Fast
+  - Trail
+  - Trail
+  - Trail
+  - Rapid
+  - Rapid
+  - Trail
+  - Fast
+  - Trail
+  - Trail
+  - Rapid
+  - Trail
+  - Trail
+  - Rapid
   - Rapid
   - Fast
   - Fast
@@ -2225,9 +2257,9 @@ MonoBehaviour:
   - {x: -17, y: 0, z: 0}
   - {x: 0, y: 0, z: 4}
   - {x: 17, y: 0, z: 0}
-  - {x: 0, y: 0, z: 10}
+  - {x: 0, y: 0, z: 14}
   - {x: 4, y: 0, z: 0}
-  - {x: 0, y: 0, z: -10}
+  - {x: 0, y: 0, z: -14}
   startDisplace: 0
   startStagger: 2
   enterFrom: 0
