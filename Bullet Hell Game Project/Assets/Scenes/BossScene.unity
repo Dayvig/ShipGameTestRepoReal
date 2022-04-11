@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -277,6 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1212158453}
   bullets: {fileID: 144164433}
+  savedInfo: {fileID: 0}
 --- !u!114 &144164435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +327,9 @@ MonoBehaviour:
   spawnTimer: 0
   spawnInterval: 10
   colIndex: 0
+  portalValues: {fileID: 0}
+  guardValues: {fileID: 0}
+  additionalGuardians: 0
 --- !u!1 &146051036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,6 +2062,7 @@ MonoBehaviour:
   FastEnemyPrefab: {fileID: 6919278142062601856, guid: 699b94758189a184d9ad7552a450df2b, type: 3}
   RapidEnemyPrefab: {fileID: 6811408445738773521, guid: f76c1e83cf7ed9d44bf9b95442f8c9b1, type: 3}
   Boss1Prefab: {fileID: 6027086379095151095, guid: 4ffb0fea5732e7047ad45f97393b8bcc, type: 3}
+  GuardEnemyPrefab: {fileID: 0}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
   level1Waves: 01000000
@@ -2226,6 +2231,7 @@ MonoBehaviour:
   movementSpeed: 0
   hitPoints: 0
   lifeTime: 5
+  guardiansToSpawn: 0
 --- !u!114 &1212158460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2241,10 +2247,10 @@ MonoBehaviour:
   Notes: 
   hp: 900
   damage: 1
-  moveSpeed: 5
+  moveSpeed: 7
   fireRate: 1
   enemyName: Boss1
-  bulletSpeed: 0
+  bulletSpeed: 3
   bulletAngles: 
   startPos: 0
   Waypoints: []

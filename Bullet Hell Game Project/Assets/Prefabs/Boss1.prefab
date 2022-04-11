@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerModel: {fileID: 0}
+  gameModel: {fileID: 0}
   effects: {fileID: 0}
   bullets: {fileID: 0}
   ps: {fileID: 3460088518073488387, guid: c56264f2b350c1e4ea04829534e5a069, type: 3}
@@ -216,20 +217,23 @@ MonoBehaviour:
   Waypoints:
   - {x: -5, y: 0, z: 6}
   - {x: 0, y: 0, z: 6}
-  - {x: 5, y: 0, z: 6}
+  - {x: 5, y: 0, z: 0}
   - {x: 6, y: 0, z: 0}
   - {x: 1, y: -40, z: -7}
   - {x: 1, y: -40, z: -7}
   - {x: -4, y: -40, z: -7}
   - {x: -6, y: -40, z: -7}
-  - {x: -6, y: 0, z: -7}
-  - {x: 6, y: 0, z: -7}
-  - {x: 0, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 4, y: 0, z: 4}
+  - {x: 7, y: 0, z: 5}
   nextWaypoint: {x: 0, y: 0, z: 0}
   currentWaypointIndex: 0
   shootInterval: 0
   shootTimer: 0
   behaviorState: 0
+  moveSpeed: 0
+  bulletSpeed: 0
+  switchedWaypoint: 0
   isLeft: 0
   MidHealthShader: {fileID: 2100000, guid: 73fd3f7d8e73f64498fd22f35fcc244c, type: 2}
   LowHealthShader: {fileID: 2100000, guid: 2fddcda78a698c64eaee3c7c61ddbb68, type: 2}
