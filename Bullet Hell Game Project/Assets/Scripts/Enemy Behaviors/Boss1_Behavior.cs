@@ -89,12 +89,7 @@ public class Boss1_Behavior : Base_Enemy_Behavior
 
     public override bool canShoot()
     {
-        if (inScreen())
-        {
-            return true;
-        }
-
-        return false;
+        return inScreen();
     }
 
     public override void UpdateVisuals()

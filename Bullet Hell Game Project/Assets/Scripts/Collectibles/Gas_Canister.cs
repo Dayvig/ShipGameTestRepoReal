@@ -38,7 +38,7 @@ public class Gas_Canister : Base_Collectible_Behavior
 
     public override void Collect()
     {
-        controllerFuel.SetFuel(controllerFuel.currentFuel+15);
+        controllerFuel.SetFuel(controllerFuel.currentFuel+12);
     }
 
     private void OnTriggerEnter(Collider other)
