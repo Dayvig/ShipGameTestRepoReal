@@ -12,7 +12,7 @@ public class Controller_Enemies : MonoBehaviour
 {
     public Model_Game gameModel;
     public List<Wave> waves;
-    private float waveTimer = 8f;
+    public float waveTimer = 8f;
     public int waveIndex;
     public int enemycount;
     // Enemy Requirements part 1
