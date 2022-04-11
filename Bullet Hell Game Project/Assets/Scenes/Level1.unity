@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameModel: {fileID: 1212158454}
   waves: []
+  waveTimer: 8
   waveIndex: 0
   enemycount: 0
   spawnMagicNumber: 0
@@ -1929,15 +1930,48 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  - 5
+  - 0
+  - 5
+  - 5
+  - 0
+  - 8
+  - 0
+  - 6
+  - 4
+  - 0
+  - 6
+  - -10
+  - 5
   - 0
   - 0
+  - 8
+  - 8
+  - 0
+  - 6
+  - 8
+  - 0
+  - 5
   - 0
   - 0
+  - 6
+  - 0
+  - -10
+  - 8
+  - 8
+  - -5
+  - -5
+  - 5
+  - -10
+  - 8
+  - 8
+  - -5
+  - 8
+  - -10
   - 0
   - 0
-  - 0
-  - 0
-  - 0
+  - -15
+  - 8
   - 0
   waveTimer: 0
   enemyPrefab1: {fileID: 1796847636323191739, guid: 0d5c13421117800468820a5ee16ea6eb, type: 3}
@@ -1957,7 +1991,7 @@ MonoBehaviour:
   GuardEnemyPrefab: {fileID: 7443488182354335285, guid: b4f5d05469bc2604888f42a465545048, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
-  level1Waves: 1400000014000000140000001400000005000000050000000500000014000000
+  level1Waves: 030000000a000000030000000a0000000a000000050000000a000000030000000a0000000a0000000300000003000000030000000f00000002000000050000000f0000000a0000000a0000000a0000000a000000070000000a00000003000000050000000f000000070000000300000008000000030000000a0000000a00000014000000140000000f0000000a0000000f0000000f000000140000000a0000000a0000001a00000014000000180000000f0000000f000000
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
   enemiesKilled: 0
@@ -1966,40 +2000,55 @@ MonoBehaviour:
   bulletSpeedMultiplier: 1
   healthMultiplier: 1
   fireRateMultiplier: 1
-  enemiesToSpawnPortal: 10
+  enemiesToSpawnPortal: 100
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
   - Rapid
+  - Trail
+  - Rapid
+  - Trail
+  - Trail
+  - Rapid
+  - Trail
+  - Rapid
+  - Trail
+  - Trail
+  - Fast
+  - Rapid
+  - Fast
+  - Trail
+  - Fast
+  - Rapid
+  - Trail
   - Rapid
   - Trail
   - Trail
   - Trail
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Hog
-  - Motorcycle
-  - Hog
-  - Motorcycle
-  - Motorcycle
-  - Hog
-  - Motorcycle
-  - Motorcycle
-  - Hog
-  - Motorcycle
-  - Motorcycle
-  - Hog
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Motorcycle
-  - Hog
-  - Motorcycle
+  - Fast
+  - Trail
+  - Fast
+  - Rapid
+  - Trail
+  - Fast
+  - Rapid
+  - Fast
+  - Fast
+  - Trail
+  - Trail
+  - Trail
+  - Rapid
+  - Rapid
+  - Trail
+  - Fast
+  - Trail
+  - Trail
+  - Rapid
+  - Trail
+  - Trail
+  - Rapid
+  - Rapid
+  - Fast
+  - Fast
 --- !u!114 &1212158455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2136,6 +2185,7 @@ MonoBehaviour:
   collectionRange: 1
   movementSpeed: 0.01
   hitPoints: 1
+  fuelRestore: 15
 --- !u!114 &1212158459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2207,9 +2257,9 @@ MonoBehaviour:
   - {x: -17, y: 0, z: 0}
   - {x: 0, y: 0, z: 4}
   - {x: 17, y: 0, z: 0}
-  - {x: 0, y: 0, z: 10}
+  - {x: 0, y: 0, z: 14}
   - {x: 4, y: 0, z: 0}
-  - {x: 0, y: 0, z: -10}
+  - {x: 0, y: 0, z: -14}
   startDisplace: 0
   startStagger: 2
   enterFrom: 0

@@ -12,7 +12,7 @@ public class Controller_Enemies : MonoBehaviour
 {
     public Model_Game gameModel;
     public List<Wave> waves;
-    private float waveTimer = 8f;
+    public float waveTimer = 8f;
     public int waveIndex;
     public int enemycount;
     // Enemy Requirements part 1
@@ -213,7 +213,7 @@ public class Controller_Enemies : MonoBehaviour
                         case "Boss1":
                             BOSS1 = Instantiate(gameModel.Boss1Prefab); //Spawn the prefab in
                             Boss1_Behavior
-                                Boss1mind = BOSS1.GetComponent<Boss1_Behavior>(); //Get its behavior inside its prefab
+                            Boss1mind = BOSS1.GetComponent<Boss1_Behavior>(); //Get its behavior inside its prefab
                             enemycount++; //Add 1? to enemy counter
                             displace = Random.Range(-boss1Value.startDisplace, boss1Value.startDisplace);
                             if (Random.Range(0, 2) == 0)
