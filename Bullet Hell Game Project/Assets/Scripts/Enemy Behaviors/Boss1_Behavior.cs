@@ -18,8 +18,14 @@ public class Boss1_Behavior : Base_Enemy_Behavior
     public Material MidHealthShader;
     public Material LowHealthShader;
 
+    private float OgShootInterval; 
     private double HPThird_Top;
     private double HPThird_Bottom;
+
+    private bool AlmostDead = false;
+    private int spinnerCounter = 0;
+
+    private float healthSpeedMultiplier;
  
 
     private int defaultSpinRate;
@@ -36,23 +42,35 @@ public class Boss1_Behavior : Base_Enemy_Behavior
             // || = OR , && = and
             if (currentWaypointIndex >= 0 && currentWaypointIndex <= 2) 
             {
+                
+                boss1Value.fireRate = 0.07f;
+                bulletSpeed = 1; //og
                 rate = 30;
-                boss1Value.moveSpeed = 1.8f;
+                boss1Value.moveSpeed = 1.8f * healthSpeedMultiplier;
             }
             else if (currentWaypointIndex == 3 || currentWaypointIndex == 7) //Downwards and upwards movements
             {
                 rate = 9000;
-                boss1Value.moveSpeed = 30;
+                boss1Value.moveSpeed = 20 * healthSpeedMultiplier;
+                boss1Value.fireRate = OgShootInterval;
+            }
+            else if (currentWaypointIndex == 4 || currentWaypointIndex == 5) //Panning under
+            {
+                boss1Value.fireRate = 0.05f;
+                rate = -9000;
+                boss1Value.moveSpeed = 1 * healthSpeedMultiplier;
+                bulletSpeed = 11;
             }
             else if (currentWaypointIndex == 8)
             {
+                bulletSpeed = 8; //og
                 rate = 9000;
-                boss1Value.moveSpeed = 20;
+                boss1Value.moveSpeed = 20 * healthSpeedMultiplier;
             }
             else
             {
                 rate = defaultSpinRate;
-                boss1Value.moveSpeed = defaultSpeed;
+                boss1Value.moveSpeed = defaultSpeed * healthSpeedMultiplier;
             }
             SetToNextWaypoint();
         }
@@ -69,7 +87,9 @@ public class Boss1_Behavior : Base_Enemy_Behavior
     {
         boss1Value = GameObject.Find("Model").GetComponent<Boss1Enemy>(); //Gets the prefab
         shootInterval = boss1Value.fireRate;
+        OgShootInterval = boss1Value.fireRate;
         bulletSpeed = boss1Value.bulletSpeed;
+        healthSpeedMultiplier = 1.0f;
         //
         shootTimer = Random.Range(0, shootInterval);  //THIS SHOULDNT BE RANDOM??
         ///
@@ -116,16 +136,20 @@ public class Boss1_Behavior : Base_Enemy_Behavior
         {
            // Debug.Log("Yellow");
             gameObject.GetComponent<MeshRenderer>().material = MidHealthShader;
+            healthSpeedMultiplier = 1.3f;
         }
         else if (hitPoints <= HPThird_Bottom)  //Turn it red
         {
             //Debug.Log("Red");
             gameObject.GetComponent<MeshRenderer>().material = LowHealthShader;
+            healthSpeedMultiplier = 1.6f;
+            AlmostDead = true;
         }
         else //Its green
         {
            // Debug.Log("Green");
             gameObject.GetComponent<MeshRenderer>().material = DefaultShader;
+            healthSpeedMultiplier = 1.0f;
         }
 
     }
@@ -133,6 +157,16 @@ public class Boss1_Behavior : Base_Enemy_Behavior
     public override void FiringPattern()  
     {
         bullets.FireBullet(transform.position, (playerModel.ship.transform.position - transform.position).normalized, BULLET_NAME, this);
+        if (AlmostDead == true)
+        {
+            if (spinnerCounter >= 360)
+            {
+                spinnerCounter = 0;
+            }
+            SpreadPattern(BULLET_NAME, spinnerCounter, spinnerCounter + 90, 2);
+            spinnerCounter+=15;
+        }
+        
     }
 
 

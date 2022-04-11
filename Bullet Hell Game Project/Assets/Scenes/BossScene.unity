@@ -2247,10 +2247,10 @@ MonoBehaviour:
   Notes: 
   hp: 900
   damage: 1
-  moveSpeed: 1
+  moveSpeed: 7
   fireRate: 1
   enemyName: Boss1
-  bulletSpeed: 9
+  bulletSpeed: 3
   bulletAngles: 
   startPos: 0
   Waypoints: []

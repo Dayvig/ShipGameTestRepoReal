@@ -217,15 +217,15 @@ MonoBehaviour:
   Waypoints:
   - {x: -5, y: 0, z: 6}
   - {x: 0, y: 0, z: 6}
-  - {x: 5, y: 0, z: 6}
+  - {x: 5, y: 0, z: 0}
   - {x: 6, y: 0, z: 0}
   - {x: 1, y: -40, z: -7}
   - {x: 1, y: -40, z: -7}
   - {x: -4, y: -40, z: -7}
   - {x: -6, y: -40, z: -7}
-  - {x: -6, y: 0, z: -7}
-  - {x: 6, y: 0, z: -7}
-  - {x: 0, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 4, y: 0, z: 4}
+  - {x: 7, y: 0, z: 5}
   nextWaypoint: {x: 0, y: 0, z: 0}
   currentWaypointIndex: 0
   shootInterval: 0
