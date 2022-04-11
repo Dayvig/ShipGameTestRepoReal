@@ -29,6 +29,7 @@ public class Model_Game : MonoBehaviour
     public GameObject FastEnemyPrefab;
     public GameObject RapidEnemyPrefab;
     public GameObject Boss1Prefab;
+    public GameObject GuardEnemyPrefab;
     public GameObject GasCanisterPrefab;
     public GameObject PortalPrefab;
     public List<int> level1Waves;
