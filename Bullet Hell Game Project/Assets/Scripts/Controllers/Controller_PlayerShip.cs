@@ -9,6 +9,8 @@ public class Controller_PlayerShip : MonoBehaviour
     public Material normalColor;
 
     public MeshRenderer[] playerShipObjects = new MeshRenderer[3];
+
+    private bool shiftHeld;
     private void Start()
     {
         Debug.Assert(playerModel != null, "Controller_PlayerShip is looking for a reference to Model_Player, but none has been added in the Inspector!");
@@ -57,25 +59,41 @@ public class Controller_PlayerShip : MonoBehaviour
 
     private void _TakeInputs()
     {
+        float shiftSlowDown;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            shiftHeld = true;
+            shiftSlowDown = 1 / playerModel.shiftTurningFactor;
+        }
+        else
+        {
+            shiftHeld = false;
+            shiftSlowDown = 1;
+        }
+
         if (Input.GetKey(KeyCode.W))
             playerModel.positionTarget +=
-                Vector3.forward * Time.deltaTime * (playerModel.shipSpeed * (1 - playerModel.vFactor));
+                Vector3.forward * Time.deltaTime * (playerModel.shipSpeed * (1 - playerModel.vFactor)) * shiftSlowDown;
         if (Input.GetKey(KeyCode.S))
             playerModel.positionTarget -=
-                Vector3.forward * Time.deltaTime * (playerModel.shipSpeed * (1 + playerModel.vFactor));
+                Vector3.forward * Time.deltaTime * (playerModel.shipSpeed * (1 + playerModel.vFactor)) * shiftSlowDown;
         if (Input.GetKey(KeyCode.A))
         {
-            playerModel.positionTarget -= Vector3.right * Time.deltaTime * playerModel.shipSpeed;
-            playerModel.rotationCurrent = setRotation(false);
+            playerModel.positionTarget -= Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
+            playerModel.rotationCurrent = setRotation(false, shiftHeld);
         }
-        if (Input.GetKey(KeyCode.D)){
-            playerModel.positionTarget += Vector3.right * Time.deltaTime * playerModel.shipSpeed;
-            playerModel.rotationCurrent = setRotation(true);
+        if (Input.GetKey(KeyCode.D))
+        {
+            playerModel.positionTarget += Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
+            playerModel.rotationCurrent = setRotation(true, shiftHeld);
         }
 
         if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
         {
-            playerModel.rotationCurrent = stabilizeRotation();
+            if (!shiftHeld)
+            {
+                playerModel.rotationCurrent = stabilizeRotation();
+            }
         }
         
         if (Input.GetKey(KeyCode.Escape)){
@@ -83,20 +101,25 @@ public class Controller_PlayerShip : MonoBehaviour
         }
 }
 
-    private float setRotation(bool r)
+    private float setRotation(bool r, bool s)
     {
+        float toTurn = playerModel.rotationSpeed;
+        if (s)
+        {
+        toTurn /= (playerModel.shiftTurningFactor/2);
+        }
         if (r)
         {
             if (playerModel.rotationCurrent < playerModel.turnLimit)
             {
-                return playerModel.rotationCurrent += playerModel.rotationSpeed;
+                return playerModel.rotationCurrent += toTurn;
             }
             return playerModel.turnLimit;
         }
         
         if (playerModel.rotationCurrent > -playerModel.turnLimit)
             {
-                return playerModel.rotationCurrent -= playerModel.rotationSpeed;
+                return playerModel.rotationCurrent -= toTurn;
             }
         return -playerModel.turnLimit;
     }
