@@ -10,9 +10,9 @@ namespace Controllers
         public Slider slider;
         public Model_Player playerModel;
 
-        public const float FuelMax = 100;
+        public float FuelMax = 100;
         public float currentFuel;
-        public float timeInSeconds = 60;
+        public float timeInSeconds = 30;
         public float interval;
         
         public float elapsed = 0f;
@@ -30,8 +30,8 @@ namespace Controllers
         void Update()
         {
             elapsed += Time.deltaTime;
-            if (!(elapsed >= 1f)) return;
-            elapsed %= 1f;
+            if (!(elapsed >= 0.1f)) return;
+            elapsed %= 0.1f;
             LowerFuel();
 
             if (currentFuel <= 0)
