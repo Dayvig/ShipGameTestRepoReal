@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,12 +11,14 @@ namespace Controllers
         public Slider slider;
         public Model_Player playerModel;
 
-        public const float FuelMax = 100;
+        public float FuelMax;
         public float currentFuel;
-        public float timeInSeconds = 60;
+        public float timeInSeconds;
         public float interval;
         
         public float elapsed = 0f;
+        public bool spawnGas;
+        
         
         public List<GameObject> meterList = new List<GameObject>();
         void Start()
@@ -25,13 +28,14 @@ namespace Controllers
             interval = FuelMax / timeInSeconds;
             currentFuel = FuelMax;
             SetFuel(currentFuel);
+            spawnGas = false;
         }
         
         void Update()
         {
             elapsed += Time.deltaTime;
-            if (!(elapsed >= 1f)) return;
-            elapsed %= 1f;
+            if (!(elapsed >= 0.1f)) return;
+            elapsed %= 0.1f;
             LowerFuel();
 
             if (currentFuel <= 0)

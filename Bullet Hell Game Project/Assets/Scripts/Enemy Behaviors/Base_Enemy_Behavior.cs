@@ -2,8 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using Controllers;
 using TMPro;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 public abstract class Base_Enemy_Behavior : MonoBehaviour
@@ -12,6 +15,8 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     public Model_Game gameModel;
     public Controller_Effects effects;
     public Controller_EnemyBullets bullets;
+    public Controller_Fuel controllerFuel;
+    public Canister_spawner c;
     public ParticleSystem ps;
     public float hitPoints;
     public float limitHorz = 15;
@@ -34,6 +39,8 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
         gameModel =  GameObject.Find("Model").GetComponent<Model_Game>();
         effects = GameObject.Find("Controller").GetComponent<Controller_Effects>();
         bullets = GameObject.Find("Controller").GetComponent<Controller_EnemyBullets>();
+        controllerFuel = GameObject.Find("Controller").GetComponent<Controller_Fuel>();
+        c = GameObject.Find("Controller").GetComponent<Canister_spawner>();
         shootTimer = 0;
         if (Waypoints.Count == 0)
         {
@@ -136,10 +143,18 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
 
     public virtual void KillThisEnemy()
     {
-        effects.MakeExplosion(transform.position);
-        gameModel.enemiesKilled++;
-        playerModel.score += 1000;
-        gameObject.SetActive(false);
+        if (inScreen())
+        {
+            effects.MakeExplosion(transform.position);
+            gameModel.enemiesKilled++;
+            gameObject.SetActive(false);
+            if (controllerFuel.spawnGas)
+            {
+                Instantiate(c.canister, new Vector3(transform.position.x, transform.position.y, transform.position.z),
+                    Quaternion.identity);
+                controllerFuel.spawnGas = false;
+            }
+        }
     }
     
     public bool inScreen()

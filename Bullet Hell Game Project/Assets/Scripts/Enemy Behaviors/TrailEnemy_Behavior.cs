@@ -87,13 +87,7 @@ public class TrailEnemy_Behavior : Base_Enemy_Behavior
 
     public override void KillThisEnemy()
     {
-        if (inScreen())
-        {
-            effects.MakeExplosion(transform.position);
-            gameModel.enemiesKilled++;
-            playerModel.score += 1000;
-        }
-        gameObject.SetActive(false);
+        base.KillThisEnemy();
+        playerModel.score += 1000;
     }
-    
 }

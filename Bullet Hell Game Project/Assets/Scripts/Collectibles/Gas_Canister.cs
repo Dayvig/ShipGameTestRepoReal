@@ -14,7 +14,7 @@ public class Gas_Canister : Base_Collectible_Behavior
     public GascanCollectible values;
     public override void MovementUpdate()
     {
-        gameObject.transform.position -= new Vector3(0,0,0.01f);
+        gameObject.transform.position -= new Vector3(0,0,values.movementSpeed) * Time.deltaTime;
         if (transform.position.z <= -11)
         {
             Destroy(this.gameObject);
@@ -39,6 +39,10 @@ public class Gas_Canister : Base_Collectible_Behavior
     public override void Collect()
     {
         controllerFuel.SetFuel(controllerFuel.currentFuel+values.fuelRestore);
+        if (controllerFuel.currentFuel > controllerFuel.FuelMax)
+        {
+            controllerFuel.SetFuel(controllerFuel.FuelMax);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
