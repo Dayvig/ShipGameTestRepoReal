@@ -16,6 +16,7 @@ public class View_Clouds : MonoBehaviour
 
     public float speedClose;
     public float speedFar;
+    private Vector3 controlledCloud;
 
     void Start()
     {
@@ -28,6 +29,8 @@ public class View_Clouds : MonoBehaviour
 
         far1 = farCloud1.transform.position;
         far2 = far1 + Vector3.forward * farCloud1.localScale.y;
+
+        controlledCloud = new Vector3(0f,0f,100f);
 
         farCloud1.position = far1;
         farCloud2.position = far2;
@@ -49,8 +52,8 @@ public class View_Clouds : MonoBehaviour
         far1 -= Vector3.forward * speedFar * Time.deltaTime;
         far2 -= Vector3.forward * speedFar * Time.deltaTime;
 
-        if (far1.z <= -140) far1.z += farCloud1.localScale.y * 2;
-        if (far2.z <= -140) far2.z += farCloud2.localScale.y * 2;
+        if (far1.z <= -179.2f) far1.z += farCloud1.localScale.y * 2;
+        if (far2.z <= -179.2f) far2.z += farCloud2.localScale.y * 2;
 
         farCloud1.position = far1;
         farCloud2.position = far2;
