@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.28, y: 79.215}
-  m_SizeDelta: {x: 64.394, y: 25.556}
+  m_AnchoredPosition: {x: 13.065, y: 203.485}
+  m_SizeDelta: {x: 89.964, y: 35.704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &75072219
 MonoBehaviour:
@@ -354,6 +354,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1212158453}
   bullets: {fileID: 144164433}
+  controllerFuel: {fileID: 0}
+  invincibleTimer: 0
+  fuelShieldDuration: 0
+  fuelShieldActive: 0
   savedInfo: {fileID: 0}
 --- !u!114 &144164435
 MonoBehaviour:
@@ -533,7 +537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -878.7, y: -286.96176}
+  m_AnchoredPosition: {x: -880, y: -286.96176}
   m_SizeDelta: {x: 63.834, y: 308.539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &298391000
@@ -570,8 +574,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.28, y: 110.447}
-  m_SizeDelta: {x: 64.394, y: 25.556}
+  m_AnchoredPosition: {x: 13.065, y: 247.119}
+  m_SizeDelta: {x: 89.964, y: 35.704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &298391002
 MonoBehaviour:
@@ -645,8 +649,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.28, y: -14.483}
-  m_SizeDelta: {x: 64.394, y: 25.556}
+  m_AnchoredPosition: {x: 13.065, y: 72.581}
+  m_SizeDelta: {x: 89.964, y: 35.704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &328716736
 MonoBehaviour:
@@ -919,8 +923,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.28, y: -76.948}
-  m_SizeDelta: {x: 64.394, y: 25.556}
+  m_AnchoredPosition: {x: 13.065, y: -14.688}
+  m_SizeDelta: {x: 89.964, y: 35.704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &518235172
 MonoBehaviour:
@@ -1166,8 +1170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.6999512, y: -197.73828}
-  m_SizeDelta: {x: 53, y: 80}
+  m_AnchoredPosition: {x: 15.049, y: -183.443}
+  m_SizeDelta: {x: 74.046, y: 111.767}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744982379
 MonoBehaviour:
@@ -1757,8 +1761,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 12.674, y: 92.815}
+  m_SizeDelta: {x: 25.348, y: 122.517}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &996322292
 MonoBehaviour:
@@ -2085,8 +2089,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.28, y: 16.749}
-  m_SizeDelta: {x: 64.394, y: 25.556}
+  m_AnchoredPosition: {x: 13.065, y: 116.215}
+  m_SizeDelta: {x: 89.964, y: 35.704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1066459358
 MonoBehaviour:
@@ -2241,8 +2245,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.28, y: -141.492}
-  m_SizeDelta: {x: 64.394, y: 25.556}
+  m_AnchoredPosition: {x: 13.065, y: -104.862}
+  m_SizeDelta: {x: 89.964, y: 35.704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1185016585
 MonoBehaviour:
@@ -2363,7 +2367,7 @@ MonoBehaviour:
   shipSpeed: 15
   bulletSpeed: 24
   fireRate: 0.08
-  limitHorz: 13
+  limitHorz: 16.5
   limitVert: 9
   shieldRegenIntervalBase: 3
   shieldDurationBase: 4
@@ -2467,7 +2471,7 @@ MonoBehaviour:
   GuardEnemyPrefab: {fileID: 7443488182354335285, guid: b4f5d05469bc2604888f42a465545048, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
-  level1Waves: 030000000a000000030000000a0000000a000000050000000a000000030000000a0000000a0000000300000003000000030000000f00000002000000050000000f0000000a0000000a0000000a0000000a000000070000000a00000003000000050000000f000000070000000300000008000000030000000a0000000a00000014000000140000000f0000000a0000000f0000000f000000140000000a0000000a0000001a00000014000000180000000f0000000f000000
+  level1Waves: 320000000a000000030000000a0000000a000000050000000a000000030000000a0000000a0000000300000003000000030000000f00000002000000050000000f0000000a0000000a0000000a0000000a000000070000000a00000003000000050000000f000000070000000300000008000000030000000a0000000a00000014000000140000000f0000000a0000000f0000000f000000140000000a0000000a0000001a00000014000000180000000f0000000f000000
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
   enemiesKilled: 0
@@ -2479,12 +2483,12 @@ MonoBehaviour:
   enemiesToSpawnPortal: 100
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
-  - Rapid
   - Trail
-  - Fast
   - Trail
-  - Fast
-  - Fast
+  - Trail
+  - Trail
+  - Trail
+  - Trail
   - Trail
   - Rapid
   - Trail
@@ -2661,7 +2665,7 @@ MonoBehaviour:
   collectionRange: 1
   movementSpeed: 4
   hitPoints: 1
-  fuelRestore: 100
+  fuelRestore: 50
   spawnInterval: 4
 --- !u!114 &1212158459
 MonoBehaviour:
@@ -2966,8 +2970,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 12.674, y: 92.815}
+  m_SizeDelta: {x: 25.348, y: 122.517}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1276577680
 MonoBehaviour:
@@ -3364,8 +3368,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.28, y: -109.222}
-  m_SizeDelta: {x: 64.394, y: 25.556}
+  m_AnchoredPosition: {x: 13.065, y: -59.778}
+  m_SizeDelta: {x: 89.964, y: 35.704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1382921240
 MonoBehaviour:
@@ -3595,8 +3599,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.28, y: 47.981}
-  m_SizeDelta: {x: 64.394, y: 25.556}
+  m_AnchoredPosition: {x: 13.065, y: 159.849}
+  m_SizeDelta: {x: 89.964, y: 35.704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1551255372
 MonoBehaviour:
@@ -3670,8 +3674,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.28, y: 141.679}
-  m_SizeDelta: {x: 64.394, y: 25.556}
+  m_AnchoredPosition: {x: 13.065, y: 290.753}
+  m_SizeDelta: {x: 89.964, y: 35.704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562164196
 MonoBehaviour:
@@ -3745,8 +3749,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.28, y: -45.716}
-  m_SizeDelta: {x: 64.394, y: 25.556}
+  m_AnchoredPosition: {x: 13.065, y: 28.946}
+  m_SizeDelta: {x: 89.964, y: 35.704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1645885294
 MonoBehaviour:

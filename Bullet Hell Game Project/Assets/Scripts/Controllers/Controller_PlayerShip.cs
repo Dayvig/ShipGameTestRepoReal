@@ -72,11 +72,15 @@ public class Controller_PlayerShip : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.W))
+        {
             playerModel.positionTarget +=
                 Vector3.forward * Time.deltaTime * (playerModel.shipSpeed * (1 - playerModel.vFactor)) * shiftSlowDown;
+        }
         if (Input.GetKey(KeyCode.S))
+        {
             playerModel.positionTarget -=
                 Vector3.forward * Time.deltaTime * (playerModel.shipSpeed * (1 + playerModel.vFactor)) * shiftSlowDown;
+        }
         if (Input.GetKey(KeyCode.A))
         {
             playerModel.positionTarget -= Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;

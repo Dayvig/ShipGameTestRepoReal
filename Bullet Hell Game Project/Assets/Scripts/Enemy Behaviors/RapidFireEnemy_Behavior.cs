@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RapidFireEnemy_Behavior : Base_Enemy_Behavior
 {
@@ -95,7 +97,14 @@ public class RapidFireEnemy_Behavior : Base_Enemy_Behavior
 
         public override void FiringPattern()
         {
-            bullets.FireBullet(transform.position, Vector3.back.normalized, "Default", this); 
+            Vector3 firingVector1 = new Vector3((float) Math.Sin(135 * Math.PI / 180), 0,
+                (float) Math.Cos(135 * Math.PI / 180));
+            Vector3 firingVector2 = new Vector3((float) Math.Sin(-135 * Math.PI / 180), 0,
+                (float) Math.Cos(-135 * Math.PI / 180));
+            bullets.FireBullet(transform.position, Vector3.back.normalized, "Default", this);
+            bullets.FireBullet(transform.position, firingVector1, "Default", this); 
+            bullets.FireBullet(transform.position, firingVector2, "Default", this); 
+
         }
 
         public override void KillThisEnemy()
