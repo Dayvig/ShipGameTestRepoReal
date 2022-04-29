@@ -19,6 +19,7 @@ public class Controller_PlayerShip : MonoBehaviour
         playerShipObjects[2] = GameObject.Find("Fuselage").GetComponent<MeshRenderer>();
         playerModel.hitpointsCurrent = playerModel.hitpointsBase;
         //playerModel.livesCurrent = playerModel.livesBase;
+        Debug.Log("Test for Branch");
     }
 
     private void Update()
