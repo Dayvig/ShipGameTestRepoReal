@@ -39,6 +39,7 @@ public class Model_Player : MonoBehaviour
     public float shieldRegenIntervalBase;
     public float shieldDurationBase;
     public float turnLimit;
+    public float currentTurnLimit;
     public float rotationSpeed;
     public float vFactor;
     public float shieldCooldownBase;
