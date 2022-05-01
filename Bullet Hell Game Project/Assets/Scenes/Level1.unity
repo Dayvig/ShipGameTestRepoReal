@@ -2737,9 +2737,9 @@ MonoBehaviour:
   bulletAngles: 
   startPos: 0
   Waypoints:
-  - {x: -17, y: 0, z: 0}
+  - {x: -20, y: 0, z: 0}
   - {x: 0, y: 0, z: 4}
-  - {x: 17, y: 0, z: 0}
+  - {x: 20, y: 0, z: 0}
   - {x: 0, y: 0, z: 14}
   - {x: 4, y: 0, z: 0}
   - {x: 0, y: 0, z: -14}
