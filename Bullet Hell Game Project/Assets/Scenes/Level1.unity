@@ -354,6 +354,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1212158453}
   bullets: {fileID: 144164433}
+  controllerFuel: {fileID: 0}
+  invincibleTimer: 0
+  fuelShieldDuration: 0
+  fuelShieldActive: 0
   savedInfo: {fileID: 0}
 --- !u!114 &144164435
 MonoBehaviour:
@@ -1757,8 +1761,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 12.674, y: 92.815}
+  m_SizeDelta: {x: 25.348, y: 122.517}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &996322292
 MonoBehaviour:
@@ -1855,7 +1859,7 @@ MonoBehaviour:
   farCloud1: {fileID: 1719709063}
   farCloud2: {fileID: 1084186498}
   speedClose: 50
-  speedFar: 20
+  speedFar: 50
 --- !u!114 &1002588124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2153,7 +2157,7 @@ Transform:
   m_GameObject: {fileID: 1084186497}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -50, z: 0}
-  m_LocalScale: {x: 200, y: 200.00002, z: 1}
+  m_LocalScale: {x: 300, y: 200, z: 1}
   m_Children: []
   m_Father: {fileID: 887815852}
   m_RootOrder: 1
@@ -2177,7 +2181,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 713298e4cf5d7714db553a7bbc094f06, type: 2}
+  - {fileID: 2100000, guid: b5058bea68f7b5748ac4003e737dd6c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2363,7 +2367,7 @@ MonoBehaviour:
   shipSpeed: 15
   bulletSpeed: 24
   fireRate: 0.08
-  limitHorz: 13
+  limitHorz: 16.5
   limitVert: 9
   shieldRegenIntervalBase: 3
   shieldDurationBase: 4
@@ -2467,7 +2471,7 @@ MonoBehaviour:
   GuardEnemyPrefab: {fileID: 7443488182354335285, guid: b4f5d05469bc2604888f42a465545048, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
-  level1Waves: 030000000a000000030000000a0000000a000000050000000a000000030000000a0000000a0000000300000003000000030000000f00000002000000050000000f0000000a0000000a0000000a0000000a000000070000000a00000003000000050000000f000000070000000300000008000000030000000a0000000a00000014000000140000000f0000000a0000000f0000000f000000140000000a0000000a0000001a00000014000000180000000f0000000f000000
+  level1Waves: 320000000a000000030000000a0000000a000000050000000a000000030000000a0000000a0000000300000003000000030000000f00000002000000050000000f0000000a0000000a0000000a0000000a000000070000000a00000003000000050000000f000000070000000300000008000000030000000a0000000a00000014000000140000000f0000000a0000000f0000000f000000140000000a0000000a0000001a00000014000000180000000f0000000f000000
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
   enemiesKilled: 0
@@ -2479,12 +2483,12 @@ MonoBehaviour:
   enemiesToSpawnPortal: 100
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
-  - Rapid
   - Trail
-  - Fast
   - Trail
-  - Fast
-  - Fast
+  - Trail
+  - Trail
+  - Trail
+  - Trail
   - Trail
   - Rapid
   - Trail
@@ -2661,7 +2665,7 @@ MonoBehaviour:
   collectionRange: 1
   movementSpeed: 4
   hitPoints: 1
-  fuelRestore: 100
+  fuelRestore: 50
   spawnInterval: 4
 --- !u!114 &1212158459
 MonoBehaviour:
@@ -2966,8 +2970,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 12.674, y: 92.815}
+  m_SizeDelta: {x: 25.348, y: 122.517}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1276577680
 MonoBehaviour:
@@ -3967,7 +3971,7 @@ Transform:
   m_GameObject: {fileID: 1719709062}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -191, z: 0}
-  m_LocalScale: {x: 300, y: 400, z: 1}
+  m_LocalScale: {x: 300, y: 200, z: 1}
   m_Children: []
   m_Father: {fileID: 887815852}
   m_RootOrder: 0

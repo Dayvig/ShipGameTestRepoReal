@@ -1,21 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using Controllers;
 using UnityEngine;
 
 public class Controller_ShieldAndHealth : MonoBehaviour
 {
     public Model_Player player;
     public Controller_EnemyBullets bullets;
+    public Controller_Fuel controllerFuel;
 
     private float shieldRegenTimer;
     private bool firstSpawn = true;
+    public float invincibleTimer;
+    public float fuelShieldDuration;
+    public bool fuelShieldActive;
 
     public PlayerInfo savedInfo;
     
     void Start()
     {
         Debug.Assert(player != null, "Controller_ShieldAndHealth is looking for a reference to Model_Player, but none has been added in the Inspector!");
+        controllerFuel = GameObject.Find("Controller").GetComponent<Controller_Fuel>();
+        fuelShieldActive = false;
     }
 
     public void OnSpawn()
@@ -38,37 +45,21 @@ public class Controller_ShieldAndHealth : MonoBehaviour
 
     public void ShieldAndHealthUpdate()
     {
-        // Inputs
-        /*if (Input.GetKey(KeyCode.LeftShift) && !player.shieldActive && shieldRegenTimer == 0f)
-        {
-            player.shieldActive = true;
-            player.shielddPointsCurrent = player.shieldDurationCurrent;
-            shieldRegenTimer = player.shieldDurationCurrent + player.shieldCooldownCurrent;
-        }
-        if (player.shielddPointsCurrent <= 0)
-        {
-            player.shieldActive = false;
-            player.shielddPointsCurrent = 0;
-        }
-
-        
-        player.shielddPointsCurrent -= Time.deltaTime;
-        shieldRegenTimer -= Time.deltaTime;
-        
-        if (shieldRegenTimer < 0f)
-        {
-            shieldRegenTimer = 0f;
-        }*/
-        
-        // Update Model
         _ShieldOnOff();
+        if (fuelShieldActive)
+        {
+            invincibleTimer += Time.deltaTime;
+            if (invincibleTimer > fuelShieldDuration)
+            {
+                fuelShieldActive = false;
+                player.invincible = false;
+                invincibleTimer -= fuelShieldDuration;
+            }
+        }
 
         // Collision Detection
         float radius = 0;
-        /*if (player.shieldActive)
-            radius = player.shieldedRadius;
-        else*/
-            radius = player.unshieldedRadius;
+        radius = player.unshieldedRadius;
         
         var colliders = Physics.OverlapSphere(player.ship.transform.position, radius);
         
@@ -76,52 +67,43 @@ public class Controller_ShieldAndHealth : MonoBehaviour
         {
             if (c.gameObject.tag == "Enemy" && !player.invincible)
             {
-                /*if (player.shieldActive)
+                if (!TriggerFuelShield())
                 {
-                    player.shielddPointsCurrent -= 3;
-                    player.shielddPointsCurrent = (int)Mathf.Max(player.shielddPointsCurrent, 0);
-                    shieldRegenTimer = 0;
-                }
-                else*/
-                if (!player.lostLife)
-                {
-                    player.livesCurrent--;
-                    player.lostLife = true;
-                }
-                player.hitpointsCurrent = 0;
+                    if (!player.lostLife)
+                    {
+                        player.livesCurrent--;
+                        player.lostLife = true;
+                    }
 
-                    //Behavior_Enemy1 e = c.GetComponent<Behavior_Enemy1>();
-                    //e.KillThisEnemy();
+                    player.hitpointsCurrent = 0;
+                }
             }
             else if (c.gameObject.tag == "EnemyBullet" && !player.invincible)
             {
-                /*if (player.shieldActive)
+                if (!TriggerFuelShield())
                 {
-                    player.shielddPointsCurrent--;
-                    player.shielddPointsCurrent = (int)Mathf.Max(player.shielddPointsCurrent, 0);
-                    shieldRegenTimer = 0;
-                }
-                else*/
-                if (!player.lostLife)
-                {
-                    player.livesCurrent--;
-                    player.lostLife = true;
-                }
-                player.hitpointsCurrent = 0;
+                    if (!player.lostLife)
+                    {
+                        player.livesCurrent--;
+                        player.lostLife = true;
+                    }
 
-                bullets.KillBullet(c.gameObject);
+                    player.hitpointsCurrent = 0;
+                }
+                    bullets.KillBullet(c.gameObject);
             }
         }
-        /*
-        if (player.shielddPointsCurrent < player.shieldPointsMax)
+    }
+
+    public bool TriggerFuelShield()
+    {
+        if (controllerFuel.currentFuel > (controllerFuel.FuelMax * 0.6f) && !player.invincible)
         {
-            shieldRegenTimer += Time.deltaTime;
-            if (shieldRegenTimer >= player.shieldRegenIntervalCurrent)
-            {
-                shieldRegenTimer = 0;
-                player.shielddPointsCurrent++;
-            }
-        }*/
+            fuelShieldActive = true;
+            player.invincible = true;
+            controllerFuel.currentFuel -= controllerFuel.FuelMax * 0.4f;
+        }
+        return fuelShieldActive;
     }
 
     private void _ShieldOnOff()

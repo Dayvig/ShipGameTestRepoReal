@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Controllers;
 using UnityEngine;
 
 public class Controller_Game : MonoBehaviour
@@ -12,6 +13,7 @@ public class Controller_Game : MonoBehaviour
     public Controller_PlayerShip shipController;
     public Controller_PlayerGuns gunController;
     public Controller_Enemies enemyController;
+    public Controller_Fuel controllerFuel;
     public Controller_ShieldAndHealth shieldAndHealthController;
     [Header("View References")]
     public View_FadeFromBlack fadeView;
@@ -95,7 +97,8 @@ public class Controller_Game : MonoBehaviour
         Debug.Assert(gunController != null, "Controller_Game is looking for a reference to Controller_PlayerGun, but none has been added in the Inspector!");
         Debug.Assert(shieldAndHealthController != null, "Controller_Game is looking for a reference to Controller_ShieldAndHealth, but none has been added in the Inspector!");
         Debug.Assert(fadeView != null, "Controller_Game is looking for a reference to View_FadeFromBlack, but none has been added in the Inspector!");
-        
+        Debug.Assert(controllerFuel != null, "Controller_Game is looking for a reference to View_FadeFromBlack, but none has been added in the Inspector!");
+
 
         playerModel.damageCurrent = playerModel.damageBase;
 
@@ -220,6 +223,7 @@ public class Controller_Game : MonoBehaviour
         {
             SetGameState(GameStates.Play);
             SpawnInvincibility = true;
+            controllerFuel.currentFuel = controllerFuel.FuelMax;
         }
     }
     private void _PlayUpdate()
