@@ -277,6 +277,8 @@ MonoBehaviour:
   gameModel: {fileID: 0}
   effects: {fileID: 0}
   bullets: {fileID: 0}
+  controllerFuel: {fileID: 0}
+  c: {fileID: 0}
   ps: {fileID: 6476156663891962808}
   hitPoints: 0
   limitHorz: 15
@@ -291,6 +293,8 @@ MonoBehaviour:
   moveSpeed: 0
   bulletSpeed: 0
   switchedWaypoint: 0
+  circleWidth: 3
+  circleHeight: 3
 --- !u!1001 &7627789352984297403
 PrefabInstance:
   m_ObjectHideFlags: 0
