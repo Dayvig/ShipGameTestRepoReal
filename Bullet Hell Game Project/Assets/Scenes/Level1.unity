@@ -1859,8 +1859,8 @@ MonoBehaviour:
   closeCloud2: {fileID: 798667112}
   farCloud1: {fileID: 1719709063}
   farCloud2: {fileID: 1084186498}
-  speedClose: 50
-  speedFar: 50
+  speedClose: 100
+  speedFar: 100
 --- !u!114 &1002588124
 MonoBehaviour:
   m_ObjectHideFlags: 0
