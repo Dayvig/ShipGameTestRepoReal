@@ -143,11 +143,11 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
 
     public virtual void KillThisEnemy()
     {
+        gameObject.SetActive(false);
         if (inScreen())
         {
             effects.MakeExplosion(transform.position);
             gameModel.enemiesKilled++;
-            gameObject.SetActive(false);
             if (controllerFuel.spawnGas)
             {
                 Instantiate(c.canister, new Vector3(transform.position.x, transform.position.y, transform.position.z),
