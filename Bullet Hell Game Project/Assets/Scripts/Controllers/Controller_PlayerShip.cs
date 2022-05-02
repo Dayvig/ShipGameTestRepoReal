@@ -152,8 +152,8 @@ public class Controller_PlayerShip : MonoBehaviour
         if (playerModel.positionTarget.x > playerModel.limitHorz)
             playerModel.positionTarget.x = playerModel.limitHorz;
 
-        if (playerModel.positionTarget.z < -playerModel.limitVert)
-            playerModel.positionTarget.z = -playerModel.limitVert;
+        if (playerModel.positionTarget.z < -7)
+            playerModel.positionTarget.z = -7;
         if (playerModel.positionTarget.z > playerModel.limitVert)
             playerModel.positionTarget.z = playerModel.limitVert;
     }
