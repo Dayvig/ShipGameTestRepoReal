@@ -38,10 +38,10 @@ public class BulletGrazerHitbox : MonoBehaviour
         foreach (Collider c in around)
         {
             //Debug.Log("Something Detected");
-            if (c.gameObject.tag == "EnemyBullet" && debounce == false)   //If a player bullet hits the core
+            if (c.gameObject.tag == "EnemyBullet" && debounce == false && playerModel.currentlyDead == false)   //If a player bullet hits the core
             {
                 debounce = true;
-
+                
                 Debug.Log("Grazed a enemy bullet");
                 playerModel.bulletGrazes++;
                 
