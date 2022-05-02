@@ -2364,17 +2364,17 @@ MonoBehaviour:
   grazesForPowerup: 3
   grazePowerupInterval: 3
   shiftTurningFactor: 5
-  smoothingFactor: 30
-  shipSpeed: 15
+  smoothingFactor: 15
+  shipSpeed: 10
   bulletSpeed: 24
   fireRate: 0.08
   limitHorz: 16.5
   limitVert: 9
   shieldRegenIntervalBase: 3
   shieldDurationBase: 4
-  turnLimit: 60
+  turnLimit: 40
   currentTurnLimit: 0
-  rotationSpeed: 1
+  rotationSpeed: 1.5
   vFactor: 0.5
   shieldCooldownBase: 10
   positionTarget: {x: 0, y: 0, z: 0}
