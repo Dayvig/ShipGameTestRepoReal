@@ -19,7 +19,6 @@ public class Controller_PlayerShip : MonoBehaviour
         playerShipObjects[2] = GameObject.Find("Fuselage").GetComponent<MeshRenderer>();
         playerModel.hitpointsCurrent = playerModel.hitpointsBase;
         //playerModel.livesCurrent = playerModel.livesBase;
-        Debug.Log("Test for Branch");
     }
 
     private void Update()
@@ -47,7 +46,6 @@ public class Controller_PlayerShip : MonoBehaviour
     {
         _TakeInputs();
         _LimitToScreen();
-        playerModel.currentTurnLimit = SetTurnLimit();
     }
 
     public void ForceShipPos(Vector3 where)
@@ -85,16 +83,12 @@ public class Controller_PlayerShip : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            if (playerModel.rotationCurrent <= -playerModel.currentTurnLimit/20){
             playerModel.positionTarget -= Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
-            }
             playerModel.rotationCurrent = setRotation(false, shiftHeld);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            if (playerModel.rotationCurrent >= playerModel.currentTurnLimit/20){
-                playerModel.positionTarget += Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
-            }
+            playerModel.positionTarget += Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
             playerModel.rotationCurrent = setRotation(true, shiftHeld);
         }
 
@@ -120,18 +114,18 @@ public class Controller_PlayerShip : MonoBehaviour
         }
         if (r)
         {
-            if (playerModel.rotationCurrent < playerModel.currentTurnLimit)
+            if (playerModel.rotationCurrent < playerModel.turnLimit)
             {
                 return playerModel.rotationCurrent += toTurn;
             }
-            return playerModel.currentTurnLimit;
+            return playerModel.turnLimit;
         }
         
-        if (playerModel.rotationCurrent > -playerModel.currentTurnLimit)
+        if (playerModel.rotationCurrent > -playerModel.turnLimit)
             {
                 return playerModel.rotationCurrent -= toTurn;
             }
-        return -playerModel.currentTurnLimit;
+        return -playerModel.turnLimit;
     }
 
     private float stabilizeRotation()
@@ -181,18 +175,6 @@ public class Controller_PlayerShip : MonoBehaviour
         playerModel.ship.transform.position = playerModel.positionCurrent;
         playerModel.shield.transform.position = playerModel.ship.transform.position;
         playerModel.ship.transform.rotation = Quaternion.Euler(playerModel.actualRotation);
-    }
-
-    public float SetTurnLimit()
-    {
-        if (shiftHeld)
-        {
-            playerModel.currentTurnLimit = playerModel.turnLimit * 1.5f;
-            return playerModel.turnLimit * 1.5f;
-        }
-        
-        playerModel.currentTurnLimit = playerModel.turnLimit;
-        return playerModel.turnLimit;
     }
 
     public void UpgradeGuns()

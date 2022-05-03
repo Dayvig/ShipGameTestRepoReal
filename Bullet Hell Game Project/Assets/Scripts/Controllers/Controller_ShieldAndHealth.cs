@@ -45,6 +45,7 @@ public class Controller_ShieldAndHealth : MonoBehaviour
 
     public void ShieldAndHealthUpdate()
     {
+        _ShieldOnOff();
         if (fuelShieldActive)
         {
             invincibleTimer += Time.deltaTime;
@@ -55,7 +56,6 @@ public class Controller_ShieldAndHealth : MonoBehaviour
                 invincibleTimer -= fuelShieldDuration;
             }
         }
-        _ShieldOnOff();
 
         // Collision Detection
         float radius = 0;
