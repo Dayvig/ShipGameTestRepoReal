@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1212158453}
   bullets: {fileID: 144164433}
-  controllerFuel: {fileID: 0}
+  controllerFuel: {fileID: 144164435}
   invincibleTimer: 0
   fuelShieldDuration: 2
   fuelShieldActive: 0
@@ -2373,6 +2373,7 @@ MonoBehaviour:
   shieldRegenIntervalBase: 3
   shieldDurationBase: 4
   turnLimit: 60
+  currentTurnLimit: 0
   rotationSpeed: 1
   vFactor: 0.5
   shieldCooldownBase: 10
@@ -2736,9 +2737,9 @@ MonoBehaviour:
   bulletAngles: 
   startPos: 0
   Waypoints:
-  - {x: -17, y: 0, z: 0}
+  - {x: -20, y: 0, z: 0}
   - {x: 0, y: 0, z: 4}
-  - {x: 17, y: 0, z: 0}
+  - {x: 20, y: 0, z: 0}
   - {x: 0, y: 0, z: 14}
   - {x: 4, y: 0, z: 0}
   - {x: 0, y: 0, z: -14}
