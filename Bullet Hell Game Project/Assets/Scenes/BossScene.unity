@@ -1794,7 +1794,7 @@ MonoBehaviour:
   bullets: {fileID: 588199003}
   controllerFuel: {fileID: 0}
   invincibleTimer: 0
-  fuelShieldDuration: 2
+  fuelShieldDuration: 0
   fuelShieldActive: 0
   savedInfo: {fileID: 0}
 --- !u!114 &588199003
