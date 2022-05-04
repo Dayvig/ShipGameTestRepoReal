@@ -196,6 +196,8 @@ MonoBehaviour:
   gameModel: {fileID: 0}
   effects: {fileID: 0}
   bullets: {fileID: 0}
+  controllerFuel: {fileID: 0}
+  c: {fileID: 0}
   ps: {fileID: 6411095763386890780}
   hitPoints: 0
   limitHorz: 15
@@ -206,6 +208,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   nextWaypoint: {x: 0, y: 0, z: 0}
   currentWaypointIndex: 0
+  hitbox: {fileID: 0}
   shootInterval: 0
   shootTimer: 0
   behaviorState: 0
