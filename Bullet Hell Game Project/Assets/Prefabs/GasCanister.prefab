@@ -118,6 +118,9 @@ MonoBehaviour:
   behaviorState: 0
   collectOnMoveInto: 1
   ps: {fileID: 0}
+  elapsed: 0
+  primary: {r: 0.030562414, g: 0.90130657, b: 0.9528302, a: 0}
+  secondary: {r: 0.118066914, g: 0.20056908, b: 0.9339623, a: 0}
   controllerFuel: {fileID: 0}
   values: {fileID: 0}
 --- !u!54 &7732755316423344931

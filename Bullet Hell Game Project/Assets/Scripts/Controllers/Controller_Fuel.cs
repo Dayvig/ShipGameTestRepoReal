@@ -10,12 +10,12 @@ namespace Controllers
     {
         public Slider slider;
         public Model_Player playerModel;
-
+        
         public float FuelMax;
         public float currentFuel;
         public float timeInSeconds;
         public float interval;
-        
+        public float startTime;
         public float elapsed = 0f;
         public bool spawnGas;
         
@@ -29,6 +29,8 @@ namespace Controllers
             currentFuel = FuelMax;
             SetFuel(currentFuel);
             spawnGas = false;
+            
+            startTime = Time.time;
         }
         
         void Update()
@@ -37,7 +39,8 @@ namespace Controllers
             if (!(elapsed >= 0.1f)) return;
             elapsed %= 0.1f;
             LowerFuel();
-
+            
+            
             if (currentFuel <= 0)
             {
                 if (playerModel.hitpointsCurrent > 0)
@@ -77,12 +80,32 @@ namespace Controllers
                }
                playerModel.hitpointsCurrent = 0;
             }
+            UpdateColor();
         }
 
         public void SetFuel(float amount)
         {
             currentFuel = amount;
             slider.value = amount;
+        }
+
+        public void UpdateColor()
+        {
+            float t = (Mathf.Sin(3*(Time.time - startTime)));
+            if (currentFuel > 30)
+            {
+                foreach (GameObject gameObject in meterList)
+                {
+                    gameObject.GetComponent<Image>().color = Color.cyan;
+                }
+            }
+            else
+            {
+                foreach (GameObject gameObject in meterList)
+                {
+                    gameObject.GetComponent<Image>().color = Color.Lerp(Color.cyan, Color.red, t);
+                }
+            }
         }
     }
 }
