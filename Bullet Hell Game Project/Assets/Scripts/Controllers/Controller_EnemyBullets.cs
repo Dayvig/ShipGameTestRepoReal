@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Enemies;
@@ -7,8 +8,8 @@ public class Controller_EnemyBullets : MonoBehaviour
 {
     public Model_Player playerModel;
     public Model_Game gameModel;
-    private List<GameObject> _bulletsInactive;
-    private List<BulletTracker> _bulletsActive;
+    public List<GameObject> _bulletsInactive;
+    public List<BulletTracker> _bulletsActive;
     private Motorcycle_behavior _behavior;
     
     private float elapsed = 0f;
@@ -64,6 +65,7 @@ public class Controller_EnemyBullets : MonoBehaviour
                 break;
             default:
                 thisBullet.bullet.transform.position += thisBullet.direction * Time.deltaTime * thisBullet.behavior.bulletSpeed;
+
                 break;
         }
     }
@@ -82,7 +84,12 @@ public class Controller_EnemyBullets : MonoBehaviour
         {
             bullet = Instantiate(gameModel.enemyBulletPrefab1);
         }
+        
+        Debug.Log(direction.z);
+        
         bullet.transform.position = where;
+        bullet.transform.rotation = Quaternion.Euler(0, 90 + Mathf.Acos(direction.x) * 180/Mathf.PI, 0);
+        //bullet.transform.LookAt(direction, Vector3.forward);
         var tracker = new BulletTracker();
         tracker.bullet = bullet;
         tracker.direction = direction;

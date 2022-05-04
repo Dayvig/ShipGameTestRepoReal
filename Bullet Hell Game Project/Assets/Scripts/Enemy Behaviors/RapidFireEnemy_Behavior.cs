@@ -18,6 +18,7 @@ public class RapidFireEnemy_Behavior : Base_Enemy_Behavior
         public override void MovementUpdate()
         {
             Vector3 toPos = Vector3.MoveTowards(transform.position, nextWaypoint, moveSpeed * Time.deltaTime);
+            transform.LookAt(toPos, Vector3.forward);
             transform.position = toPos;
 
             if (Vector3.Distance(transform.position, nextWaypoint) < 1)
