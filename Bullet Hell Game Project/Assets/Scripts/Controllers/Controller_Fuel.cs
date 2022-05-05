@@ -71,8 +71,15 @@ namespace Controllers
             if (currentFuel <= 0)
             {
                 // Change to losing screen
-                UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+                if (!playerModel.lostLife)
+                {
+                    playerModel.livesCurrent--;
+                    playerModel.lostLife = true;
+                }
+
+                playerModel.hitpointsCurrent = 0;            
             }
+            
             UpdateColor();
         }
 

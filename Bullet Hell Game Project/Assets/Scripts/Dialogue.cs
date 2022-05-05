@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
@@ -10,10 +11,13 @@ public class Dialogue : MonoBehaviour
     public string[] lines;
     public float textSpeed;
     private int index;
-    
+    public Image cr;
+    public Sprite[] images;
     void Start()
     {
+        index = 0;
         textComponent.text = String.Empty;
+        cr.sprite = images[index];
         StartDialogue();
     }
     void Update()
@@ -49,6 +53,7 @@ public class Dialogue : MonoBehaviour
 
     void NextLine()
     {
+        cr.sprite = images[index];
         if (index < lines.Length - 1)
         {
             index++;
