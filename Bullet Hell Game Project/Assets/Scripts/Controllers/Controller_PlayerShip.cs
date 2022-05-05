@@ -14,9 +14,9 @@ public class Controller_PlayerShip : MonoBehaviour
     private void Start()
     {
         Debug.Assert(playerModel != null, "Controller_PlayerShip is looking for a reference to Model_Player, but none has been added in the Inspector!");
-        playerShipObjects[0] = GameObject.Find("Cockpit").GetComponent<MeshRenderer>();
-        playerShipObjects[1] = GameObject.Find("Cube").GetComponent<MeshRenderer>();
-        playerShipObjects[2] = GameObject.Find("Fuselage").GetComponent<MeshRenderer>();
+        //playerShipObjects[0] = GameObject.Find("Cockpit").GetComponent<MeshRenderer>();
+        //playerShipObjects[1] = GameObject.Find("Cube").GetComponent<MeshRenderer>();
+        //playerShipObjects[2] = GameObject.Find("Fuselage").GetComponent<MeshRenderer>();
         playerModel.hitpointsCurrent = playerModel.hitpointsBase;
         //playerModel.livesCurrent = playerModel.livesBase;
     }
