@@ -86,7 +86,7 @@ public class View_PlayerHPAndShield : MonoBehaviour
         }
 
         _ShowAliveAndDead(playerModel.hitpointsCurrent > 0);
-        //scoreDisplay.text = "" + playerModel.score;  //obj ref not set to instance bug
+        scoreDisplay.text = "" + playerModel.score;  //obj ref not set to instance bug
     }
 
     private void _IconFlash()

@@ -22,6 +22,7 @@ public class Model_Player : MonoBehaviour
     public float unshieldedRadius;
     public bool invincible;
     public bool lostLife;
+    public bool currentlyDead;
     public int score;
     public int bulletGrazes;
     public int grazesForPowerup;
@@ -39,7 +40,6 @@ public class Model_Player : MonoBehaviour
     public float shieldRegenIntervalBase;
     public float shieldDurationBase;
     public float turnLimit;
-    public float currentTurnLimit;
     public float rotationSpeed;
     public float vFactor;
     public float shieldCooldownBase;

@@ -219,6 +219,12 @@ public class Controller_Game : MonoBehaviour
             playerModel.positionSpawnFinish,
             spawnTimer);
 
+        // activate a bool for particles/grazing enable
+        //
+        Debug.Log("Player is alive now");
+        playerModel.currentlyDead = false;
+        //
+
         if (spawnTimer >= gameModel.spawnDuration)
         {
             SetGameState(GameStates.Play);
@@ -254,6 +260,13 @@ public class Controller_Game : MonoBehaviour
     private float deathTimer;
     private void _DieUpdate()
     {
+        //print test here
+        // activate a bool for particles/grazing disable
+        //
+        Debug.Log("Player is dead");
+        playerModel.currentlyDead = true;
+        //loop disable particles?
+        //
         deathTimer += Time.deltaTime;
         if (deathTimer >= 3)
         {

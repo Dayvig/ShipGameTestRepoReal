@@ -16,8 +16,9 @@ namespace Enemy_Behaviors
         public override void MovementUpdate()
         {
             Vector3 toPos = Vector3.MoveTowards(transform.position, nextWaypoint, moveSpeed * Time.deltaTime);
+            transform.LookAt(toPos, Vector3.forward);
             transform.position = toPos;
-
+            
             if (Vector3.Distance(transform.position, nextWaypoint) < 1)
             {
                 if (currentWaypointIndex == Waypoints.Count - 1)
@@ -69,7 +70,10 @@ namespace Enemy_Behaviors
         public override void KillThisEnemy()
         {
             base.KillThisEnemy();
-            playerModel.score += 1000;
+            if (inScreen())
+            {
+                playerModel.score += 1000;
+            }
         }
     }
 }

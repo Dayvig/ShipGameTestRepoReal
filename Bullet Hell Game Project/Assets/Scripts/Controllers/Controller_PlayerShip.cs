@@ -14,12 +14,11 @@ public class Controller_PlayerShip : MonoBehaviour
     private void Start()
     {
         Debug.Assert(playerModel != null, "Controller_PlayerShip is looking for a reference to Model_Player, but none has been added in the Inspector!");
-        playerShipObjects[0] = GameObject.Find("Cockpit").GetComponent<MeshRenderer>();
-        playerShipObjects[1] = GameObject.Find("Cube").GetComponent<MeshRenderer>();
-        playerShipObjects[2] = GameObject.Find("Fuselage").GetComponent<MeshRenderer>();
+        //playerShipObjects[0] = GameObject.Find("Cockpit").GetComponent<MeshRenderer>();
+        //playerShipObjects[1] = GameObject.Find("Cube").GetComponent<MeshRenderer>();
+        //playerShipObjects[2] = GameObject.Find("Fuselage").GetComponent<MeshRenderer>();
         playerModel.hitpointsCurrent = playerModel.hitpointsBase;
         //playerModel.livesCurrent = playerModel.livesBase;
-        Debug.Log("Test for Branch");
     }
 
     private void Update()
@@ -28,16 +27,16 @@ public class Controller_PlayerShip : MonoBehaviour
         if (playerModel.invincible)
         {
             //playerModel.
-            playerShipObjects[0].material = invincibleColor;
-            playerShipObjects[1].material = invincibleColor;
-            playerShipObjects[2].material = invincibleColor;
+            //playerShipObjects[0].material = invincibleColor;
+            //playerShipObjects[1].material = invincibleColor;
+            //playerShipObjects[2].material = invincibleColor;
             playerModel.shieldActive = true;
         }
         else
         {
-            playerShipObjects[0].material = normalColor;
-            playerShipObjects[1].material = normalColor;
-            playerShipObjects[2].material = normalColor;
+            //playerShipObjects[0].material = normalColor;
+            //playerShipObjects[1].material = normalColor;
+            //playerShipObjects[2].material = normalColor;
             playerModel.shieldActive = false;
 
         }
@@ -47,7 +46,6 @@ public class Controller_PlayerShip : MonoBehaviour
     {
         _TakeInputs();
         _LimitToScreen();
-        playerModel.currentTurnLimit = SetTurnLimit();
     }
 
     public void ForceShipPos(Vector3 where)
@@ -85,16 +83,12 @@ public class Controller_PlayerShip : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            if (playerModel.rotationCurrent <= -playerModel.currentTurnLimit/20){
             playerModel.positionTarget -= Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
-            }
             playerModel.rotationCurrent = setRotation(false, shiftHeld);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            if (playerModel.rotationCurrent >= playerModel.currentTurnLimit/20){
-                playerModel.positionTarget += Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
-            }
+            playerModel.positionTarget += Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
             playerModel.rotationCurrent = setRotation(true, shiftHeld);
         }
 
@@ -120,18 +114,18 @@ public class Controller_PlayerShip : MonoBehaviour
         }
         if (r)
         {
-            if (playerModel.rotationCurrent < playerModel.currentTurnLimit)
+            if (playerModel.rotationCurrent < playerModel.turnLimit)
             {
                 return playerModel.rotationCurrent += toTurn;
             }
-            return playerModel.currentTurnLimit;
+            return playerModel.turnLimit;
         }
         
-        if (playerModel.rotationCurrent > -playerModel.currentTurnLimit)
+        if (playerModel.rotationCurrent > -playerModel.turnLimit)
             {
                 return playerModel.rotationCurrent -= toTurn;
             }
-        return -playerModel.currentTurnLimit;
+        return -playerModel.turnLimit;
     }
 
     private float stabilizeRotation()
@@ -158,8 +152,8 @@ public class Controller_PlayerShip : MonoBehaviour
         if (playerModel.positionTarget.x > playerModel.limitHorz)
             playerModel.positionTarget.x = playerModel.limitHorz;
 
-        if (playerModel.positionTarget.z < -playerModel.limitVert)
-            playerModel.positionTarget.z = -playerModel.limitVert;
+        if (playerModel.positionTarget.z < -7)
+            playerModel.positionTarget.z = -7;
         if (playerModel.positionTarget.z > playerModel.limitVert)
             playerModel.positionTarget.z = playerModel.limitVert;
     }
@@ -181,18 +175,6 @@ public class Controller_PlayerShip : MonoBehaviour
         playerModel.ship.transform.position = playerModel.positionCurrent;
         playerModel.shield.transform.position = playerModel.ship.transform.position;
         playerModel.ship.transform.rotation = Quaternion.Euler(playerModel.actualRotation);
-    }
-
-    public float SetTurnLimit()
-    {
-        if (shiftHeld)
-        {
-            playerModel.currentTurnLimit = playerModel.turnLimit * 1.5f;
-            return playerModel.turnLimit * 1.5f;
-        }
-        
-        playerModel.currentTurnLimit = playerModel.turnLimit;
-        return playerModel.turnLimit;
     }
 
     public void UpgradeGuns()
