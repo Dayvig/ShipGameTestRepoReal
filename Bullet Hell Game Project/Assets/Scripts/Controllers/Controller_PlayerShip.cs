@@ -27,16 +27,16 @@ public class Controller_PlayerShip : MonoBehaviour
         if (playerModel.invincible)
         {
             //playerModel.
-            playerShipObjects[0].material = invincibleColor;
-            playerShipObjects[1].material = invincibleColor;
-            playerShipObjects[2].material = invincibleColor;
+            //playerShipObjects[0].material = invincibleColor;
+            //playerShipObjects[1].material = invincibleColor;
+            //playerShipObjects[2].material = invincibleColor;
             playerModel.shieldActive = true;
         }
         else
         {
-            playerShipObjects[0].material = normalColor;
-            playerShipObjects[1].material = normalColor;
-            playerShipObjects[2].material = normalColor;
+            //playerShipObjects[0].material = normalColor;
+            //playerShipObjects[1].material = normalColor;
+            //playerShipObjects[2].material = normalColor;
             playerModel.shieldActive = false;
 
         }

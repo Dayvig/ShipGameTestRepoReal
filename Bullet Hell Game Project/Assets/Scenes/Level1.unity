@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.2300641, b: 0.2300641, a: 1}
+  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -341,6 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerModel: {fileID: 1212158453}
   gameModel: {fileID: 1212158454}
+  _bulletsInactive: []
 --- !u!114 &144164434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +379,7 @@ MonoBehaviour:
   currentFuel: 0
   timeInSeconds: 200
   interval: 0
+  startTime: 0
   elapsed: 0
   spawnGas: 0
   meterList:
@@ -533,6 +535,7 @@ RectTransform:
   - {fileID: 75072218}
   - {fileID: 298391001}
   - {fileID: 1562164195}
+  - {fileID: 1855253573}
   m_Father: {fileID: 931918269}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -591,7 +594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.2300641, b: 0.2300641, a: 1}
+  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -666,7 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.2300641, b: 0.2300641, a: 1}
+  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -940,7 +943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.2300641, b: 0.2300641, a: 1}
+  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1149,7 +1152,7 @@ GameObject:
   - component: {fileID: 744982380}
   - component: {fileID: 744982379}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Fuel Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1187,14 +1190,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 05d38207afca2b044a958f07c60e2f9a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db357cc466059384988ea9a31899ece4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2106,7 +2109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.2300641, b: 0.2300641, a: 1}
+  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2262,7 +2265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.2300641, b: 0.2300641, a: 1}
+  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2459,20 +2462,20 @@ MonoBehaviour:
   enemyPrefab2: {fileID: 6027086379095151095, guid: 0aca2c18010931943b1a7af63ba51579, type: 3}
   enemyPrefab3: {fileID: 0}
   enemyPrefab4: {fileID: 0}
-  enemyBulletPrefab1: {fileID: 2100608845967562317, guid: 2e1d29638173fdc478b4fc33d78b471f, type: 3}
+  enemyBulletPrefab1: {fileID: 7463507635523687948, guid: 29f2b4b9abaf3b841b6ea2346b62f53c, type: 3}
   motorCycleEnemyPrefab: {fileID: 3403441203005645215, guid: 62424227f08b2c64faafcfb4d14f3ebf, type: 3}
   HogEnemyPrefab: {fileID: 5844769796473751404, guid: e10b6505d5a42bb4584cc6788f8ae359, type: 3}
   T3EnemyPrefab: {fileID: 6044024354882096127, guid: c312434dd1f9899489410f03b460655a, type: 3}
   T4EnemyPrefab: {fileID: 4654457091920123683, guid: bfc174bb11e1fb147960ddc84878b134, type: 3}
   T4EnemySpawnPrefab: {fileID: 2058931671444382800, guid: 607be39c315fa9143b6dc7d3d678a20b, type: 3}
-  TrailEnemyPrefab: {fileID: 6891031252493286837, guid: 497ea8649357f0b48a6b12e9e8d2f1b7, type: 3}
+  TrailEnemyPrefab: {fileID: 5527163751371170367, guid: 58a0b1af878c5f9478ceb4d1f4346fa4, type: 3}
   FastEnemyPrefab: {fileID: 6919278142062601856, guid: 699b94758189a184d9ad7552a450df2b, type: 3}
-  RapidEnemyPrefab: {fileID: 6811408445738773521, guid: f76c1e83cf7ed9d44bf9b95442f8c9b1, type: 3}
+  RapidEnemyPrefab: {fileID: 1213178997433850517, guid: cadf59b66e8eb0d4194da36894c52c2e, type: 3}
   Boss1Prefab: {fileID: 6027086379095151095, guid: 4ffb0fea5732e7047ad45f97393b8bcc, type: 3}
   GuardEnemyPrefab: {fileID: 7443488182354335285, guid: b4f5d05469bc2604888f42a465545048, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
-  level1Waves: 320000000a000000030000000a0000000a000000050000000a000000030000000a0000000a0000000300000003000000030000000f00000002000000050000000f0000000a0000000a0000000a0000000a000000070000000a00000003000000050000000f000000070000000300000008000000030000000a0000000a00000014000000140000000f0000000a0000000f0000000f000000140000000a0000000a0000001a00000014000000180000000f0000000f000000
+  level1Waves: 010000000a000000030000000a0000000a000000050000000a000000030000000a0000000a0000000300000003000000030000000f00000002000000050000000f0000000a0000000a0000000a0000000a000000070000000a00000003000000050000000f000000070000000300000008000000030000000a0000000a00000014000000140000000f0000000a0000000f0000000f000000140000000a0000000a0000001a00000014000000180000000f0000000f000000
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
   enemiesKilled: 0
@@ -2484,7 +2487,7 @@ MonoBehaviour:
   enemiesToSpawnPortal: 100
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
-  - Trail
+  - Rapid
   - Trail
   - Trail
   - Trail
@@ -3385,7 +3388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.2300641, b: 0.2300641, a: 1}
+  m_Color: {r: 0.23137252, g: 0.7877259, b: 0.8862745, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3616,7 +3619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.2300641, b: 0.2300641, a: 1}
+  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3691,7 +3694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.2300641, b: 0.2300641, a: 1}
+  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3766,7 +3769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.2300641, b: 0.2300641, a: 1}
+  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

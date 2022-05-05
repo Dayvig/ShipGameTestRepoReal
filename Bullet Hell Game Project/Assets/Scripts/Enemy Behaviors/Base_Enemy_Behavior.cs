@@ -25,6 +25,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     public List<Vector3> Waypoints = new List<Vector3>();
     public Vector3 nextWaypoint;
     public int currentWaypointIndex;
+    public SphereCollider hitbox;
 
     public float shootInterval;
     public float shootTimer;
@@ -41,6 +42,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
         bullets = GameObject.Find("Controller").GetComponent<Controller_EnemyBullets>();
         controllerFuel = GameObject.Find("Controller").GetComponent<Controller_Fuel>();
         c = GameObject.Find("Controller").GetComponent<Canister_spawner>();
+        hitbox = GetComponent<SphereCollider>();
         shootTimer = 0;
         if (Waypoints.Count == 0)
         {
@@ -59,10 +61,17 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
         MovementUpdate();
         var sizeCalc = (((gameObject.transform.localScale.x + gameObject.transform.localScale.z)/2)/2); //Calculates how big the hitbox should be
             //^ Right now it gets the X and Z size of the object, averages them. then makes a radius.
-        var around = Physics.OverlapSphere(transform.position, sizeCalc); //Creates the hitbox (Sphere) of a enemy
+            //Debug.Log(sizeCalc);
+            //var around = Physics.OverlapSphere(transform.position, sizeCalc); //Creates the hitbox (Sphere) of a enemy
 
-        //Debug.Log(sizeCalc);
-        foreach (Collider c in around)
+            var around = Physics.OverlapSphere(transform.position, 1); //Creates the hitbox (Sphere) of a enemy
+
+            if (gameObject.name.Contains("Boss1"))
+            {
+                around = Physics.OverlapSphere(transform.position, sizeCalc); //Creates the hitbox (Sphere) of a enemy
+            }
+
+            foreach (Collider c in around)
         {
             if (c.gameObject.tag == "PlayerBullet" && !Immune())
             {

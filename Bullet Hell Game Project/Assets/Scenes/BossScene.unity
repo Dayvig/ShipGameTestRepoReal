@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -977,7 +977,7 @@ MonoBehaviour:
   healthMultiplier: 1
   fireRateMultiplier: 1
   enemiesToSpawnPortal: 100
-  explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
+  explosionPrefab1: {fileID: 4487325560583827888, guid: 015e42ae5bd3bab4bb911de6f77cd566, type: 3}
   level1EnemyTypes:
   - Boss1
 --- !u!114 &419304588
@@ -1746,6 +1746,7 @@ MonoBehaviour:
   currentFuel: 0
   timeInSeconds: 200
   interval: 0
+  startTime: 0
   elapsed: 0
   spawnGas: 0
   meterList:
@@ -1811,6 +1812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerModel: {fileID: 419304601}
   gameModel: {fileID: 419304587}
+  _bulletsInactive: []
 --- !u!114 &588199004
 MonoBehaviour:
   m_ObjectHideFlags: 0
