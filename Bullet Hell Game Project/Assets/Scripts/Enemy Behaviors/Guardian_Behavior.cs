@@ -64,13 +64,10 @@ public class Guardian_Behavior : Base_Enemy_Behavior
 
         public override void KillThisEnemy()
         {
+            base.KillThisEnemy();
             if (inScreen())
             {
-                effects.MakeExplosion(transform.position);
-                gameModel.enemiesKilled++;
                 playerModel.score += 1000;
             }
-
-            gameObject.SetActive(false);
         }
     }
