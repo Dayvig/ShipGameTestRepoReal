@@ -2291,7 +2291,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9fb0168d30de9a943823e7ab89ca044a, type: 2}
+  - {fileID: 2100000, guid: c235eb10aea719c4f817e9987aa8122b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2470,6 +2470,7 @@ MonoBehaviour:
   unshieldedRadius: 0.125
   invincible: 1
   lostLife: 0
+  currentlyDead: 0
   score: 0
   bulletGrazes: 0
   grazesForPowerup: 3
@@ -4107,7 +4108,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0a91277916b6d744fb42f3573a9a6405, type: 2}
+  - {fileID: 2100000, guid: 1d9fbc93e53fb164d91529509b1e5416, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
