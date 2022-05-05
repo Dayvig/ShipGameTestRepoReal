@@ -71,14 +71,7 @@ namespace Controllers
             if (currentFuel <= 0)
             {
                 // Change to losing screen
-               //  UnityEngine.SceneManagement.SceneManager.LoadScene(2);
-               if (!playerModel.lostLife)
-               {
-                   playerModel.livesCurrent--;
-                   playerModel.lostLife = true;
-                   currentFuel = FuelMax;
-               }
-               playerModel.hitpointsCurrent = 0;
+                UnityEngine.SceneManagement.SceneManager.LoadScene(2);
             }
             UpdateColor();
         }

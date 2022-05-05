@@ -89,8 +89,6 @@ public class TrailEnemy_Behavior : Base_Enemy_Behavior
     public override void KillThisEnemy()
     {
         base.KillThisEnemy();
-        if (inScreen()){
         playerModel.score += 1000;
-        }
     }
 }
