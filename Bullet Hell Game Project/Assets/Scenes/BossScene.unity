@@ -977,7 +977,7 @@ MonoBehaviour:
   healthMultiplier: 1
   fireRateMultiplier: 1
   enemiesToSpawnPortal: 100
-  explosionPrefab1: {fileID: 6721503201412289913, guid: 015e42ae5bd3bab4bb911de6f77cd566, type: 3}
+  explosionPrefab1: {fileID: 4487325560583827888, guid: 015e42ae5bd3bab4bb911de6f77cd566, type: 3}
   level1EnemyTypes:
   - Boss1
 --- !u!114 &419304588
