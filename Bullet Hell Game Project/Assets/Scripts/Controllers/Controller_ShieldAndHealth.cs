@@ -97,13 +97,14 @@ public class Controller_ShieldAndHealth : MonoBehaviour
 
     public bool TriggerFuelShield()
     {
-        if (controllerFuel.currentFuel > (controllerFuel.FuelMax * 0.6f) && !player.invincible)
+        /*if (controllerFuel.currentFuel > (controllerFuel.FuelMax * 0.6f) && !player.invincible)
         {
             fuelShieldActive = true;
             player.invincible = true;
             controllerFuel.currentFuel -= controllerFuel.FuelMax * 0.4f;
         }
-        return fuelShieldActive;
+        return fuelShieldActive;*/
+        return false;
     }
 
     private void _ShieldOnOff()

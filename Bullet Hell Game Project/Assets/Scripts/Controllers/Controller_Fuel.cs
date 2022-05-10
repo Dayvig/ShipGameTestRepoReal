@@ -38,7 +38,7 @@ namespace Controllers
             elapsed += Time.deltaTime;
             if (!(elapsed >= 0.1f)) return;
             elapsed %= 0.1f;
-            LowerFuel();
+            //LowerFuel();
             
             
             if (currentFuel <= 0)
