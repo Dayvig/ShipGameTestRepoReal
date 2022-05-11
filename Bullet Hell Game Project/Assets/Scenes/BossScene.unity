@@ -977,7 +977,7 @@ MonoBehaviour:
   healthMultiplier: 1
   fireRateMultiplier: 1
   enemiesToSpawnPortal: 100
-  explosionPrefab1: {fileID: 4487325560583827888, guid: 015e42ae5bd3bab4bb911de6f77cd566, type: 3}
+  explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
   - Boss1
 --- !u!114 &419304588
@@ -1414,6 +1414,7 @@ MonoBehaviour:
   unshieldedRadius: 0.125
   invincible: 1
   lostLife: 0
+  currentlyDead: 0
   score: 0
   bulletGrazes: 0
   grazesForPowerup: 3
@@ -2595,7 +2596,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b5058bea68f7b5748ac4003e737dd6c0, type: 2}
+  - {fileID: 2100000, guid: c235eb10aea719c4f817e9987aa8122b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4151,7 +4152,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 05a307bfae4ec534f8e1cbd4f2b1276f, type: 2}
+  - {fileID: 2100000, guid: 1d9fbc93e53fb164d91529509b1e5416, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
