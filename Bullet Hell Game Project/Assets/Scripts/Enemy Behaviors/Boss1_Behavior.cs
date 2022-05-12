@@ -43,12 +43,12 @@ public class Boss1_Behavior : Base_Enemy_Behavior
             if (currentWaypointIndex >= 0 && currentWaypointIndex <= 2) 
             {
                 
-                boss1Value.fireRate = 0.07f;
-                bulletSpeed = 1; //og
+                boss1Value.fireRate = 0.2f;
+                bulletSpeed = 8; 
                 rate = 30;
                 boss1Value.moveSpeed = 1.8f * healthSpeedMultiplier;
             }
-            else if (currentWaypointIndex == 3 || currentWaypointIndex == 7) //Downwards and upwards movements
+            else if (currentWaypointIndex == 3 || currentWaypointIndex == 6) //Downwards and upwards movements
             {
                 rate = 9000;
                 boss1Value.moveSpeed = 20 * healthSpeedMultiplier;
@@ -59,7 +59,7 @@ public class Boss1_Behavior : Base_Enemy_Behavior
                 boss1Value.fireRate = 0.05f;
                 rate = -9000;
                 boss1Value.moveSpeed = 1 * healthSpeedMultiplier;
-                bulletSpeed = 11;
+                bulletSpeed = 8;
             }
             else if (currentWaypointIndex == 8)
             {
@@ -72,6 +72,7 @@ public class Boss1_Behavior : Base_Enemy_Behavior
                 rate = defaultSpinRate;
                 boss1Value.moveSpeed = defaultSpeed * healthSpeedMultiplier;
             }
+            Debug.Log(currentWaypointIndex);
             SetToNextWaypoint();
         }
         else if (currentWaypointIndex >= Waypoints.Count - 1) // if hit the end of the waypoint list
