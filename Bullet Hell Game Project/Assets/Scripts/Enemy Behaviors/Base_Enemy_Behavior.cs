@@ -33,7 +33,6 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     public float moveSpeed;
     public float bulletSpeed;
     public bool switchedWaypoint = false;
-    public bool indicatorSpawned;
 
     private void Start()
     {
@@ -52,7 +51,6 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
         }
         nextWaypoint = Waypoints[0];
         currentWaypointIndex = 0;
-        indicatorSpawned = false;
         SetupEnemy();
     }
 
@@ -116,18 +114,13 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     public virtual void ShootingUpdate()
     {
         shootTimer += Time.deltaTime;
-        if (shootTimer >= shootInterval / 2 && !indicatorSpawned)
-        {
-            indicatorSpawned = true;
-            SpawnIndicator();
-        }
+
         if (shootTimer >= shootInterval)
         {
             shootTimer -= shootInterval;
             if (canShoot())
             {
                 FiringPattern();
-                indicatorSpawned = false;
             }
         }
     }
@@ -144,7 +137,6 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
             Debug.Log("Tried to set to incorrect waypoint");
         }
     }
-
     public void SetToWaypoint(int toWayPoint)
     {
         currentWaypointIndex = toWayPoint;
@@ -172,13 +164,6 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
                 controllerFuel.spawnGas = false;
             }
         }
-    }
-
-    public virtual void SpawnIndicator()
-    {
-        GameObject thisIndicator = Instantiate(gameModel.indicatorPrefab, transform.position, Quaternion.Euler(90, 0, 0));
-        thisIndicator.GetComponent<LaserUpdate>().toFollow = transform.gameObject;
-        thisIndicator.GetComponent<LaserUpdate>().duration = shootInterval / 2;
     }
     
     public bool inScreen()

@@ -64,13 +64,11 @@ public class Controller_PlayerShip : MonoBehaviour
         {
             shiftHeld = true;
             shiftSlowDown = 1 / playerModel.shiftTurningFactor;
-            playerModel.turnLimit = playerModel.baseTurnLimit*1.5F;
         }
         else
         {
             shiftHeld = false;
             shiftSlowDown = 1;
-            playerModel.turnLimit = playerModel.baseTurnLimit;
         }
 
         if (Input.GetKey(KeyCode.W))
@@ -85,18 +83,12 @@ public class Controller_PlayerShip : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            if (playerModel.rotationCurrent < -playerModel.turnLimit / 20)
-            {
-                playerModel.positionTarget -= Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
-            }
+            playerModel.positionTarget -= Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
             playerModel.rotationCurrent = setRotation(false, shiftHeld);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            if (playerModel.rotationCurrent > playerModel.turnLimit / 20)
-            {
-                playerModel.positionTarget += Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
-            }
+            playerModel.positionTarget += Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
             playerModel.rotationCurrent = setRotation(true, shiftHeld);
         }
 

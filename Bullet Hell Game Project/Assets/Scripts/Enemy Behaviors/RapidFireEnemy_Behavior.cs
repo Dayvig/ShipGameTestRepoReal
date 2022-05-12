@@ -67,17 +67,12 @@ public class RapidFireEnemy_Behavior : Base_Enemy_Behavior
             if (behaviorState == 0)
             {
                 shootTimer += Time.deltaTime;
-                if (shootTimer >= shootInterval / 2 && !indicatorSpawned)
-                {
-                    indicatorSpawned = true;
-                    SpawnIndicator();
-                }
+
                 if (shootTimer >= shootInterval)
                 {
                     behaviorState = 1;
                     shootTimer -= shootInterval;
                     volleys = values.volleyBullets;
-                    indicatorSpawned = false;
                 }
             }
             else
@@ -111,26 +106,6 @@ public class RapidFireEnemy_Behavior : Base_Enemy_Behavior
             bullets.FireBullet(transform.position, firingVector1, "Default", this); 
             bullets.FireBullet(transform.position, firingVector2, "Default", this); 
 
-        }
-        
-        public override void SpawnIndicator()
-        {
-            GameObject thisIndicator;
-            GameObject thisIndicator2;
-            GameObject thisIndicator3;
-            
-                thisIndicator =
-                    Instantiate(gameModel.indicatorPrefab, transform.position, Quaternion.Euler(90, 90, 0));
-                thisIndicator.GetComponent<LaserUpdate>().toFollow = transform.gameObject;
-                thisIndicator.GetComponent<LaserUpdate>().duration = shootInterval / 2;
-                    thisIndicator2 =
-                    Instantiate(gameModel.indicatorPrefab, transform.position, Quaternion.Euler(90, 45, 0));
-                thisIndicator2.GetComponent<LaserUpdate>().toFollow = transform.gameObject;
-                thisIndicator2.GetComponent<LaserUpdate>().duration = shootInterval / 2;
-                    thisIndicator3 =
-                    Instantiate(gameModel.indicatorPrefab, transform.position, Quaternion.Euler(90, 135, 0));
-                thisIndicator3.GetComponent<LaserUpdate>().toFollow = transform.gameObject;
-                thisIndicator3.GetComponent<LaserUpdate>().duration = shootInterval / 2;
         }
 
         public override void KillThisEnemy()

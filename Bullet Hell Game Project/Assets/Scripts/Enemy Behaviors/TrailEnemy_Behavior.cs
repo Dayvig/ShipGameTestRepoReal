@@ -86,28 +86,6 @@ public class TrailEnemy_Behavior : Base_Enemy_Behavior
         }
     }
 
-    public override void SpawnIndicator()
-    {
-        GameObject thisIndicator;
-        GameObject thisIndicator2;
-        if (behaviorState == 0)
-        {
-            thisIndicator =
-                Instantiate(gameModel.indicatorPrefab, transform.position, Quaternion.Euler(90, 90, 0));
-        }
-        else
-        {
-            thisIndicator =
-                Instantiate(gameModel.indicatorPrefab, transform.position, Quaternion.Euler(90, 0, 0));
-            thisIndicator2 =
-                Instantiate(gameModel.indicatorPrefab, transform.position, Quaternion.Euler(90, 180, 0));
-            thisIndicator2.GetComponent<LaserUpdate>().toFollow = transform.gameObject;
-            thisIndicator2.GetComponent<LaserUpdate>().duration = shootInterval / 2;
-        }
-        thisIndicator.GetComponent<LaserUpdate>().toFollow = transform.gameObject;
-        thisIndicator.GetComponent<LaserUpdate>().duration = shootInterval / 2;
-    }
-    
     public override void KillThisEnemy()
     {
         base.KillThisEnemy();

@@ -29,7 +29,7 @@ public class Canister_spawner : MonoBehaviour
         }
         if (!(elapsed >= interval)) return;
         elapsed %= interval;
-        //MakeGas();
+        MakeGas();
     }
 
     void MakeGas()

@@ -1938,8 +1938,8 @@ MonoBehaviour:
   closeCloud2: {fileID: 798667112}
   farCloud1: {fileID: 1719709063}
   farCloud2: {fileID: 1084186498}
-  speedClose: 100
-  speedFar: 100
+  speedClose: 50
+  speedFar: 50
 --- !u!114 &1002588124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2444,17 +2444,16 @@ MonoBehaviour:
   grazesForPowerup: 3
   grazePowerupInterval: 3
   shiftTurningFactor: 5
-  smoothingFactor: 6
-  shipSpeed: 10
+  smoothingFactor: 30
+  shipSpeed: 15
   bulletSpeed: 24
   fireRate: 0.08
   limitHorz: 16.5
   limitVert: 9
   shieldRegenIntervalBase: 3
   shieldDurationBase: 4
-  turnLimit: 40
-  baseTurnLimit: 30
-  rotationSpeed: 1.5
+  turnLimit: 60
+  rotationSpeed: 1
   vFactor: 0.5
   shieldCooldownBase: 10
   positionTarget: {x: 0, y: 0, z: 0}
@@ -2542,7 +2541,6 @@ MonoBehaviour:
   enemyPrefab4: {fileID: 0}
   enemyBulletPrefab1: {fileID: 7463507635523687948, guid: 29f2b4b9abaf3b841b6ea2346b62f53c, type: 3}
   motorCycleEnemyPrefab: {fileID: 3403441203005645215, guid: 62424227f08b2c64faafcfb4d14f3ebf, type: 3}
-  indicatorPrefab: {fileID: 0}
   HogEnemyPrefab: {fileID: 5844769796473751404, guid: e10b6505d5a42bb4584cc6788f8ae359, type: 3}
   T3EnemyPrefab: {fileID: 6044024354882096127, guid: c312434dd1f9899489410f03b460655a, type: 3}
   T4EnemyPrefab: {fileID: 4654457091920123683, guid: bfc174bb11e1fb147960ddc84878b134, type: 3}
