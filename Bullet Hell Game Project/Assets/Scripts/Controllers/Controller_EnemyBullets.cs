@@ -87,9 +87,7 @@ public class Controller_EnemyBullets : MonoBehaviour
             AudioSource.PlayClipAtPoint(enemyShoots, transform.position);
             bullet = Instantiate(gameModel.enemyBulletPrefab1);
         }
-        
-        Debug.Log(direction.z);
-        
+                
         bullet.transform.position = where;
         bullet.transform.rotation = Quaternion.Euler(0, 90 + Mathf.Acos(direction.x) * 180/Mathf.PI, 0);
         //bullet.transform.LookAt(direction, Vector3.forward);

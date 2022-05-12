@@ -49,6 +49,7 @@ MonoBehaviour:
   r: {fileID: 4912424418456528591}
   alphaColor: {r: 0, g: 0, b: 0, a: 0}
   flare: 0
+  toFollow: {fileID: 0}
 --- !u!1 &4912424418456528585
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +122,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8bfef11da9f77c0489a8e748b9fb9212, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.6806248, g: 0.8138614, b: 0.8962264, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
