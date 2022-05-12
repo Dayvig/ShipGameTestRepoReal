@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2382,7 +2382,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c235eb10aea719c4f817e9987aa8122b, type: 2}
+  - {fileID: 2100000, guid: 99c408e99366f3f43a72f01a7d63e781, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2566,7 +2566,7 @@ MonoBehaviour:
   grazePowerupInterval: 3
   shiftTurningFactor: 5
   smoothingFactor: 6
-  shipSpeed: 10
+  shipSpeed: 14
   bulletSpeed: 24
   fireRate: 0.08
   limitHorz: 16.5
@@ -2575,7 +2575,7 @@ MonoBehaviour:
   shieldDurationBase: 4
   turnLimit: 40
   baseTurnLimit: 30
-  rotationSpeed: 1.5
+  rotationSpeed: 1
   vFactor: 0.5
   shieldCooldownBase: 10
   positionTarget: {x: 0, y: 0, z: 0}
@@ -2675,7 +2675,7 @@ MonoBehaviour:
   GuardEnemyPrefab: {fileID: 8892040451686833353, guid: 750285f6cb22213419b4810c360c280d, type: 3}
   GasCanisterPrefab: {fileID: 7732755316423344953, guid: 419a76ae8c444b8458feb428e8cc6ff1, type: 3}
   PortalPrefab: {fileID: 5395900124538924264, guid: b39dd483ef2d9e646baa7efd28073b94, type: 3}
-  level1Waves: 030000000a000000030000000a0000000a000000050000000a000000030000000a0000000a0000000300000003000000030000000f00000002000000050000000f0000000a0000000a0000000a0000000a000000070000000a00000003000000050000000f000000070000000300000008000000030000000a0000000a00000014000000140000000f0000000a0000000f0000000f000000140000000a0000000a0000001a00000014000000180000000f0000000f000000
+  level1Waves: 010000000a000000030000000a0000000a000000050000000a000000030000000a0000000a0000000300000003000000030000000f00000002000000050000000f0000000a0000000a0000000a0000000a000000070000000a00000003000000050000000f000000070000000300000008000000030000000a0000000a00000014000000140000000f0000000a0000000f0000000f000000140000000a0000000a0000001a00000014000000180000000f0000000f000000
   enemySpeed1: 8
   enemyBulletSpeed1: 4.5
   enemiesKilled: 0
@@ -4326,7 +4326,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1d9fbc93e53fb164d91529509b1e5416, type: 2}
+  - {fileID: 2100000, guid: c6f67c932cfedb64fa7a5390a805ec18, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
