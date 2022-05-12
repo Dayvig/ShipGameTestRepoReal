@@ -1938,8 +1938,8 @@ MonoBehaviour:
   closeCloud2: {fileID: 798667112}
   farCloud1: {fileID: 1719709063}
   farCloud2: {fileID: 1084186498}
-  speedClose: 50
-  speedFar: 50
+  speedClose: 100
+  speedFar: 100
 --- !u!114 &1002588124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2444,16 +2444,17 @@ MonoBehaviour:
   grazesForPowerup: 3
   grazePowerupInterval: 3
   shiftTurningFactor: 5
-  smoothingFactor: 30
-  shipSpeed: 15
+  smoothingFactor: 15
+  shipSpeed: 10
   bulletSpeed: 24
   fireRate: 0.08
   limitHorz: 16.5
   limitVert: 9
   shieldRegenIntervalBase: 3
   shieldDurationBase: 4
-  turnLimit: 60
-  rotationSpeed: 1
+  turnLimit: 40
+  baseTurnLimit: 40
+  rotationSpeed: 1.5
   vFactor: 0.5
   shieldCooldownBase: 10
   positionTarget: {x: 0, y: 0, z: 0}
