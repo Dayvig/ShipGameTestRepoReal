@@ -26,13 +26,17 @@ public class LaserUpdate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position = toFollow.transform.position;
         //LaserUpdate1();
         LaserUpdate2();
+        if (toFollow == null || toFollow.gameObject.activeSelf == false)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void LaserUpdate1()
     {
-        transform.position = toFollow.transform.position;
         currentTime += Time.deltaTime;
         if (currentTime > duration)
         {
@@ -57,7 +61,6 @@ public class LaserUpdate : MonoBehaviour
 
     void LaserUpdate2()
     {
-        transform.position = toFollow.transform.position;
         currentTime += Time.deltaTime;
         flashCtr += Time.deltaTime;
         if (flashCtr < flashTime)
