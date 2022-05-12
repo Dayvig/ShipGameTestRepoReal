@@ -72,7 +72,7 @@ public class Boss1_Behavior : Base_Enemy_Behavior
                 rate = defaultSpinRate;
                 boss1Value.moveSpeed = defaultSpeed * healthSpeedMultiplier;
             }
-            Debug.Log(currentWaypointIndex);
+            //Debug.Log(currentWaypointIndex);
             SetToNextWaypoint();
         }
         else if (currentWaypointIndex >= Waypoints.Count - 1) // if hit the end of the waypoint list

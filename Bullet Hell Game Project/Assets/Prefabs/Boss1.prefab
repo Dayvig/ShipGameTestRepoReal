@@ -757,7 +757,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 05a307bfae4ec534f8e1cbd4f2b1276f, type: 2}
+  - {fileID: 2100000, guid: 1477819719a6ad34c8e8542982a44ab2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -809,6 +809,7 @@ MonoBehaviour:
   effects: {fileID: 0}
   bullets: {fileID: 0}
   controllerFuel: {fileID: 0}
+  boom: {fileID: 0}
   c: {fileID: 0}
   ps: {fileID: 3460088518073488387, guid: c56264f2b350c1e4ea04829534e5a069, type: 3}
   hitPoints: 900
@@ -836,6 +837,7 @@ MonoBehaviour:
   moveSpeed: 0
   bulletSpeed: 0
   switchedWaypoint: 0
+  indicatorSpawned: 0
   isLeft: 0
   MidHealthShader: {fileID: 2100000, guid: 73fd3f7d8e73f64498fd22f35fcc244c, type: 2}
   LowHealthShader: {fileID: 2100000, guid: 2fddcda78a698c64eaee3c7c61ddbb68, type: 2}

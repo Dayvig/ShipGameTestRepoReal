@@ -16,7 +16,7 @@ public class HealthArmor : MonoBehaviour
 
     private double HPThird_Top;
     private double HPThird_Bottom;
-    private bool AlmostDead = false;
+    //private bool AlmostDead = false;
 
     public Controller_EnemyBullets bullets; 
  
@@ -77,7 +77,7 @@ public class HealthArmor : MonoBehaviour
         {
             //Debug.Log("Red");
             gameObject.GetComponent<MeshRenderer>().material = LowHealthShader;
-            AlmostDead = true;
+            //AlmostDead = true;
         }
         else //Its green
         {
