@@ -9,6 +9,7 @@ public class Controller_ShieldAndHealth : MonoBehaviour
     public Model_Player player;
     public Controller_EnemyBullets bullets;
     public Controller_Fuel controllerFuel;
+    public AudioClip Death;   
 
     private float shieldRegenTimer;
     private bool firstSpawn = true;
@@ -90,7 +91,8 @@ public class Controller_ShieldAndHealth : MonoBehaviour
 
                     player.hitpointsCurrent = 0;
                 }
-                    bullets.KillBullet(c.gameObject);
+                AudioSource.PlayClipAtPoint(Death, transform.position);
+                bullets.KillBullet(c.gameObject);
             }
         }
     }
