@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 public class Controller_Enemies : MonoBehaviour
 {
     public Model_Game gameModel;
+    public AudioClip BOOM;
     public List<Wave> waves;
     public float waveTimer = 8f;
     public int waveIndex;
@@ -384,6 +385,7 @@ public class Controller_Enemies : MonoBehaviour
             enemycount--;
         }
         waves.Remove(wave);
+        AudioSource.PlayClipAtPoint(BOOM, transform.position);
     }
 
     [System.Serializable]

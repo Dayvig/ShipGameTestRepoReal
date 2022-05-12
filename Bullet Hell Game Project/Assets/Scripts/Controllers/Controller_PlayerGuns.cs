@@ -7,7 +7,8 @@ using UnityEngine;
 public class Controller_PlayerGuns : MonoBehaviour
 {
     public Model_Player playerModel;
-    
+    public AudioClip playerShoots;
+
     List<GameObject> _inactiveBullets;
     List<GameObject> _activeBullets;
     
@@ -117,6 +118,7 @@ public class Controller_PlayerGuns : MonoBehaviour
             b.SetDirection(bulletDir());
         }
         // Add bullet to _activeBullets to make it fly
+        AudioSource.PlayClipAtPoint(playerShoots, transform.position);
         _activeBullets.Add(bullet);
 
         // Set starting position based on which gun should fire

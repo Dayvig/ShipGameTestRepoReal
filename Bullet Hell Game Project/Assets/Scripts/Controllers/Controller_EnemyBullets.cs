@@ -11,6 +11,7 @@ public class Controller_EnemyBullets : MonoBehaviour
     public List<GameObject> _bulletsInactive;
     public List<BulletTracker> _bulletsActive;
     private Motorcycle_behavior _behavior;
+    public AudioClip enemyShoots;
     
     private float elapsed = 0f;
     private const float radius = 1F;
@@ -76,12 +77,14 @@ public class Controller_EnemyBullets : MonoBehaviour
         GameObject bullet;
         if (_bulletsInactive.Count > 0)
         {
+            AudioSource.PlayClipAtPoint(enemyShoots, transform.position);
             bullet = _bulletsInactive[0];
             _bulletsInactive.Remove(bullet);
             bullet.SetActive(true);
         }
         else
         {
+            AudioSource.PlayClipAtPoint(enemyShoots, transform.position);
             bullet = Instantiate(gameModel.enemyBulletPrefab1);
         }
         
@@ -110,6 +113,7 @@ public class Controller_EnemyBullets : MonoBehaviour
         }
         else
         {
+            AudioSource.PlayClipAtPoint(enemyShoots, transform.position);
             bullet = Instantiate(gameModel.enemyBulletPrefab1);
         }
 

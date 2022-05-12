@@ -5,6 +5,7 @@ using UnityEngine;
 public class Controller_Effects : MonoBehaviour
 {
     public Model_Game gameModel;
+    public AudioClip hitSound;
 
     private List<ParticleSystem> _explosionsInactive;
     private List<EffectTimer> _explosionsActive;
@@ -63,7 +64,7 @@ public class Controller_Effects : MonoBehaviour
         {
             explosion = Instantiate(gameModel.explosionPrefab1).GetComponent<ParticleSystem>();
         }
-        
+        AudioSource.PlayClipAtPoint(hitSound, transform.position);
         _explosionsActive.Add(new EffectTimer(explosion, 0.25f));
         explosion.transform.position = where;
         explosion.Emit(4);
