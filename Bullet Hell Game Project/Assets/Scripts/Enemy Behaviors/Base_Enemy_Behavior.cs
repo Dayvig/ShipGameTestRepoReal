@@ -16,6 +16,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     public Controller_Effects effects;
     public Controller_EnemyBullets bullets;
     public Controller_Fuel controllerFuel;
+    public Controller_Sound boom;
     public Canister_spawner c;
     public ParticleSystem ps;
     public float hitPoints;
@@ -42,6 +43,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
         effects = GameObject.Find("Controller").GetComponent<Controller_Effects>();
         bullets = GameObject.Find("Controller").GetComponent<Controller_EnemyBullets>();
         controllerFuel = GameObject.Find("Controller").GetComponent<Controller_Fuel>();
+        boom = GameObject.Find("Controller").GetComponent<Controller_Sound>();
         c = GameObject.Find("Controller").GetComponent<Canister_spawner>();
         hitbox = GetComponent<SphereCollider>();
         shootTimer = 0;
@@ -95,6 +97,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
             else
             {
                 //Debug.Log(gameObject.name+" died");
+                boom.boom();
                 KillThisEnemy();
             }
             
