@@ -9,7 +9,8 @@ public class Controller_ShieldAndHealth : MonoBehaviour
     public Model_Player player;
     public Controller_EnemyBullets bullets;
     public Controller_Fuel controllerFuel;
-    public AudioClip Death;   
+    public AudioClip Death;
+    public AudioClip Shield;
 
     private float shieldRegenTimer;
     private bool firstSpawn = true;
@@ -112,7 +113,10 @@ public class Controller_ShieldAndHealth : MonoBehaviour
     private void _ShieldOnOff()
     {
         if (player.shieldActive)
+        {
             player.shield.SetActive(true);
+            AudioSource.PlayClipAtPoint(Shield, transform.position);
+        }
         else
             player.shield.SetActive(false);
     }
