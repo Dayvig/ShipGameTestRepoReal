@@ -10,6 +10,14 @@ public class HealthArmor : MonoBehaviour
     private Vector3 hitboxSize;
     public int Armor_Health;
 
+    private Material DefaultShader;
+    public Material MidHealthShader;
+    public Material LowHealthShader;
+
+    private double HPThird_Top;
+    private double HPThird_Bottom;
+    //private bool AlmostDead = false;
+
     public Controller_EnemyBullets bullets; 
  
     void Start()
@@ -19,6 +27,9 @@ public class HealthArmor : MonoBehaviour
 
         hitboxSize = Vector3.Scale(gameObject.transform.localScale, HostBody.transform.localScale);
 
+        DefaultShader = gameObject.GetComponent<MeshRenderer>().material;
+        HPThird_Top = Armor_Health * 0.66;
+        HPThird_Bottom = Armor_Health * 0.33;
     }
 
 
@@ -55,6 +66,23 @@ public class HealthArmor : MonoBehaviour
             // }
             
 
+        }
+
+        if (Armor_Health <= HPThird_Top && Armor_Health >= HPThird_Bottom) //Turn it yellow
+        {
+            // Debug.Log("Yellow");
+            gameObject.GetComponent<MeshRenderer>().material = MidHealthShader;
+        }
+        else if (Armor_Health <= HPThird_Bottom)  //Turn it red
+        {
+            //Debug.Log("Red");
+            gameObject.GetComponent<MeshRenderer>().material = LowHealthShader;
+            //AlmostDead = true;
+        }
+        else //Its green
+        {
+            // Debug.Log("Green");
+            gameObject.GetComponent<MeshRenderer>().material = DefaultShader;
         }
 
     }

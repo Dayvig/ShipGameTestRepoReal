@@ -92,7 +92,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
 
                 Debug.Log("Level 1 Complete, Changing Scene");
 
-                UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(4);
             }
             else
             {
