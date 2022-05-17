@@ -19,6 +19,7 @@ namespace Enemies
         public float startDisplace;
         public float startStagger;
         public EnterDirections enterFrom;
+        public float hitRadius;
         public enum EnterDirections { Left, Right, Top, Bottom }
     }
 }

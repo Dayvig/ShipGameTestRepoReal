@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using Controllers;
+using Enemies;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
@@ -27,6 +29,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     public Vector3 nextWaypoint;
     public int currentWaypointIndex;
     public SphereCollider hitbox;
+    public AbstractEnemy values;
 
     public float shootInterval;
     public float shootTimer;
@@ -68,7 +71,7 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
             //Debug.Log(sizeCalc);
             //var around = Physics.OverlapSphere(transform.position, sizeCalc); //Creates the hitbox (Sphere) of a enemy
 
-            var around = Physics.OverlapSphere(transform.position, 1); //Creates the hitbox (Sphere) of a enemy
+            var around = Physics.OverlapSphere(transform.position, 1.5f); //Creates the hitbox (Sphere) of a enemy
 
             if (gameObject.name.Contains("Boss1"))
             {

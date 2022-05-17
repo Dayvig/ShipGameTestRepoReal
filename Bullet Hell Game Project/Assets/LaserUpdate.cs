@@ -27,8 +27,8 @@ public class LaserUpdate : MonoBehaviour
     void Update()
     {
         transform.position = toFollow.transform.position;
-        //LaserUpdate1();
-        LaserUpdate2();
+        LaserUpdate1();
+        //LaserUpdate2();
         if (toFollow == null || toFollow.gameObject.activeSelf == false)
         {
             Destroy(gameObject);

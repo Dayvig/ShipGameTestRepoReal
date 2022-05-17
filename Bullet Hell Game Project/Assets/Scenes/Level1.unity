@@ -2687,9 +2687,9 @@ MonoBehaviour:
   enemiesToSpawnPortal: 100
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
-  - Rapid
-  - Trail
-  - Rapid
+  - Fast
+  - Fast
+  - Fast
   - Trail
   - Trail
   - Rapid
@@ -2828,6 +2828,7 @@ MonoBehaviour:
   startDisplace: 2
   startStagger: 4
   enterFrom: 1
+  hitRadius: 0
 --- !u!114 &1212158457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2853,6 +2854,7 @@ MonoBehaviour:
   startDisplace: 0
   startStagger: 0
   enterFrom: 0
+  hitRadius: 0
 --- !u!114 &1212158458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2914,6 +2916,7 @@ MonoBehaviour:
   startDisplace: 0
   startStagger: 0
   enterFrom: 0
+  hitRadius: 0
   isLeft: 1
 --- !u!114 &1212158461
 MonoBehaviour:
@@ -2935,7 +2938,7 @@ MonoBehaviour:
   moveSpeed: 5
   fireRate: 1
   enemyName: Trail Enemy
-  bulletSpeed: 4
+  bulletSpeed: 10
   bulletAngles: 
   startPos: 0
   Waypoints:
@@ -2948,6 +2951,7 @@ MonoBehaviour:
   startDisplace: 0
   startStagger: 2
   enterFrom: 0
+  hitRadius: 0
 --- !u!114 &1212158462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2976,6 +2980,7 @@ MonoBehaviour:
   startDisplace: 0
   startStagger: 4
   enterFrom: 2
+  hitRadius: 0
   chargeTime: 6
 --- !u!114 &1212158463
 MonoBehaviour:
@@ -3004,6 +3009,7 @@ MonoBehaviour:
   startDisplace: 0
   startStagger: 2
   enterFrom: 2
+  hitRadius: 0
   enemiesToSpawn: 5
   radius: 2
 --- !u!114 &1212158464
@@ -3033,6 +3039,7 @@ MonoBehaviour:
   startDisplace: 0
   startStagger: 0
   enterFrom: 0
+  hitRadius: 0
 --- !u!114 &1212158465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3051,7 +3058,7 @@ MonoBehaviour:
   moveSpeed: 12
   fireRate: 0.4
   enemyName: Fast Enemy
-  bulletSpeed: 12
+  bulletSpeed: 10
   bulletAngles: 
   startPos: 0
   Waypoints:
@@ -3062,6 +3069,7 @@ MonoBehaviour:
   startDisplace: 0
   startStagger: 4
   enterFrom: 2
+  hitRadius: 0
 --- !u!114 &1212158466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3077,10 +3085,10 @@ MonoBehaviour:
   Notes: Appears and then shoots some bullets
   hp: 50
   damage: 1
-  moveSpeed: 4
+  moveSpeed: 2
   fireRate: 4
   enemyName: RapidFire Enemy
-  bulletSpeed: 5
+  bulletSpeed: 12
   bulletAngles: 
   startPos: 0
   Waypoints:
@@ -3089,6 +3097,7 @@ MonoBehaviour:
   startDisplace: 0
   startStagger: 5
   enterFrom: 2
+  hitRadius: 0
   volleyBullets: 3
   volleyInterval: 0.2
 --- !u!114 &1212158467
@@ -3140,6 +3149,7 @@ MonoBehaviour:
   startDisplace: 0
   startStagger: 3
   enterFrom: 2
+  hitRadius: 0
 --- !u!1 &1276577678
 GameObject:
   m_ObjectHideFlags: 0
@@ -4644,7 +4654,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -62.337646, y: -479.99988}
+  m_AnchoredPosition: {x: -62.337524, y: -479.99988}
   m_SizeDelta: {x: -1380.565, y: -989.276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1864030058

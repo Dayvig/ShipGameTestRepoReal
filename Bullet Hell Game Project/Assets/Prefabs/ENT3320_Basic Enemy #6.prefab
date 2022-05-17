@@ -645,6 +645,7 @@ MonoBehaviour:
   effects: {fileID: 0}
   bullets: {fileID: 0}
   controllerFuel: {fileID: 0}
+  boom: {fileID: 0}
   c: {fileID: 0}
   ps: {fileID: 4672498610862107910}
   hitPoints: 0
@@ -661,6 +662,7 @@ MonoBehaviour:
   moveSpeed: 0
   bulletSpeed: 0
   switchedWaypoint: 0
+  indicatorSpawned: 0
   circleWidth: 3
   circleHeight: 3
 --- !u!33 &3862260405022988109
