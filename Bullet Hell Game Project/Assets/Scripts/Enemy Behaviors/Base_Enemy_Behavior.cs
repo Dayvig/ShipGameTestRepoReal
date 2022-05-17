@@ -29,7 +29,6 @@ public abstract class Base_Enemy_Behavior : MonoBehaviour
     public Vector3 nextWaypoint;
     public int currentWaypointIndex;
     public SphereCollider hitbox;
-    public AbstractEnemy values;
 
     public float shootInterval;
     public float shootTimer;
