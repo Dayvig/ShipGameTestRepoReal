@@ -18,7 +18,7 @@ namespace Controllers
         public float startTime;
         public float elapsed = 0f;
         public bool spawnGas;
-        
+        public Color orange;
         
         public List<GameObject> meterList = new List<GameObject>();
         void Start()
@@ -31,6 +31,8 @@ namespace Controllers
             spawnGas = false;
             
             startTime = Time.time;
+
+            orange = new Color(226, 162, 59);
         }
         
         void Update()
@@ -38,7 +40,7 @@ namespace Controllers
             elapsed += Time.deltaTime;
             if (!(elapsed >= 0.1f)) return;
             elapsed %= 0.1f;
-            //LowerFuel();
+            LowerFuel();
             
             
             if (currentFuel <= 0)
@@ -96,14 +98,14 @@ namespace Controllers
             {
                 foreach (GameObject gameObject in meterList)
                 {
-                    gameObject.GetComponent<Image>().color = Color.cyan;
+                    gameObject.GetComponent<Image>().color = orange;
                 }
             }
             else
             {
                 foreach (GameObject gameObject in meterList)
                 {
-                    gameObject.GetComponent<Image>().color = Color.Lerp(Color.cyan, Color.red, t);
+                    gameObject.GetComponent<Image>().color = Color.Lerp(orange, Color.red, t);
                 }
             }
         }

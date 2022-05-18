@@ -40,7 +40,6 @@ public class Controller_ShieldAndHealth : MonoBehaviour
             player.livesCurrent = player.livesBase;
             firstSpawn = false;
         }
-
         player.lostLife = false;
         
     }
@@ -100,14 +99,13 @@ public class Controller_ShieldAndHealth : MonoBehaviour
 
     public bool TriggerFuelShield()
     {
-        /*if (controllerFuel.currentFuel > (controllerFuel.FuelMax * 0.6f) && !player.invincible)
+        if (controllerFuel.currentFuel > (controllerFuel.FuelMax * 0.6f) && !player.invincible)
         {
             fuelShieldActive = true;
             player.invincible = true;
             controllerFuel.currentFuel -= controllerFuel.FuelMax * 0.4f;
         }
-        return fuelShieldActive;*/
-        return false;
+        return fuelShieldActive;
     }
 
     private void _ShieldOnOff()
