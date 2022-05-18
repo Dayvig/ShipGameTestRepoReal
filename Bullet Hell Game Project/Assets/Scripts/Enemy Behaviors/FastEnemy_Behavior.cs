@@ -66,6 +66,11 @@ namespace Enemy_Behaviors
         {
             bullets.FireBullet(transform.position, (playerModel.ship.transform.position - transform.position).normalized, "Default", this);
         }
+        
+        public override void SpawnIndicator()
+        {
+            //don't
+        }
 
         public override void KillThisEnemy()
         {
