@@ -12,10 +12,15 @@ namespace Enemy_Behaviors
     {
         private FastEnemy values;
         public static string BULLET_NAME = "FastBullet";
+        public bool canMove;
+        public GameObject thisIndicator;
 
         public override void MovementUpdate()
         {
-            Vector3 toPos = Vector3.MoveTowards(transform.position, nextWaypoint, moveSpeed * Time.deltaTime);
+            if (!canMove)
+                return;
+            
+                Vector3 toPos = Vector3.MoveTowards(transform.position, nextWaypoint, moveSpeed * Time.deltaTime);
             transform.LookAt(toPos, Vector3.forward);
             transform.position = toPos;
             
@@ -31,6 +36,19 @@ namespace Enemy_Behaviors
                 }
             }
         }
+        
+        public override void ShootingUpdate()
+        {
+            shootTimer += Time.deltaTime;
+            if (shootTimer >= shootInterval)
+            {
+                shootTimer -= shootInterval;
+                if (canShoot())
+                {
+                    FiringPattern();
+                }
+            }
+        }
 
         public override void SetupEnemy()
         {
@@ -40,6 +58,14 @@ namespace Enemy_Behaviors
             hitPoints = (int) (values.hp * gameModel.healthMultiplier);
             moveSpeed = values.moveSpeed * gameModel.speedMultiplier;
             bulletSpeed = values.bulletSpeed * gameModel.bulletSpeedMultiplier;
+            canMove = false;
+            Invoke("makeThisMove", 2f);
+            SpawnIndicator();
+        }
+
+        public void makeThisMove()
+        {
+            canMove = true;
         }
 
         public override bool Immune()
@@ -69,7 +95,14 @@ namespace Enemy_Behaviors
         
         public override void SpawnIndicator()
         {
-            //don't
+            if (behaviorState == 0)
+            {
+                Instantiate(gameModel.fastindicatorPrefab, new Vector3(15, 0, 8), Quaternion.Euler(90, 0, 0));
+            }
+            else
+            {
+                Instantiate(gameModel.fastindicatorPrefab, new Vector3(-15, 0, 8), Quaternion.Euler(90, 0, 0));
+            }
         }
 
         public override void KillThisEnemy()

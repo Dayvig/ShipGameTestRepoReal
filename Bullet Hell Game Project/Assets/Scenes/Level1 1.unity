@@ -2666,6 +2666,7 @@ MonoBehaviour:
   enemyBulletPrefab1: {fileID: 7463507635523687948, guid: 29f2b4b9abaf3b841b6ea2346b62f53c, type: 3}
   motorCycleEnemyPrefab: {fileID: 3403441203005645215, guid: 62424227f08b2c64faafcfb4d14f3ebf, type: 3}
   indicatorPrefab: {fileID: 4912424417904540971, guid: 0ee2ee3a4b6d31d4083cf89f412e9297, type: 3}
+  fastindicatorPrefab: {fileID: 4710148341495172958, guid: 0695bd71cf28d9a4ab569e1888273c3e, type: 3}
   HogEnemyPrefab: {fileID: 5844769796473751404, guid: e10b6505d5a42bb4584cc6788f8ae359, type: 3}
   T3EnemyPrefab: {fileID: 6044024354882096127, guid: c312434dd1f9899489410f03b460655a, type: 3}
   T4EnemyPrefab: {fileID: 4654457091920123683, guid: bfc174bb11e1fb147960ddc84878b134, type: 3}
@@ -2689,8 +2690,8 @@ MonoBehaviour:
   enemiesToSpawnPortal: 100
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
-  - TrailH
-  - TrailH
+  - Fast
+  - Fast
   - TrailV
   - TrailV
   - TrailH
@@ -4659,7 +4660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -62.337524, y: -479.99988}
+  m_AnchoredPosition: {x: -62.337463, y: -479.9997}
   m_SizeDelta: {x: -1380.565, y: -989.276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1864030058

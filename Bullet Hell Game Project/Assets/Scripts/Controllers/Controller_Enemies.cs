@@ -84,6 +84,11 @@ public class Controller_Enemies : MonoBehaviour
         }
     }
 
+    public void SpawnFastIndicator()
+    {
+        
+    }
+    
     public void EnemyUpdate()
     {
         // Making waves for the level according to model specifications
@@ -95,6 +100,14 @@ public class Controller_Enemies : MonoBehaviour
             int numberToSpawn = gameModel.level1Waves[waveIndex];
             
             float turnOverTime = 10;
+
+            /*
+            if (waveTimer >= turnOverTime - 2 && gameModel.level1EnemyTypes[waveIndex] == "Fast")
+            {
+                Debug.Log("Hi c:");
+                SpawnFastIndicator();
+            }*/
+            
             if (waveTimer >= turnOverTime && gameModel.waveSpawn < gameModel.level1Waves.Count)
             {
 
@@ -279,12 +292,14 @@ public class Controller_Enemies : MonoBehaviour
                                 fastBehavior.nextWaypoint = fastValues.Waypoints[2];
                                 fastBehavior.Waypoints.Add(fastBehavior.nextWaypoint);
                                 fastBehavior.Waypoints.Add(fastValues.Waypoints[3]);
+                                fastBehavior.behaviorState = 0;
                             }
                             else
                             {
                                 fastBehavior.nextWaypoint = fastValues.Waypoints[0];
                                 fastBehavior.Waypoints.Add(fastBehavior.nextWaypoint);
                                 fastBehavior.Waypoints.Add(fastValues.Waypoints[1]);
+                                fastBehavior.behaviorState = 1;
                             }
 
                             FAST.transform.position = fastBehavior.nextWaypoint + (stag * i * fastValues.startStagger);
