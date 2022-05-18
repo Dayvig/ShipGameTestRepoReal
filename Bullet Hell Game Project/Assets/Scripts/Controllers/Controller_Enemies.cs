@@ -233,14 +233,12 @@ public class Controller_Enemies : MonoBehaviour
                             }
 
                             break;
-                        case "Trail":
-                            
+                        case "TrailH":
                             TRAIL = Instantiate(gameModel.TrailEnemyPrefab); //Spawn the prefab in
                             TrailEnemy_Behavior tbehavior = TRAIL.GetComponent<TrailEnemy_Behavior>(); //Get its behavior inside its prefab
                             enemycount++;
-                            if (spawnMagicNumber == 0)
-                            {
-                                stag = new Vector3(-1, 0, 0);
+                            if (enemycount%2 == 0){
+                            stag = new Vector3(-1, 0, 0);
                                 tbehavior.nextWaypoint = trailValues.Waypoints[0] + dis;
                                 tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
                                 tbehavior.Waypoints.Add(trailValues.Waypoints[1] + dis);
@@ -249,13 +247,25 @@ public class Controller_Enemies : MonoBehaviour
                             }
                             else
                             {
-                                stag = new Vector3(0, 0, 1);
-                                tbehavior.nextWaypoint = trailValues.Waypoints[3] + dis;
+                                stag = new Vector3(1, 0, 0);
+                                tbehavior.nextWaypoint = trailValues.Waypoints[6] + dis;
                                 tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
-                                tbehavior.Waypoints.Add(trailValues.Waypoints[4] + dis);
-                                tbehavior.Waypoints.Add(trailValues.Waypoints[5]+ dis);
-                                tbehavior.behaviorState = 1;
+                                tbehavior.Waypoints.Add(trailValues.Waypoints[7] + dis);
+                                tbehavior.Waypoints.Add(trailValues.Waypoints[8]+ dis);
+                                tbehavior.behaviorState = 0;
                             }
+                            TRAIL.transform.position = tbehavior.nextWaypoint + (stag * i * trailValues.startStagger);
+                            break;
+                        case "TrailV":
+                            TRAIL = Instantiate(gameModel.TrailEnemyPrefab); //Spawn the prefab in
+                            tbehavior = TRAIL.GetComponent<TrailEnemy_Behavior>(); //Get its behavior inside its prefab
+                            enemycount++;
+                            stag = new Vector3(0, 0, 1);
+                            tbehavior.nextWaypoint = trailValues.Waypoints[3] + dis;
+                            tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
+                            tbehavior.Waypoints.Add(trailValues.Waypoints[4] + dis);
+                            tbehavior.Waypoints.Add(trailValues.Waypoints[5]+ dis);
+                            tbehavior.behaviorState = 1;
                             TRAIL.transform.position = tbehavior.nextWaypoint + (stag * i * trailValues.startStagger);
                             break;
                         case "Fast":
