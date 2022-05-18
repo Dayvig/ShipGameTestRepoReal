@@ -11,7 +11,21 @@ public class Controller_ShieldAndHealth : MonoBehaviour
     public Controller_Fuel controllerFuel;
     public AudioClip Death;
     public AudioClip Shield;
-
+    private bool soundIsOn;
+    private bool shieldIsOn
+    {
+        get 
+        {
+            return soundIsOn;
+        }
+        set
+        {
+            if(value != soundIsOn && firstSpawn == false)
+            {
+                AudioSource.PlayClipAtPoint(Shield, transform.position);
+            }
+        }
+    }
     private float shieldRegenTimer;
     private bool firstSpawn = true;
     public float invincibleTimer;
@@ -113,7 +127,6 @@ public class Controller_ShieldAndHealth : MonoBehaviour
         if (player.shieldActive)
         {
             player.shield.SetActive(true);
-            AudioSource.PlayClipAtPoint(Shield, transform.position);
         }
         else
             player.shield.SetActive(false);
