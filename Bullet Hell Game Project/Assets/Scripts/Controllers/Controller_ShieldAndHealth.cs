@@ -76,7 +76,9 @@ public class Controller_ShieldAndHealth : MonoBehaviour
         float radius = 0;
         radius = player.unshieldedRadius;
         
-        var colliders = Physics.OverlapSphere(player.ship.transform.position, radius);
+        var colliders = Physics.OverlapCapsule(player.ship.transform.position + Vector3.forward * 1.3f,
+            player.ship.transform.position + Vector3.forward * -0.8f , 0.1f);
+        
         
         foreach (var c in colliders)
         {
