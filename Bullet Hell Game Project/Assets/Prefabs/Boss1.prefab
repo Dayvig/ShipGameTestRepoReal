@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5024188784706032165}
   - component: {fileID: 483814427178586625}
   m_Layer: 0
-  m_Name: HealthArmor (16)
+  m_Name: HealthArmor5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 7213032837687957172}
   - component: {fileID: 2710641981060772573}
   m_Layer: 0
-  m_Name: HealthArmor (13)
+  m_Name: HealthArmor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 3774656857897180917}
   - component: {fileID: 7665010353090048949}
   m_Layer: 0
-  m_Name: HealthArmor (12)
+  m_Name: HealthArmor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 5183890279839069908}
   - component: {fileID: 300371987925202129}
   m_Layer: 0
-  m_Name: HealthArmor (15)
+  m_Name: HealthArmor3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 5920346348377117973}
   - component: {fileID: 491975718200359049}
   m_Layer: 0
-  m_Name: HealthArmor (22)
+  m_Name: HealthArmor7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 5205374760052388304}
   - component: {fileID: 5503896837827726904}
   m_Layer: 0
-  m_Name: HealthArmor (20)
+  m_Name: HealthArmor6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 6619045281593840005}
   - component: {fileID: 4163298496801901862}
   m_Layer: 0
-  m_Name: HealthArmor (23)
+  m_Name: HealthArmor8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -854,7 +854,7 @@ GameObject:
   - component: {fileID: 1017972967473590795}
   - component: {fileID: 8875119178191404705}
   m_Layer: 0
-  m_Name: HealthArmor (27)
+  m_Name: HealthArmor9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -952,7 +952,7 @@ GameObject:
   - component: {fileID: 8549038144778906771}
   - component: {fileID: 6327602405917449256}
   m_Layer: 0
-  m_Name: HealthArmor (17)
+  m_Name: HealthArmor4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1050,7 +1050,7 @@ GameObject:
   - component: {fileID: 6555471297249337542}
   - component: {fileID: 2116706793255798150}
   m_Layer: 0
-  m_Name: HealthArmor (11)
+  m_Name: HealthArmor0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
