@@ -14,15 +14,22 @@ public class Controller_ShieldAndHealth : MonoBehaviour
     private bool soundIsOn;
     private bool shieldIsOn
     {
-        get 
+        get
         {
             return soundIsOn;
         }
         set
         {
-            if(value != soundIsOn && firstSpawn == false)
+            Debug.Log("Value is set to " + value + " and soundIsOn is set to " + soundIsOn + "." + "First spawn is set to " + firstSpawn);
+
+            if (value != soundIsOn)
             {
-                AudioSource.PlayClipAtPoint(Shield, transform.position);
+                soundIsOn = value;
+                if (soundIsOn == true && firstSpawn == false)
+                {
+                    Debug.Log("Audio clip of shield is being played.");
+                    AudioSource.PlayClipAtPoint(Shield, transform.position);
+                }
             }
         }
     }
@@ -52,7 +59,6 @@ public class Controller_ShieldAndHealth : MonoBehaviour
         if (firstSpawn)
         {
             player.livesCurrent = player.livesBase;
-            firstSpawn = false;
         }
         player.lostLife = false;
         
@@ -145,8 +151,13 @@ public class Controller_ShieldAndHealth : MonoBehaviour
         if (player.shieldActive)
         {
             player.shield.SetActive(true);
+            shieldIsOn = true;
+            firstSpawn = false;
         }
         else
+        {
             player.shield.SetActive(false);
+            shieldIsOn = false;
+        }
     }
 }
