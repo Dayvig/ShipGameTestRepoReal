@@ -2690,48 +2690,48 @@ MonoBehaviour:
   enemiesToSpawnPortal: 100
   explosionPrefab1: {fileID: 4960011077586471054, guid: 1e7df4c64a49ee241b2df38f4c533ddd, type: 3}
   level1EnemyTypes:
+  - Rapid
+  - TrailH
+  - Rapid
+  - TrailH
+  - TrailH
+  - Rapid
+  - TrailH
+  - Rapid
+  - TrailH
+  - TrailV
+  - Fast
+  - Rapid
+  - Fast
+  - TrailH
+  - Fast
+  - Rapid
+  - TrailH
+  - Rapid
+  - TrailH
+  - TrailV
+  - TrailH
+  - Fast
+  - TrailH
+  - Fast
+  - Rapid
+  - TrailH
+  - Fast
+  - Rapid
   - Fast
   - Fast
-  - TrailV
-  - TrailV
   - TrailH
   - TrailV
   - TrailH
   - Rapid
-  - Trail
-  - Trail
-  - Fast
   - Rapid
+  - TrailH
   - Fast
-  - Trail
-  - Fast
+  - TrailH
+  - TrailH
   - Rapid
-  - Trail
-  - Rapid
-  - Trail
-  - Trail
-  - Trail
-  - Fast
-  - Trail
-  - Fast
-  - Rapid
-  - Trail
-  - Fast
-  - Rapid
-  - Fast
-  - Fast
-  - Trail
-  - Trail
-  - Trail
-  - Rapid
-  - Rapid
-  - Trail
-  - Fast
-  - Trail
-  - Trail
-  - Rapid
-  - Trail
-  - Trail
+  - TrailH
+  - TrailV
   - Rapid
   - Rapid
   - Fast
