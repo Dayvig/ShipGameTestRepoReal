@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ namespace Controllers
         public float startTime;
         public float elapsed = 0f;
         public bool spawnGas;
+        
         public Color orange;
         
         public List<GameObject> meterList = new List<GameObject>();
@@ -32,7 +34,7 @@ namespace Controllers
             
             startTime = Time.time;
 
-            orange = new Color(226, 162, 59);
+            orange = new Color(.8490566f, .58f, .17f);
         }
         
         void Update()
@@ -40,7 +42,11 @@ namespace Controllers
             elapsed += Time.deltaTime;
             if (!(elapsed >= 0.1f)) return;
             elapsed %= 0.1f;
-            LowerFuel();
+           if(!UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("BossScene"))
+           {
+               LowerFuel();
+           }
+            
             
             
             if (currentFuel <= 0)
@@ -98,6 +104,10 @@ namespace Controllers
             {
                 foreach (GameObject gameObject in meterList)
                 {
+                    if (Input.GetKeyDown(KeyCode.Y))
+                    {
+                        Debug.Log(orange);
+                    }
                     gameObject.GetComponent<Image>().color = orange;
                 }
             }
