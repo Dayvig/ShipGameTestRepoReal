@@ -84,6 +84,11 @@ public class Controller_Enemies : MonoBehaviour
         }
     }
 
+    public void SpawnFastIndicator()
+    {
+        
+    }
+    
     public void EnemyUpdate()
     {
         // Making waves for the level according to model specifications
@@ -95,6 +100,14 @@ public class Controller_Enemies : MonoBehaviour
             int numberToSpawn = gameModel.level1Waves[waveIndex];
             
             float turnOverTime = 10;
+
+            /*
+            if (waveTimer >= turnOverTime - 2 && gameModel.level1EnemyTypes[waveIndex] == "Fast")
+            {
+                Debug.Log("Hi c:");
+                SpawnFastIndicator();
+            }*/
+            
             if (waveTimer >= turnOverTime && gameModel.waveSpawn < gameModel.level1Waves.Count)
             {
 
@@ -233,14 +246,12 @@ public class Controller_Enemies : MonoBehaviour
                             }
 
                             break;
-                        case "Trail":
-                            
+                        case "TrailH":
                             TRAIL = Instantiate(gameModel.TrailEnemyPrefab); //Spawn the prefab in
                             TrailEnemy_Behavior tbehavior = TRAIL.GetComponent<TrailEnemy_Behavior>(); //Get its behavior inside its prefab
                             enemycount++;
-                            if (spawnMagicNumber == 0)
-                            {
-                                stag = new Vector3(-1, 0, 0);
+                            if (enemycount%2 == 0){
+                            stag = new Vector3(-1, 0, 0);
                                 tbehavior.nextWaypoint = trailValues.Waypoints[0] + dis;
                                 tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
                                 tbehavior.Waypoints.Add(trailValues.Waypoints[1] + dis);
@@ -249,13 +260,25 @@ public class Controller_Enemies : MonoBehaviour
                             }
                             else
                             {
-                                stag = new Vector3(0, 0, 1);
-                                tbehavior.nextWaypoint = trailValues.Waypoints[3] + dis;
+                                stag = new Vector3(1, 0, 0);
+                                tbehavior.nextWaypoint = trailValues.Waypoints[6] + dis;
                                 tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
-                                tbehavior.Waypoints.Add(trailValues.Waypoints[4] + dis);
-                                tbehavior.Waypoints.Add(trailValues.Waypoints[5]+ dis);
-                                tbehavior.behaviorState = 1;
+                                tbehavior.Waypoints.Add(trailValues.Waypoints[7] + dis);
+                                tbehavior.Waypoints.Add(trailValues.Waypoints[8]+ dis);
+                                tbehavior.behaviorState = 0;
                             }
+                            TRAIL.transform.position = tbehavior.nextWaypoint + (stag * i * trailValues.startStagger);
+                            break;
+                        case "TrailV":
+                            TRAIL = Instantiate(gameModel.TrailEnemyPrefab); //Spawn the prefab in
+                            tbehavior = TRAIL.GetComponent<TrailEnemy_Behavior>(); //Get its behavior inside its prefab
+                            enemycount++;
+                            stag = new Vector3(0, 0, 1);
+                            tbehavior.nextWaypoint = trailValues.Waypoints[3] + dis;
+                            tbehavior.Waypoints.Add(tbehavior.nextWaypoint);
+                            tbehavior.Waypoints.Add(trailValues.Waypoints[4] + dis);
+                            tbehavior.Waypoints.Add(trailValues.Waypoints[5]+ dis);
+                            tbehavior.behaviorState = 1;
                             TRAIL.transform.position = tbehavior.nextWaypoint + (stag * i * trailValues.startStagger);
                             break;
                         case "Fast":
@@ -269,12 +292,14 @@ public class Controller_Enemies : MonoBehaviour
                                 fastBehavior.nextWaypoint = fastValues.Waypoints[2];
                                 fastBehavior.Waypoints.Add(fastBehavior.nextWaypoint);
                                 fastBehavior.Waypoints.Add(fastValues.Waypoints[3]);
+                                fastBehavior.behaviorState = 0;
                             }
                             else
                             {
                                 fastBehavior.nextWaypoint = fastValues.Waypoints[0];
                                 fastBehavior.Waypoints.Add(fastBehavior.nextWaypoint);
                                 fastBehavior.Waypoints.Add(fastValues.Waypoints[1]);
+                                fastBehavior.behaviorState = 1;
                             }
 
                             FAST.transform.position = fastBehavior.nextWaypoint + (stag * i * fastValues.startStagger);

@@ -112,7 +112,7 @@ public class View_PlayerHPAndShield : MonoBehaviour
     {
         // Offramp to minimize excessive crawling through the array
         if (renderers == null) return;
-        if (renderers[0].enabled == isAlive) return;
+        //if (renderers[0].enabled == isAlive) return;
 
         foreach (var r in renderers)
             r.enabled = isAlive;

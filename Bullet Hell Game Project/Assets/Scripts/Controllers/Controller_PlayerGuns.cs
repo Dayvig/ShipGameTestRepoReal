@@ -150,7 +150,7 @@ public class Controller_PlayerGuns : MonoBehaviour
         {
             for (int i = _activeBullets.Count - 1; i>= 0; i--)
             {
-                if (_activeBullets[i].transform.position.z > playerModel.limitVert * 1.5f)
+                if (_activeBullets[i].transform.position.z > playerModel.limitVert * 1.1f)
                 {
                     GameObject bulletToMove = _activeBullets[i];
                     _activeBullets.Remove(bulletToMove);

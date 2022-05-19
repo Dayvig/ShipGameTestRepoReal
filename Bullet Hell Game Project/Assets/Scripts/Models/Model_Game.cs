@@ -22,6 +22,7 @@ public class Model_Game : MonoBehaviour
     public GameObject enemyBulletPrefab1;
     public GameObject motorCycleEnemyPrefab;
     public GameObject indicatorPrefab;
+    public GameObject fastindicatorPrefab;
     public GameObject HogEnemyPrefab;
     public GameObject T3EnemyPrefab;
     public GameObject T4EnemyPrefab;
