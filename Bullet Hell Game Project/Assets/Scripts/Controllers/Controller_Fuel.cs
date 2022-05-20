@@ -32,7 +32,7 @@ namespace Controllers
             
             startTime = Time.time;
 
-            orange = new Color(226, 162, 59);
+            orange = new Color(0.86f, 0.64f, 0.2f);
         }
         
         void Update()
