@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealthArmor : MonoBehaviour
 {
 
-    private GameObject HostBody; 
+    private GameObject HostBody;
 
     private Vector3 hitboxSize;
     public int Armor_Health;
@@ -18,8 +18,8 @@ public class HealthArmor : MonoBehaviour
     private double HPThird_Bottom;
     //private bool AlmostDead = false;
 
-    public Controller_EnemyBullets bullets; 
- 
+    public Controller_EnemyBullets bullets;
+
     void Start()
     {
         bullets = GameObject.Find("Controller").GetComponent<Controller_EnemyBullets>();
@@ -37,14 +37,14 @@ public class HealthArmor : MonoBehaviour
     {
         hitboxSize = Vector3.Scale(gameObject.transform.localScale, HostBody.transform.localScale);
         var around = Physics.OverlapBox(transform.position, hitboxSize * 0.5f, transform.rotation); //gets all the colliders in the 
-                                                                                   //shape of the parented object
+                                                                                                    //shape of the parented object
         foreach (Collider c in around)
         {
             //Debug.Log("Something Detected");
             if (c.gameObject.tag == "PlayerBullet")   //If a player bullet hits the core
             {
-               
-                
+
+
                 if (Armor_Health >= 1)
                 {
                     c.gameObject.transform.position = new Vector3(1000, 0, 0);  //Warp a bullet far far away
@@ -58,16 +58,28 @@ public class HealthArmor : MonoBehaviour
                 Debug.Log(Armor_Health);
                 //Debug.Log("Blocked a player bullet");
             }
-           
+
 
             //else if (c.gameObject.tag == "EnemyBullet")   //This section can be used for "Bullet amplification"
             //{
             //  Debug.Log("Found a enemy bullet");
             // }
-            
+
 
         }
 
+
+
+        if (Armor_Health >= 1 && transform.gameObject.activeSelf == false) //If the health is recovered, reactivate it
+        {
+            transform.gameObject.SetActive(true);
+        }
+
+        updateColor();
+    }
+
+    void updateColor() //Updating Colors
+    {
         if (Armor_Health <= HPThird_Top && Armor_Health >= HPThird_Bottom) //Turn it yellow
         {
             // Debug.Log("Yellow");
@@ -84,9 +96,7 @@ public class HealthArmor : MonoBehaviour
             // Debug.Log("Green");
             gameObject.GetComponent<MeshRenderer>().material = DefaultShader;
         }
-
     }
-
  
 
 }

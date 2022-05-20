@@ -22,6 +22,19 @@ public class Boss1_Behavior : Base_Enemy_Behavior
     private double HPThird_Top;
     private double HPThird_Bottom;
 
+    private bool FirstRunYellow = true;
+    private bool FirstRunRed = true;
+    public float Armor0;
+    public float Armor1;
+    public float Armor2;
+    public float Armor3;
+    public float Armor4;
+    public float Armor5;
+    public float Armor6;
+    public float Armor7;
+    public float Armor8;
+    public float Armor9;
+
     private bool AlmostDead = false;
     private int spinnerCounter = 0;
 
@@ -102,6 +115,17 @@ public class Boss1_Behavior : Base_Enemy_Behavior
         HPThird_Top = boss1Value.hp * 0.66;
         HPThird_Bottom = boss1Value.hp * 0.33;
 
+        Armor0 = gameObject.transform.GetChild(0).gameObject.GetComponent<HealthArmor>().Armor_Health;
+        Armor1 = gameObject.transform.GetChild(1).gameObject.GetComponent<HealthArmor>().Armor_Health;
+        Armor2 = gameObject.transform.GetChild(2).gameObject.GetComponent<HealthArmor>().Armor_Health;
+        Armor3 = gameObject.transform.GetChild(3).gameObject.GetComponent<HealthArmor>().Armor_Health;
+        Armor4 = gameObject.transform.GetChild(4).gameObject.GetComponent<HealthArmor>().Armor_Health;
+        Armor5 = gameObject.transform.GetChild(5).gameObject.GetComponent<HealthArmor>().Armor_Health;
+        Armor6 = gameObject.transform.GetChild(6).gameObject.GetComponent<HealthArmor>().Armor_Health;
+        Armor7 = gameObject.transform.GetChild(7).gameObject.GetComponent<HealthArmor>().Armor_Health;
+        Armor8 = gameObject.transform.GetChild(8).gameObject.GetComponent<HealthArmor>().Armor_Health;
+        Armor9 = gameObject.transform.GetChild(9).gameObject.GetComponent<HealthArmor>().Armor_Health;
+
     }
 
     public override bool Immune()
@@ -127,10 +151,54 @@ public class Boss1_Behavior : Base_Enemy_Behavior
         //var HPThird3;
 
         //Debug.Log(hitPoints);
+        //HealthArmor.Armor_Health = 100;
+
+        
         
         if (hitPoints <= HPThird_Top && hitPoints >= HPThird_Bottom) //Turn it yellow
         {
-           // Debug.Log("Yellow");
+            // Debug.Log("Yellow");
+
+            if (FirstRunYellow == true)
+            {
+                //reset the armors health
+
+
+                Armor0 = 70;
+                Armor1 = 70;
+                Armor2 = 70;
+                Armor3 = 70;
+                Armor4 = 70;
+                Armor5 = 70;
+                Armor6 = 70;
+                Armor7 = 70;
+                Armor8 = 70;
+                Armor9 = 70;
+
+                gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                gameObject.transform.GetChild(2).gameObject.SetActive(true);
+                gameObject.transform.GetChild(3).gameObject.SetActive(true);
+                gameObject.transform.GetChild(4).gameObject.SetActive(true);
+                gameObject.transform.GetChild(5).gameObject.SetActive(true);
+                gameObject.transform.GetChild(6).gameObject.SetActive(true);
+                gameObject.transform.GetChild(7).gameObject.SetActive(true);
+                gameObject.transform.GetChild(8).gameObject.SetActive(true);
+                gameObject.transform.GetChild(9).gameObject.SetActive(true);
+
+                Armor0 = 70;
+                Armor1 = 70;
+                Armor2 = 70;
+                Armor3 = 70;
+                Armor4 = 70;
+                Armor5 = 70;
+                Armor6 = 70;
+                Armor7 = 70;
+                Armor8 = 70;
+                Armor9 = 70;
+
+
+            }
             gameObject.GetComponent<MeshRenderer>().material = MidHealthShader;
             healthSpeedMultiplier = 1.3f;
         }

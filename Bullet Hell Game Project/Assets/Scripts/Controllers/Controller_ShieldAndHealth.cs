@@ -14,15 +14,22 @@ public class Controller_ShieldAndHealth : MonoBehaviour
     private bool soundIsOn;
     private bool shieldIsOn
     {
-        get 
+        get
         {
             return soundIsOn;
         }
         set
         {
-            if(value != soundIsOn && firstSpawn == false)
+            Debug.Log("Value is set to " + value + " and soundIsOn is set to " + soundIsOn + "." + "First spawn is set to " + firstSpawn);
+
+            if (value != soundIsOn)
             {
-                AudioSource.PlayClipAtPoint(Shield, transform.position);
+                soundIsOn = value;
+                if (soundIsOn == true && firstSpawn == false)
+                {
+                    Debug.Log("Audio clip of shield is being played.");
+                    AudioSource.PlayClipAtPoint(Shield, transform.position);
+                }
             }
         }
     }
@@ -52,7 +59,6 @@ public class Controller_ShieldAndHealth : MonoBehaviour
         if (firstSpawn)
         {
             player.livesCurrent = player.livesBase;
-            firstSpawn = false;
         }
         player.lostLife = false;
         
@@ -115,13 +121,29 @@ public class Controller_ShieldAndHealth : MonoBehaviour
 
     public bool TriggerFuelShield()
     {
-        if (controllerFuel.currentFuel > (controllerFuel.FuelMax * 0.6f) && !player.invincible)
+        if (!UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("BossScene"))
         {
-            fuelShieldActive = true;
-            player.invincible = true;
-            controllerFuel.currentFuel -= controllerFuel.FuelMax * 0.4f;
+            if (Input.GetKeyDown(KeyCode.F) && controllerFuel.currentFuel > (controllerFuel.FuelMax * 0.3f) &&
+                player.invincible == false)
+            {
+                fuelShieldActive = true;
+                player.invincible = true;
+                controllerFuel.currentFuel -= controllerFuel.FuelMax * 0.2f;
+            }
+
+            /*if (controllerFuel.currentFuel > (controllerFuel.FuelMax * 0.6f) && !player.invincible)
+            {
+                fuelShieldActive = true;
+                player.invincible = true;
+                controllerFuel.currentFuel -= controllerFuel.FuelMax * 0.4f;
+            }
+            */
+            return fuelShieldActive;
         }
-        return fuelShieldActive;
+        else
+        {
+            return false;
+        }
     }
 
     private void _ShieldOnOff()
@@ -129,8 +151,13 @@ public class Controller_ShieldAndHealth : MonoBehaviour
         if (player.shieldActive)
         {
             player.shield.SetActive(true);
+            shieldIsOn = true;
+            firstSpawn = false;
         }
         else
+        {
             player.shield.SetActive(false);
+            shieldIsOn = false;
+        }
     }
 }

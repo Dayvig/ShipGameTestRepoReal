@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
+  m_Color: {r: 0.8862745, g: 0.60269314, b: 0.17792805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerModel: {fileID: 1212158453}
-  playerShoots: {fileID: 8300000, guid: 6ab8cdc4d71f85443867f2ffbc2fd633, type: 3}
+  playerShoots: {fileID: 8300000, guid: b239250cafe2bc04f9b8e2435c9d5753, type: 3}
   grazePowerUp: 0
   grazeTimer: 0
   grazeInterval: 0
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameModel: {fileID: 1212158454}
-  hitSound: {fileID: 8300000, guid: 68cb532c04cc3d0489319814906b8ee5, type: 3}
+  hitSound: {fileID: 8300000, guid: b2d4a66fd6dfed944a26906946b3a6b2, type: 3}
 --- !u!114 &144164433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,8 +363,8 @@ MonoBehaviour:
   player: {fileID: 1212158453}
   bullets: {fileID: 144164433}
   controllerFuel: {fileID: 144164435}
-  Death: {fileID: 8300000, guid: 9e462a0be1c032d44a8feb6e0aa610cb, type: 3}
-  Shield: {fileID: 8300000, guid: 91adf821cf486534592eebea40a5db82, type: 3}
+  Death: {fileID: 8300000, guid: cf51361daaa57d7449d0346ba9a58594, type: 3}
+  Shield: {fileID: 8300000, guid: 40f0d1fccf3163d49bcd74e8590bcf5d, type: 3}
   invincibleTimer: 0
   fuelShieldDuration: 2
   fuelShieldActive: 0
@@ -390,7 +390,7 @@ MonoBehaviour:
   startTime: 0
   elapsed: 0
   spawnGas: 0
-  orange: {r: 0, g: 0, b: 0, a: 0}
+  orange: {r: 0.8490566, g: 0.5890011, b: 0.17942323, a: 0}
   meterList:
   - {fileID: 1185016583}
   - {fileID: 1382921238}
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
+  m_Color: {r: 0.9245283, g: 0.60269314, b: 0.17792805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
+  m_Color: {r: 0.9245283, g: 0.60269314, b: 0.17792805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -969,7 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
+  m_Color: {r: 0.9245283, g: 0.60269314, b: 0.17792805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1216,7 +1216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7781635, b: 0.3066038, a: 1}
+  m_Color: {r: 0.8862745, g: 0.6352425, b: 0.23137252, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1844,9 +1844,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0c67a86981f61104db11dd2d1cee26fb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: edfa3f2ce0228404e8277e7c02bb730f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.27
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1980,7 +1980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8018868, g: 0.6147056, b: 0.2912513, a: 0.47058824}
+  m_Color: {r: 0.7735849, g: 0.53019184, b: 0.14158058, a: 0.47058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2308,7 +2308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
+  m_Color: {r: 0.9245283, g: 0.60269314, b: 0.17792805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2464,7 +2464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
+  m_Color: {r: 0.9245283, g: 0.60269314, b: 0.17792805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3604,7 +3604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137252, g: 0.7877259, b: 0.8862745, a: 1}
+  m_Color: {r: 0.9245283, g: 0.60269314, b: 0.17792805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3746,8 +3746,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_PlayOnAwake: 0
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3962,7 +3962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
+  m_Color: {r: 0.9245283, g: 0.60269314, b: 0.17792805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4037,7 +4037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
+  m_Color: {r: 0.9245283, g: 0.60269314, b: 0.17792805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4112,7 +4112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137255, g: 0.7882353, b: 0.8862745, a: 1}
+  m_Color: {r: 0.9245283, g: 0.60269314, b: 0.17792805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

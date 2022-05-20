@@ -29,7 +29,10 @@ public class Canister_spawner : MonoBehaviour
         }
         if (!(elapsed >= interval)) return;
         elapsed %= interval;
-        MakeGas();
+        if (!UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("BossScene"))
+        {
+            MakeGas();
+        }
     }
 
     void MakeGas()
