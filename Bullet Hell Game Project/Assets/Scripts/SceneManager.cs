@@ -24,4 +24,9 @@ public class SceneManager : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit(0);
+    }
 }

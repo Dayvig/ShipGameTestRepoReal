@@ -9,6 +9,7 @@ public class Controller_ShieldAndHealth : MonoBehaviour
     public Model_Player player;
     public Controller_EnemyBullets bullets;
     public Controller_Fuel controllerFuel;
+    public Controller_Game gameController;
     public AudioClip Death;
     public AudioClip Shield;
     private bool soundIsOn;
@@ -99,6 +100,8 @@ public class Controller_ShieldAndHealth : MonoBehaviour
                     }
 
                     player.hitpointsCurrent = 0;
+                    gameController.deathTimer = 0;
+                    controllerFuel.currentFuel = controllerFuel.FuelMax;
                 }
             }
             else if (c.gameObject.tag == "EnemyBullet" && !player.invincible)
@@ -112,6 +115,8 @@ public class Controller_ShieldAndHealth : MonoBehaviour
                     }
 
                     player.hitpointsCurrent = 0;
+                    gameController.deathTimer = 0;
+                    controllerFuel.currentFuel = controllerFuel.FuelMax;
                 }
                 AudioSource.PlayClipAtPoint(Death, transform.position);
                 bullets.KillBullet(c.gameObject);

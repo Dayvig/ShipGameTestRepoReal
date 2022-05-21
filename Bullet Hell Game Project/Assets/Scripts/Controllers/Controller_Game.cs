@@ -167,7 +167,7 @@ public class Controller_Game : MonoBehaviour
         if (playerModel.livesCurrent < 1)
         {
             SetGameState(GameStates.GameOver);
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
     }
     private void _OnWin()
@@ -257,7 +257,7 @@ public class Controller_Game : MonoBehaviour
         
         
     }
-    private float deathTimer;
+    public float deathTimer;
     private void _DieUpdate()
     {
         //print test here
@@ -265,7 +265,9 @@ public class Controller_Game : MonoBehaviour
         //
         Debug.Log("Player is dead");
         playerModel.currentlyDead = true;
-        //loop disable particles?
+        shipController.playerModel.positionTarget =
+            shipController.playerModel.ship.transform.position + Vector3.back * deathTimer * 10;
+        //loop disable particles?z
         //
         deathTimer += Time.deltaTime;
         if (deathTimer >= 3)

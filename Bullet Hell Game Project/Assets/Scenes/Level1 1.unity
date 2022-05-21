@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -262,6 +262,7 @@ MonoBehaviour:
   fadeView: {fileID: 1002588124}
   narrative: {fileID: 1002588126}
   stateReadout: 
+  deathTimer: 0
 --- !u!114 &144164429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +364,7 @@ MonoBehaviour:
   player: {fileID: 1212158453}
   bullets: {fileID: 144164433}
   controllerFuel: {fileID: 144164435}
+  gameController: {fileID: 144164428}
   Death: {fileID: 8300000, guid: cf51361daaa57d7449d0346ba9a58594, type: 3}
   Shield: {fileID: 8300000, guid: 40f0d1fccf3163d49bcd74e8590bcf5d, type: 3}
   invincibleTimer: 0
@@ -2609,7 +2611,7 @@ MonoBehaviour:
   introDuration: 0
   dialogueDuration: 0
   spawnDuration: 1
-  spawnInvincibility: 1
+  spawnInvincibility: 2
   waveSpawn: 0
   waveCooldown:
   - 0
