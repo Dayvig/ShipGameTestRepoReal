@@ -46,10 +46,8 @@ namespace Controllers
            {
                LowerFuel();
            }
-            
-            
-            
-            if (currentFuel <= 0)
+
+           if (currentFuel <= 0)
             {
                 if (playerModel.hitpointsCurrent > 0)
                 {
@@ -78,7 +76,6 @@ namespace Controllers
 
             if (currentFuel <= 0)
             {
-                // Change to losing screen
                 if (!playerModel.lostLife)
                 {
                     playerModel.livesCurrent--;

@@ -89,12 +89,9 @@ public class Controller_EnemyBullets : MonoBehaviour
         }
                 
         bullet.transform.position = where;
-        Debug.Log("direction: " + direction);
-        Debug.Log(direction.z);
         if (direction.z < 0)
         {
             bullet.transform.rotation = Quaternion.Euler(0, 90 + Mathf.Acos(direction.x) * 180/Mathf.PI, 0);
-            Debug.Log("test");
         }
         else
         {

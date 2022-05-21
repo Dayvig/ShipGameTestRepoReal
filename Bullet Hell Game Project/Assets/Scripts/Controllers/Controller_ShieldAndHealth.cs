@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -21,12 +22,10 @@ public class Controller_ShieldAndHealth : MonoBehaviour
         }
         set
         {
-            Debug.Log("Value is set to " + value + " and soundIsOn is set to " + soundIsOn + "." + "First spawn is set to " + firstSpawn);
-
             if (value != soundIsOn)
             {
                 soundIsOn = value;
-                if (soundIsOn == true && firstSpawn == false)
+                if (soundIsOn && firstSpawn == false)
                 {
                     Debug.Log("Audio clip of shield is being played.");
                     AudioSource.PlayClipAtPoint(Shield, transform.position);
@@ -126,28 +125,39 @@ public class Controller_ShieldAndHealth : MonoBehaviour
 
     public bool TriggerFuelShield()
     {
-        if (!UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("BossScene"))
+        /*if (controllerFuel.currentFuel > (controllerFuel.FuelMax * 0.6f) && !player.invincible)
         {
-            if (Input.GetKeyDown(KeyCode.F) && controllerFuel.currentFuel > (controllerFuel.FuelMax * 0.3f) &&
-                player.invincible == false)
-            {
-                fuelShieldActive = true;
-                player.invincible = true;
-                controllerFuel.currentFuel -= controllerFuel.FuelMax * 0.2f;
-            }
-
-            /*if (controllerFuel.currentFuel > (controllerFuel.FuelMax * 0.6f) && !player.invincible)
-            {
-                fuelShieldActive = true;
-                player.invincible = true;
-                controllerFuel.currentFuel -= controllerFuel.FuelMax * 0.4f;
-            }
-            */
-            return fuelShieldActive;
+            fuelShieldActive = true;
+            player.invincible = true;
+            controllerFuel.currentFuel -= controllerFuel.FuelMax * 0.4f;
         }
-        else
+        */
+            return fuelShieldActive;
+        
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && controllerFuel.currentFuel > controllerFuel.FuelMax * 0.3f &&
+            player.invincible == false && fuelShieldActive == false)
         {
-            return false;
+            fuelShieldDuration = 3f;
+            fuelShieldActive = true;
+            player.shieldActive = true;
+            _ShieldOnOff();
+            if (fuelShieldActive)
+            {
+                invincibleTimer += Time.deltaTime;
+                if (invincibleTimer > fuelShieldDuration)
+                {
+                    player.shieldActive = false;
+                    _ShieldOnOff();
+                    fuelShieldActive = false;
+                    player.invincible = false;
+                    invincibleTimer -= fuelShieldDuration;
+                }
+            }
+            controllerFuel.currentFuel -= controllerFuel.FuelMax * 0.2f;
         }
     }
 
