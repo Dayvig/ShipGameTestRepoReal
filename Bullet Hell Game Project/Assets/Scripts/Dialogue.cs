@@ -53,7 +53,7 @@ public class Dialogue : MonoBehaviour
 
     void NextLine()
     {
-        cr.sprite = images[index];
+        cr.sprite = index < images.Length - 1 ? images[index] : images[images.Length-1];
         if (index < lines.Length - 1)
         {
             index++;

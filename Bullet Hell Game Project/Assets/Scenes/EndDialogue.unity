@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -176,9 +176,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1575091165}
   lines:
-  - 'Alula: Aaaaaaaaaaaaaaaaaaaaaaa'
-  - 'John: Don''t put that bread there, Jeff!'
-  - 'Jeff: Wait a minute.....who are you?'
+  - "Alula arrives at the edges of her hometown\u2026"
+  - 'Alula opens up her bag to show the blueprint to the scientist. '
+  - 'Scientist: Thank goodness! You made it back all in one piece.'
+  - "Alula: You didn\u2019t think I was gonna die out there, did you? "
+  - "Scientist: Marvelous! The advancements I can do will save everyone. Without
+    this, I don\u2019t know how much help... "
+  - 'Scientist: I could''ve been.'
+  - "Alula: We\u2019re not done yet, we need to finish up the medicine and save those
+    people affected. "
+  - "Scientist: You\u2019re right, time to get to work!"
+  - 'The scientist uses the blueprint to advance the medicine that will be more effective
+    at battling the disease. '
+  - After helping the people in town Alula sets off to bring other towns the medicine
+    to...
+  - save everyone that has been plagued by the illness.
   textSpeed: 0.1
   cr: {fileID: 1245730525}
   images:
