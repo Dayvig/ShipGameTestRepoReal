@@ -221,9 +221,9 @@ public class Controller_Game : MonoBehaviour
 
         // activate a bool for particles/grazing enable
         //
-        Debug.Log("Player is alive now");
+       
         playerModel.currentlyDead = false;
-        //
+        
 
         if (spawnTimer >= gameModel.spawnDuration)
         {
@@ -263,7 +263,6 @@ public class Controller_Game : MonoBehaviour
         //print test here
         // activate a bool for particles/grazing disable
         //
-        Debug.Log("Player is dead");
         playerModel.currentlyDead = true;
         shipController.playerModel.positionTarget =
             shipController.playerModel.ship.transform.position + Vector3.back * deathTimer * 10;
