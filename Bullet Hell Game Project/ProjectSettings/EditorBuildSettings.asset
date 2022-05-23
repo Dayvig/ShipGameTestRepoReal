@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1Complete.unity
     guid: 308029e795435dc45aba88d4497a448e
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/EndDialogue.unity
+    guid: cf0bad5c8e1622d43b563e207f6e1585
   m_configObjects: {}

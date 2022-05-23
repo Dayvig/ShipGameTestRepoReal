@@ -1,18 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Enemies;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Guardian_Behavior : Base_Enemy_Behavior
 {
     private GuardianEnemy values;
         public static string BULLET_NAME = "GuardianBullet";
+        public GameObject thisIndicator;
 
         public override void MovementUpdate()
         {
             Vector3 toPos = Vector3.MoveTowards(transform.position, nextWaypoint, moveSpeed * Time.deltaTime);
             transform.LookAt(toPos, Vector3.forward);
             transform.position = toPos;
+            if (thisIndicator != null)
+            UpdateIndicator();
 
             if (Vector3.Distance(transform.position, nextWaypoint) < 1)
             {
@@ -50,6 +55,46 @@ public class Guardian_Behavior : Base_Enemy_Behavior
             }
 
             return false;
+        }
+        
+        public override void SpawnIndicator()
+        {
+            /* Don't
+             
+            
+            Vector3 direction = (playerModel.ship.transform.position - transform.position).normalized;
+            if (direction.z < 0)
+            {
+                thisIndicator =
+                    Instantiate(gameModel.indicatorPrefab, transform.position,Quaternion.Euler(90, 0, 90 + Mathf.Acos(direction.z) * 180/Mathf.PI));
+                thisIndicator.GetComponent<LaserUpdate>().toFollow = transform.gameObject;
+                thisIndicator.GetComponent<LaserUpdate>().duration = shootInterval / 2;
+                UpdateIndicator();
+            }
+            else
+            {
+                thisIndicator =
+                    Instantiate(gameModel.indicatorPrefab, transform.position,Quaternion.Euler(90, 0, 270 + Mathf.Acos(direction.z) * 180/Mathf.PI));
+                thisIndicator.GetComponent<LaserUpdate>().toFollow = transform.gameObject;
+                thisIndicator.GetComponent<LaserUpdate>().duration = shootInterval / 2;
+                UpdateIndicator();
+            }
+
+            */
+        }
+
+        public void UpdateIndicator()
+        {
+            
+            Vector3 direction = (playerModel.ship.transform.position - transform.position).normalized;
+            if (direction.z < 0)
+            {
+                thisIndicator.transform.rotation = Quaternion.Euler(90, 0, 90 + Mathf.Acos(direction.z) * 180/Mathf.PI);
+            }
+            else
+            {
+                thisIndicator.transform.rotation = Quaternion.Euler(90, 0, 180 + Mathf.Acos(direction.z) * 180/Mathf.PI);
+            }
         }
 
         public override void UpdateVisuals()

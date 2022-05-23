@@ -40,7 +40,7 @@ public class PortalBehavior : Base_Collectible_Behavior
     public override void Collect()
     {
         //enter portal code
-        UnityEngine.SceneManagement.SceneManager.LoadScene(5);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
         Debug.Log("Portal Entered");
     }
 }

@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8892040451686833353}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.624357, y: 10.730786, z: 0}
   m_LocalScale: {x: 122.3906, y: 122.3906, z: 122.3906}
   m_Children:
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 7854500276112739477}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5152914656314902998
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   effects: {fileID: 0}
   bullets: {fileID: 0}
   controllerFuel: {fileID: 0}
+  boom: {fileID: 0}
   c: {fileID: 0}
   ps: {fileID: 2554459736707538909}
   hitPoints: 0
@@ -119,6 +120,8 @@ MonoBehaviour:
   moveSpeed: 0
   bulletSpeed: 0
   switchedWaypoint: 0
+  indicatorSpawned: 0
+  thisIndicator: {fileID: 0}
 --- !u!135 &2624506259842607622
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -138,12 +138,13 @@ public class Controller_ShieldAndHealth : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && controllerFuel.currentFuel > controllerFuel.FuelMax * 0.3f &&
+        if (Input.GetKeyUp(KeyCode.F) && controllerFuel.currentFuel > controllerFuel.FuelMax * 0.3f &&
             player.invincible == false && fuelShieldActive == false)
         {
             fuelShieldDuration = 3f;
             fuelShieldActive = true;
             player.shieldActive = true;
+            player.invincible = true;
             _ShieldOnOff();
             if (fuelShieldActive)
             {

@@ -213,6 +213,7 @@ public class Controller_Game : MonoBehaviour
     {
         spawnInvincibilityTimer = gameModel.spawnInvincibility;
         spawnTimer += Time.deltaTime;
+        playerModel.invincible = true;
 
         playerModel.positionTarget = Vector3.Lerp(
             playerModel.positionSpawnStart,
