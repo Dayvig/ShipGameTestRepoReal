@@ -242,6 +242,12 @@ public class Boss1_Behavior : Base_Enemy_Behavior
         }
 
     }
+    
+    
+    public override void SpawnIndicator()
+    {
+        //dont
+    }
 
     public override void FiringPattern()  
     {

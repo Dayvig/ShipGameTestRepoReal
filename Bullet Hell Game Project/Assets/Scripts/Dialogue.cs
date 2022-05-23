@@ -10,7 +10,7 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed;
-    private int index;
+    public int index;
     public Image cr;
     public Sprite[] images;
     void Start()
@@ -22,6 +22,23 @@ public class Dialogue : MonoBehaviour
     }
     void Update()
     {
+        if (index == 0)
+        {
+            cr.sprite = images[0];
+        }
+        else if (index > 0 && index < 8)
+        {
+            cr.sprite = images[1];
+        }
+        else if (index == 8)
+        {
+            cr.sprite = images[2];
+        }
+        else
+        {
+            cr.sprite = images[3];
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (textComponent.text == lines[index])
@@ -53,7 +70,6 @@ public class Dialogue : MonoBehaviour
 
     void NextLine()
     {
-        cr.sprite = index < images.Length - 1 ? images[index] : images[images.Length-1];
         if (index < lines.Length - 1)
         {
             index++;
@@ -62,7 +78,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(5);
         }
     }
    

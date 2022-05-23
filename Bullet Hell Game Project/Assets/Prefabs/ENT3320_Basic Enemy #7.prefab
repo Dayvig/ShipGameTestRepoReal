@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1223227073257171115}
   m_Layer: 0
   m_Name: ENT3320_Basic Enemy #7
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   effects: {fileID: 0}
   bullets: {fileID: 0}
   controllerFuel: {fileID: 0}
+  boom: {fileID: 0}
   c: {fileID: 0}
   ps: {fileID: 7267545141564730598}
   hitPoints: 0
@@ -166,6 +167,7 @@ MonoBehaviour:
   moveSpeed: 0
   bulletSpeed: 0
   switchedWaypoint: 0
+  indicatorSpawned: 0
   volleyTimer: 0
   volleyInterval: 0
   volleys: 0

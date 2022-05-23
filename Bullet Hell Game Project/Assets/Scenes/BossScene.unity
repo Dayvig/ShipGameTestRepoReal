@@ -365,7 +365,7 @@ MonoBehaviour:
   bullets: {fileID: 144164433}
   controllerFuel: {fileID: 144164435}
   gameController: {fileID: 144164428}
-  Death: {fileID: 8300000, guid: 9e462a0be1c032d44a8feb6e0aa610cb, type: 3}
+  Death: {fileID: 8300000, guid: cf51361daaa57d7449d0346ba9a58594, type: 3}
   Shield: {fileID: 8300000, guid: 91adf821cf486534592eebea40a5db82, type: 3}
   invincibleTimer: 0
   fuelShieldDuration: 2
@@ -2560,7 +2560,7 @@ MonoBehaviour:
   damageBase: 10
   livesBase: 5
   shieldedRadius: 1
-  unshieldedRadius: 0.125
+  unshieldedRadius: 0.02
   invincible: 1
   lostLife: 0
   currentlyDead: 0

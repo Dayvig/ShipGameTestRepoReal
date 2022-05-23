@@ -60,7 +60,7 @@ public class Controller_PlayerShip : MonoBehaviour
     private void _TakeInputs()
     {
         float shiftSlowDown;
-        if (Input.GetKey(KeyCode.LeftShift))
+        /*if (Input.GetKey(KeyCode.LeftShift))
         {
             shiftHeld = true;
             shiftSlowDown = 1 / playerModel.shiftTurningFactor;
@@ -71,23 +71,23 @@ public class Controller_PlayerShip : MonoBehaviour
             shiftHeld = false;
             shiftSlowDown = 1;
             playerModel.turnLimit = playerModel.baseTurnLimit;
-        }
+        }*/
 
         if (Input.GetKey(KeyCode.W))
         {
             playerModel.positionTarget +=
-                Vector3.forward * Time.deltaTime * (playerModel.shipSpeed * (1 - playerModel.vFactor)) * shiftSlowDown;
+                Vector3.forward * Time.deltaTime * (playerModel.shipSpeed * (1 - playerModel.vFactor));
         }
         if (Input.GetKey(KeyCode.S))
         {
             playerModel.positionTarget -=
-                Vector3.forward * Time.deltaTime * (playerModel.shipSpeed * (1 + playerModel.vFactor)) * shiftSlowDown;
+                Vector3.forward * Time.deltaTime * (playerModel.shipSpeed * (1 + playerModel.vFactor));
         }
         if (Input.GetKey(KeyCode.A))
         {
             if (playerModel.rotationCurrent < -playerModel.turnLimit / 20)
             {
-                playerModel.positionTarget -= Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
+                playerModel.positionTarget -= Vector3.right * Time.deltaTime * playerModel.shipSpeed;
             }
             playerModel.rotationCurrent = setRotation(false, shiftHeld);
         }
@@ -95,7 +95,7 @@ public class Controller_PlayerShip : MonoBehaviour
         {
             if (playerModel.rotationCurrent > playerModel.turnLimit / 20)
             {
-                playerModel.positionTarget += Vector3.right * Time.deltaTime * playerModel.shipSpeed * shiftSlowDown;
+                playerModel.positionTarget += Vector3.right * Time.deltaTime * playerModel.shipSpeed;
             }
             playerModel.rotationCurrent = setRotation(true, shiftHeld);
         }

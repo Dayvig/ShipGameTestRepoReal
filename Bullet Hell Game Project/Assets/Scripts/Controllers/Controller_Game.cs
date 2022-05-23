@@ -167,7 +167,7 @@ public class Controller_Game : MonoBehaviour
         if (playerModel.livesCurrent < 1)
         {
             SetGameState(GameStates.GameOver);
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
         }
     }
     private void _OnWin()

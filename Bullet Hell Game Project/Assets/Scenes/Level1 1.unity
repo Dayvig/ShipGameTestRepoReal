@@ -2881,7 +2881,7 @@ MonoBehaviour:
   damageBase: 10
   livesBase: 5
   shieldedRadius: 1
-  unshieldedRadius: 1.94
+  unshieldedRadius: 0.02
   invincible: 1
   lostLife: 0
   currentlyDead: 0
